@@ -222,7 +222,7 @@
                 { question: "El 'problema principal' de un personaje debe ser:", options: ["Un problema externo y simple.", "Un problema interno que lo obliga a actuar.", "Un problema sin solución.", "Un problema que no tiene nada que ver con la historia."], correct: "Un problema interno que lo obliga a actuar." }
             ];
 
-            const availableQuestions = allQuestions; // Usar todas las preguntas disponibles
+            const availableQuestions = allQuestions; 
             const shuffledQuestions = shuffleArray(availableQuestions);
             
             function shuffleArray(array) {
@@ -235,7 +235,7 @@
             
             function renderQuestions() {
                 questionsContainer.innerHTML = '';
-                shuffledQuestions.forEach((q, index) => {
+                shuffledQuestions.slice(0, QUESTIONS_LIMIT).forEach((q, index) => {
                     const questionElement = document.createElement('div');
                     questionElement.id = `question-${index}`;
                     questionElement.classList.add('p-6', 'bg-green-50', 'rounded-lg', 'shadow-sm', 'border', 'border-green-200', 'scroll-to-target');
@@ -259,7 +259,7 @@
             renderQuestions();
 
             function validateForm() {
-                for (let i = 0; i < shuffledQuestions.length; i++) {
+                for (let i = 0; i < QUESTIONS_LIMIT; i++) {
                     const questionName = `q${i}`;
                     const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
                     if (!selectedOption) {
@@ -283,7 +283,7 @@
                 }
 
                 let score = 0;
-                shuffledQuestions.forEach((q, index) => {
+                shuffledQuestions.slice(0, QUESTIONS_LIMIT).forEach((q, index) => {
                     const questionName = `q${index}`;
                     const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
                     
@@ -292,10 +292,10 @@
                     }
                 });
 
-                const totalQuestions = shuffledQuestions.length;
-                const finalScore = (score / totalQuestions) * 20;
+                const totalQuestions = QUESTIONS_LIMIT;
+                const finalScore = score;
 
-                scoreMessage.textContent = `Tu puntuación es: ${score} de ${totalQuestions} (${finalScore.toFixed(2)}/20)`;
+                scoreMessage.textContent = `Tu puntuación es: ${finalScore} de ${totalQuestions}`;
 
                 document.getElementById('examForm').classList.add('hidden');
                 resultsContainer.classList.remove('hidden');
