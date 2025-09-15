@@ -9,43 +9,42 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Estilos para ocultar inicialmente */
-        .hidden {
-            display: none;
+        .scroll-to-target {
+            scroll-margin-top: 2rem;
         }
     </style>
 </head>
-<body class="bg-orange-100 min-h-screen flex items-center justify-center p-4">
+<body class="bg-green-700 min-h-screen flex items-center justify-center p-4">
     <div class="container mx-auto max-w-4xl p-8 bg-white shadow-xl rounded-2xl border border-gray-200">
         <header class="text-center mb-10">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-orange-900 mb-2">Examen sobre los personajes</h1>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-green-900 mb-2">Examen sobre los personajes</h1>
             <p class="text-lg text-gray-700">Creado por Miguelangel Tisera</p>
         </header>
 
-        <form id="infoForm" class="mb-8 p-6 bg-orange-50 rounded-lg shadow-inner">
-            <h2 class="text-2xl font-bold text-orange-800 mb-4">Información del Alumno</h2>
+        <form id="infoForm" class="mb-8 p-6 bg-green-50 rounded-lg shadow-inner">
+            <h2 class="text-2xl font-bold text-green-800 mb-4">Información del Alumno</h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <div>
                     <label for="studentName" class="block text-sm font-medium text-gray-700 mb-1">Nombre Completo del Alumno</label>
-                    <input type="text" id="studentName" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 transition duration-150 ease-in-out" placeholder="Escribe tu nombre">
+                    <input type="text" id="studentName" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out" placeholder="Escribe tu nombre">
                 </div>
                 <div>
                     <label for="institutionalEmail" class="block text-sm font-medium text-gray-700 mb-1">Correo Institucional (@unihumboldt.edu.ve)</label>
-                    <input type="email" id="institutionalEmail" required pattern="[a-zA-Z0-9._%+-]+@unihumboldt\.edu\.ve" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 transition duration-150 ease-in-out" placeholder="tu.nombre@unihumboldt.edu.ve">
+                    <input type="email" id="institutionalEmail" required pattern="[a-zA-Z0-9._%+-]+@unihumboldt\.edu\.ve" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out" placeholder="tu.nombre@unihumboldt.edu.ve">
                 </div>
             </div>
             <div class="mt-6">
                 <label for="courseSubject" class="block text-sm font-medium text-gray-700 mb-1">Materia que Cursas</label>
-                <input type="text" id="courseSubject" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 transition duration-150 ease-in-out" placeholder="Ej. Guionismo, Estructura Narrativa">
+                <input type="text" id="courseSubject" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out" placeholder="Ej. Guionismo, Estructura Narrativa">
             </div>
             <p id="infoError" class="mt-4 text-red-600 font-semibold hidden">Por favor, completa todos los campos correctamente antes de continuar.</p>
         </form>
 
         <form id="examForm" class="mb-8">
             <div id="questionsContainer" class="space-y-8">
-                </div>
+            </div>
             <div class="flex justify-center mt-10">
-                <button type="submit" id="submitBtn" class="bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-orange-700 transition duration-300 ease-in-out transform hover:scale-105">
+                <button type="submit" id="submitBtn" class="bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-green-700 transition duration-300 ease-in-out transform hover:scale-105">
                     Enviar y Ver Resultados
                 </button>
             </div>
@@ -55,14 +54,17 @@
             <h2 class="text-3xl md:text-4xl font-extrabold text-green-800 mb-4">¡Examen Completado!</h2>
             <p class="text-lg text-gray-700 mb-2">Gracias por completar el examen.</p>
             <p id="scoreMessage" class="text-2xl font-bold text-green-900 mb-4"></p>
-            <p id="emailStatus" class="text-gray-600 italic"></p>
+            <div class="bg-yellow-100 p-4 rounded-lg border-l-4 border-yellow-500 text-yellow-800 mt-6">
+                <p class="font-bold">Importante por seguridad:</p>
+                <p>Por favor, envía una captura de esta pantalla al correo del profesor: <a href="mailto:mtisera@unihumboldt.edu.ve" class="font-semibold text-yellow-900 underline">mtisera@unihumboldt.edu.ve</a>.</p>
+            </div>
         </div>
 
         <div id="confirmationModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4">
             <div class="bg-white p-8 rounded-xl shadow-2xl text-center max-w-sm">
-                <h3 class="text-2xl font-bold text-orange-900 mb-4">¡Examen Enviado!</h3>
+                <h3 class="text-2xl font-bold text-green-900 mb-4">¡Examen Enviado!</h3>
                 <p class="text-gray-700 mb-6">Tus resultados han sido enviados a <span class="font-semibold" id="confirmEmail"></span> para su revisión. Te deseamos mucho éxito.</p>
-                <button id="closeModalBtn" class="bg-orange-600 text-white font-bold py-2 px-6 rounded-full hover:bg-orange-700 transition">Entendido</button>
+                <button id="closeModalBtn" class="bg-green-600 text-white font-bold py-2 px-6 rounded-full hover:bg-green-700 transition">Entendido</button>
             </div>
         </div>
     </div>
@@ -80,10 +82,9 @@
             const confirmEmail = document.getElementById('confirmEmail');
             const scoreMessage = document.getElementById('scoreMessage');
             const emailStatus = document.getElementById('emailStatus');
+            const QUESTIONS_LIMIT = 100;
 
-            // Array de preguntas, opciones y respuestas correctas de los libros de Linda Seger
-            const questionsData = [
-                // Sección I: De "Creating Unforgettable Characters"
+            const allQuestions = [
                 { question: "Según Seger, ¿cuál es el primer paso para crear un personaje inolvidable?", options: ["Definir su apariencia física.", "Conocer su motivación interna y externa.", "Asignarle un trabajo específico.", "Escribir su diálogo."], correct: "Conocer su motivación interna y externa." },
                 { question: "Linda Seger define la 'motivación interna' de un personaje como:", options: ["Su objetivo visible en la trama.", "Sus deseos y necesidades subconscientes.", "El conflicto con el antagonista.", "Su lugar de nacimiento."], correct: "Sus deseos y necesidades subconscientes." },
                 { question: "¿Qué aspecto de la vida de un personaje se incluye en su 'dimensión sociológica'?", options: ["Su estatura y color de cabello.", "Sus miedos y deseos secretos.", "Su profesión, clase social y religión.", "Sus pensamientos más profundos."], correct: "Su profesión, clase social y religión." },
@@ -92,30 +93,30 @@
                 { question: "¿Qué es un 'personaje estático'?", options: ["Un personaje que no tiene un arco de transformación.", "Un personaje que solo aparece en una escena.", "Un personaje que muere en la trama.", "Un personaje secundario."], correct: "Un personaje que no tiene un arco de transformación." },
                 { question: "Seger argumenta que el conflicto de un personaje debe provenir de:", options: ["Sus interacciones con el entorno.", "Su motivación interna y su relación con el objetivo externo.", "Una fuerza sobrenatural.", "Las decisiones del director."], correct: "Su motivación interna y su relación con el objetivo externo." },
                 { question: "¿Cuál es el propósito del 'subtexto' en los personajes?", options: ["Decir exactamente lo que piensan.", "Revelar su verdadera naturaleza y sentimientos a través de lo que no dicen.", "Crear ambigüedad intencionalmente.", "Hacer el diálogo más largo."], correct: "Revelar su verdadera naturaleza y sentimientos a través de lo que no dicen." },
-                { question: "Seger, un personaje bien desarrollado a menudo tiene:", options: ["Un pasado oscuro sin explicación.", "Una historia de fondo que se revela gradualmente.", "No necesita de un pasado para ser convincente.", "Un único rasgo de personalidad."], correct: "Una historia de fondo que se revela gradualmente." },
+                { question: "Según Seger, un personaje bien desarrollado a menudo tiene:", options: ["Un pasado oscuro sin explicación.", "Una historia de fondo que se revela gradualmente.", "No necesita de un pasado para ser convincente.", "Un único rasgo de personalidad."], correct: "Una historia de fondo que se revela gradualmente." },
                 { question: "En 'Creating Unforgettable Characters', el concepto de 'oposición' se refiere a:", options: ["La lucha del protagonista contra su propio pasado.", "El conflicto entre el protagonista y el antagonista.", "El protagonista luchando contra la naturaleza.", "El protagonista y sus amigos peleando."], correct: "El conflicto entre el protagonista y el antagonista." },
                 { question: "Para Seger, la 'moral' de un personaje se demuestra a través de:", options: ["Sus creencias religiosas.", "Su apariencia física.", "Las elecciones que toma cuando está bajo presión.", "Su profesión."], correct: "Las elecciones que toma cuando está bajo presión." },
                 { question: "¿Cuál es la función del 'personaje secundario' en una historia?", options: ["No tienen ninguna función importante.", "Servir como espejo o contraste para el protagonista.", "Son solo relleno para las escenas.", "Siempre tienen que morir."], correct: "Servir como espejo o contraste para el protagonista." },
                 { question: "Un 'personaje de apoyo' es diferente a un personaje secundario en que:", options: ["Es menos importante.", "Tiene un rol más directo en el desarrollo del protagonista.", "Siempre es un antagonista.", "No tiene un arco dramático."], correct: "Tiene un rol más directo en el desarrollo del protagonista." },
+                { question: "Para un personaje sea convincente, sus acciones deben ser una extensión de su:", options: ["Profesión.", "Diálogo.", "Personalidad y motivación.", "Apariencia física."], correct: "Personalidad y motivación." },
                 { question: "Para Seger, un personaje convincente debe tener 'contradicciones'. ¿Qué significa esto?", options: ["Es un personaje que cambia de opinión a menudo.", "Tiene un objetivo interno que choca con un objetivo externo.", "Posee un rasgo de carácter que parece oponerse a otro.", "Siempre miente."], correct: "Posee un rasgo de carácter que parece oponerse a otro." },
                 { question: "La 'voz del personaje' se refiere a:", options: ["El tono de su voz al hablar.", "Su patrón de diálogo único y distintivo.", "El monólogo interno del personaje.", "El dialecto que utiliza."], correct: "Su patrón de diálogo único y distintivo." },
                 { question: "Según Linda Seger, una 'acción dramática' es:", options: ["Una pelea o explosión en la pantalla.", "Una acción que cambia el curso de la historia.", "Una acción que el personaje solo imagina.", "Cualquier cosa que el personaje haga."], correct: "Una acción que cambia el curso de la historia." },
                 { question: "El 'viaje del personaje' de un héroe que comienza como cobarde y se vuelve valiente es un ejemplo de:", options: ["Un personaje estático.", "Un arco de transformación.", "Una motivación externa.", "Un personaje secundario."], correct: "Un arco de transformación." },
                 { question: "¿Qué debe hacer el guionista para que el público sienta empatía por un personaje?", options: ["Hacerlo perfecto y sin defectos.", "Mostrar sus vulnerabilidades y humanidad.", "Hacerlo extremadamente rico.", "No revelar sus motivaciones."], correct: "Mostrar sus vulnerabilidades y humanidad." },
                 { question: "Seger menciona la importancia de la 'función del personaje'. ¿Cuál es la función principal de un antagonista?", options: ["Ser el amigo del protagonista.", "Crear conflicto y obstaculizar el objetivo del protagonista.", "Resolver el problema principal de la historia.", "Introducir al protagonista a su mundo."], correct: "Crear conflicto y obstaculizar el objetivo del protagonista." },
-                { question: "Para un personaje sea convincente, sus acciones deben ser una extensión de su:", options: ["Profesión.", "Diálogo.", "Personalidad y motivación.", "Apariencia física."], correct: "Personalidad y motivación." },
                 { question: "¿Cómo puede un escritor revelar la 'moral' de un personaje?", options: ["Haciéndolo un predicador.", "Haciendo que hable sobre sus creencias.", "Mostrando cómo trata a los demás y las decisiones que toma.", "Describiendo su ropa."], correct: "Mostrando cómo trata a los demás y las decisiones que toma." },
-                { question: "Linda Seger, un personaje inolvidable se distingue por:", options: ["Su falta de emociones.", "Su complejidad y profundidad.", "Su sencillez y simplicidad.", "Ser predecible."], correct: "Su complejidad y profundidad." },
+                { question: "Según Linda Seger, un personaje inolvidable se distingue por:", options: ["Su falta de emociones.", "Su complejidad y profundidad.", "Su sencillez y simplicidad.", "Ser predecible."], correct: "Su complejidad y profundidad." },
                 { question: "La 'historia de fondo' de un personaje debe servir para:", options: ["Llenar el guion con información innecesaria.", "Explicar su comportamiento actual y motivaciones.", "Hacerlo parecer misterioso.", "Confundir al público."], correct: "Explicar su comportamiento actual y motivaciones." },
                 { question: "¿Cuál de los siguientes es un ejemplo de un 'personaje espejo'?", options: ["Un villano.", "Un personaje secundario que refleja una cualidad del protagonista.", "El protagonista mismo.", "El mentor."], correct: "Un personaje secundario que refleja una cualidad del protagonista." },
-                { question: "En el contexto de 'Creating Unforgettable Characters', el concepto de 'hacer que el personaje trabaje para el tema' se refiere a:", options: ["El personaje debe ser un empleado de alguien.", "Las acciones y el arco del personaje deben ilustrar el tema de la historia.", "El personaje debe hablar sobre el tema de la historia.", "El personaje debe resolver un problema en el trabajo."], correct: "Las acciones y el arco del personaje deben ilustrar el tema de la historia." },
+                { question: "En el contexto de la creación de personajes, ¿qué significa 'hacer que el personaje trabaje para el tema'?", options: ["El personaje debe ser un empleado de alguien.", "Las acciones y el arco del personaje deben ilustrar el tema de la historia.", "El personaje debe hablar sobre el tema de la historia.", "El personaje debe resolver un problema en el trabajo."], correct: "Las acciones y el arco del personaje deben ilustrar el tema de la historia." },
                 { question: "La 'dimensión física' de un personaje incluye:", options: ["Sus miedos secretos.", "Su profesión.", "Su edad y apariencia.", "Sus creencias morales."], correct: "Su edad y apariencia." },
                 { question: "¿Cuál de los siguientes es un ejemplo de 'motivación externa' para un personaje?", options: ["Quiere superar su miedo a las alturas.", "Quiere encontrar el amor verdadero.", "Quiere encontrar un tesoro escondido.", "Quiere ser más valiente."], correct: "Quiere encontrar un tesoro escondido." },
                 { question: "Seger sugiere que un personaje debe tener 'una columna vertebral'. ¿A qué se refiere?", options: ["Una postura erguida.", "Una estructura de decisiones y principios que lo guían.", "Un rasgo físico distintivo.", "Un esqueleto metafórico."], correct: "Una estructura de decisiones y principios que lo guían." },
                 { question: "Para crear un antagonista efectivo, Seger recomienda que:", options: ["Sea una persona puramente malvada.", "Tenga una motivación comprensible, incluso si es malvada.", "No tenga diálogo.", "Sea igual al protagonista."], correct: "Tenga una motivación comprensible, incluso si es malvada." },
                 { question: "¿Cuál es la función del 'personaje mentor' en la historia?", options: ["Ser el villano principal.", "Ayudar al protagonista a alcanzar sus objetivos.", "Representar el fracaso.", "Ser un personaje estático."], correct: "Ayudar al protagonista a alcanzar sus objetivos." },
                 { question: "La 'doble vida' de un personaje se refiere a:", options: ["Su vida secreta y su vida pública.", "Su vida física y su vida psicológica.", "Su vida antes y después de la historia.", "Su vida en el trabajo y su vida en casa."], correct: "Su vida secreta y su vida pública." },
-                { question: "Seger, la 'revelación de información' sobre un personaje debe ocurrir:", options: ["Toda de una vez, al principio.", "Gradualmente a lo largo de la historia.", "Solo a través de flashbacks.", "Nunca."], correct: "Gradualmente a lo largo de la historia." },
+                { question: "Para Seger, la 'revelación de información' sobre un personaje debe ocurrir:", options: ["Toda de una vez, al principio.", "Gradualmente a lo largo de la historia.", "Solo a través de flashbacks.", "Nunca."], correct: "Gradualmente a lo largo de la historia." },
                 { question: "¿Qué significa 'darle al personaje un secreto'?", options: ["Hacer que el personaje sea un espía.", "Crear una capa de misterio y subtexto.", "El secreto debe ser el motor de la historia.", "El personaje debe esconder algo a los demás."], correct: "Crear una capa de misterio y subtexto." },
                 { question: "Un personaje 'con un núcleo de bondad' es aquel que:", options: ["Siempre hace lo correcto.", "A pesar de sus defectos, tiene una cualidad redentora.", "Es un personaje secundario.", "Nunca comete errores."], correct: "A pesar de sus defectos, tiene una cualidad redentora." },
                 { question: "¿Cuál es la diferencia entre un 'personaje protagónico' y un 'personaje principal'?", options: ["No hay diferencia.", "El protagonista es el centro de la acción, el principal puede no serlo.", "El principal es el que habla más.", "El protagónico siempre es un héroe."], correct: "El protagonista es el centro de la acción, el principal puede no serlo." },
@@ -135,12 +136,12 @@
                 { question: "Un 'personaje arquetípico' es una plantilla reconocida universalmente. ¿Cuál de los siguientes es un ejemplo de arquetipo?", options: ["Un hombre de negocios.", "La doncella en apuros.", "Un personaje secundario.", "Un detective."], correct: "La doncella en apuros." },
                 { question: "¿Cuál es la diferencia entre la 'historia de fondo' y el 'arco' de un personaje?", options: ["La historia de fondo es el pasado, el arco es el cambio en la historia presente.", "La historia de fondo es la motivación externa, el arco es la interna.", "No hay diferencia.", "La historia de fondo es la que el personaje no conoce."], correct: "La historia de fondo es el pasado, el arco es el cambio en la historia presente." },
                 { question: "Para Seger, la 'verdad del personaje' se revela a través de:", options: ["Lo que dice explícitamente.", "Sus acciones, no solo sus palabras.", "Las descripciones en las acotaciones.", "La música de la película."], correct: "Sus acciones, no solo sus palabras." },
-                { question: "¿Cuál es la 'lógica del personaje' según Linda Seger?", options: ["El personaje siempre actúa de forma lógica.", "Las acciones del personaje deben ser coherentes con su personalidad y motivación.", "El personaje debe resolver acertijos.", "El personaje tiene un IQ alto."], correct: "Las acciones del personaje deben ser coherentes con su personalidad y motivación." },
+                { question: "¿Qué es la 'lógica del personaje' según Linda Seger?", options: ["El personaje siempre actúa de forma lógica.", "Las acciones del personaje deben ser coherentes con su personalidad y motivación.", "El personaje debe resolver acertijos.", "El personaje tiene un IQ alto."], correct: "Las acciones del personaje deben ser coherentes con su personalidad y motivación." },
                 { question: "Un 'personaje sin un objetivo claro' es propenso a:", options: ["Ser muy interesante.", "Ser difícil de entender y seguir.", "Ser un gran protagonista.", "Ser el antagonista."], correct: "Ser difícil de entender y seguir." },
                 { question: "Linda Seger sugiere que los personajes deben tener 'problemas internos y externos' para:", options: ["Hacer la historia más compleja.", "Crear un arco de personaje completo y tridimensional.", "Confundir al público.", "No tener un final feliz."], correct: "Crear un arco de personaje completo y tridimensional." },
-                { question: "Un 'personaje redondo' es aquel que:", options: ["Tiene una personalidad simple.", "Es complejo, con múltiples facetas y contradicciones.", "Es predecible.", "No cambia."], correct: "Es complejo, con múltiples facetas y contradicciones." },
+                { question: "Un personaje 'redondo' es aquel que:", options: ["Tiene una personalidad simple.", "Es complejo, con múltiples facetas y contradicciones.", "Es predecible.", "No cambia."], correct: "Es complejo, con múltiples facetas y contradicciones." },
                 { question: "¿Qué es un 'personaje plano'?", options: ["Un personaje que experimenta un gran cambio.", "Un personaje con una o dos características principales, sin mucha profundidad.", "El personaje principal.", "Un personaje que muere en la historia."], correct: "Un personaje con una o dos características principales, sin mucha profundidad." },
-                { question: "Para hacer que un personaje sea 'memorable', Linda Seger aconseja:", options: ["Darle un superpoder.", "Que sus acciones y decisiones tengan un impacto emocional en el público.", "Que sea muy gracioso.", "Que use ropa extraña."], correct: "Que sus acciones y decisiones tengan un impacto emocional en el público." },
+                { question: "Para crear un personaje 'memorable', Linda Seger aconseja:", options: ["Darle un superpoder.", "Que sus acciones y decisiones tengan un impacto emocional en el público.", "Que sea muy gracioso.", "Que use ropa extraña."], correct: "Que sus acciones y decisiones tengan un impacto emocional en el público." },
                 { question: "El 'viaje interno' de un personaje se refiere a:", options: ["El cambio psicológico y emocional que experimenta.", "El viaje físico de un lugar a otro.", "Su búsqueda de un tesoro.", "El viaje en el tiempo."], correct: "El cambio psicológico y emocional que experimenta." },
                 { question: "Según Seger, el 'antagonista' es a menudo el:", options: ["Personaje más aburrido.", "Personaje menos importante.", "Héroe de su propia historia.", "Personaje que siempre hace lo correcto."], correct: "Héroe de su propia historia." },
                 { question: "¿Qué consejo da Linda Seger sobre la 'historia de fondo'?", options: ["Debe contarse toda de una vez en un flashback.", "Debe ser compleja e inexplicable.", "Debe ser útil y estar integrada en la trama.", "Es opcional."], correct: "Debe ser útil y estar integrada en la trama." },
@@ -151,166 +152,154 @@
                 { question: "El 'desarrollo de un personaje' no se limita a su crecimiento, también puede ser:", options: ["Su decadencia moral.", "El número de escenas en las que aparece.", "Su capacidad para resolver problemas.", "Su edad."], correct: "Su decadencia moral." },
                 { question: "Un 'personaje multidimensional' es aquel que tiene:", options: ["Solo una meta.", "Varias capas de personalidad, motivaciones y contradicciones.", "Pocos diálogos.", "Solo aparece en el primer acto."], correct: "Varias capas de personalidad, motivaciones y contradicciones." },
                 { question: "¿Qué es la 'lucha interna' de un personaje?", options: ["Una pelea con otro personaje.", "Un conflicto con el antagonista.", "Una lucha entre sus deseos y su moral.", "Una lucha por sobrevivir."], correct: "Una lucha entre sus deseos y su moral." },
-                { question: "Linda Seger sugiere que los personajes deben tener 'problemas internos y externos' para:", options: ["Hacer la historia más compleja.", "Crear un arco de personaje completo y tridimensional.", "Confundir al público.", "No tener un final feliz."], correct: "Crear un arco de personaje completo y tridimensional." },
-                { question: "Un 'personaje redondo' es aquel que:", options: ["Tiene una personalidad simple.", "Es complejo, con múltiples facetas y contradicciones.", "Es predecible.", "No cambia."], correct: "Es complejo, con múltiples facetas y contradicciones." },
-                { question: "¿Qué es un 'personaje plano'?", options: ["Un personaje que experimenta un gran cambio.", "Un personaje con una o dos características principales, sin mucha profundidad.", "El personaje principal.", "Un personaje que muere en la historia."], correct: "Un personaje con una o dos características principales, sin mucha profundidad." },
-                { question: "Para hacer que un personaje sea 'memorable', Linda Seger aconseja:", options: ["Darle un superpoder.", "Que sus acciones y decisiones tengan un impacto emocional en el público.", "Que sea muy gracioso.", "Que use ropa extraña."], correct: "Que sus acciones y decisiones tengan un impacto emocional en el público." },
-                { question: "El 'viaje interno' de un personaje se refiere a:", options: ["El cambio psicológico y emocional que experimenta.", "El viaje físico de un lugar a otro.", "Su búsqueda de un tesoro.", "El viaje en el tiempo."], correct: "El cambio psicológico y emocional que experimenta." },
-                { question: "Según Seger, el 'antagonista' es a menudo el:", options: ["Personaje más aburrido.", "Personaje menos importante.", "Héroe de su propia historia.", "Personaje que siempre hace lo correcto."], correct: "Héroe de su propia historia." },
-                { question: "¿Qué consejo da Linda Seger sobre la 'historia de fondo'?", options: ["Debe contarse toda de una vez en un flashback.", "Debe ser compleja e inexplicable.", "Debe ser útil y estar integrada en la trama.", "Es opcional."], correct: "Debe ser útil y estar integrada en la trama." },
-                { question: "Para hacer que un personaje sea 'interesante', Seger sugiere:", options: ["Darle un trabajo aburrido.", "Hacerlo predecible.", "Crear un contraste entre lo que dice y lo que hace.", "Hacerlo mudo."], correct: "Crear un contraste entre lo que dice y lo que hace." },
-                { question: "¿Cuál es una de las funciones principales de los 'personajes secundarios' en la historia?", options: ["No tienen una función.", "Aumentar el realismo y el conflicto para el protagonista.", "Ser personajes de plantilla.", "Estar al servicio del antagonista."], correct: "Aumentar el realismo y el conflicto para el protagonista." },
-                { question: "El 'viaje del personaje' de un antagonista puede ser:", options: ["Solo hacia el mal.", "Un camino hacia la redención.", "Un viaje estático.", "Un viaje al pasado."], correct: "Un camino hacia la redención." },
-                { question: "¿Qué se considera una 'caracterización superficial'?", options: ["Un personaje con un pasado complejo.", "Un personaje definido solo por su profesión o apariencia.", "Un personaje con motivaciones profundas.", "Un personaje con un arco de transformación."], correct: "Un personaje definido solo por su profesión o apariencia." },
-                { question: "El 'desarrollo de un personaje' no se limita a su crecimiento, también puede ser:", options: ["Su decadencia moral.", "El número de escenas en las que aparece.", "Su capacidad para resolver problemas.", "Su edad."], correct: "Su decadencia moral." },
-                { question: "Un 'personaje multidimensional' es aquel que tiene:", options: ["Solo una meta.", "Varias capas de personalidad, motivaciones y contradicciones.", "Pocos diálogos.", "Solo aparece en el primer acto."], correct: "Varias capas de personalidad, motivaciones y contradicciones." },
-                { question: "¿Qué es la 'lucha interna' de un personaje?", options: ["Una pelea con otro personaje.", "Un conflicto con el antagonista.", "Una lucha entre sus deseos y su moral.", "Una lucha por sobrevivir."], correct: "Una lucha entre sus deseos y su moral." },
-                { question: "Linda Seger sugiere que los personajes deben tener 'problemas internos y externos' para:", options: ["Hacer la historia más compleja.", "Crear un arco de personaje completo y tridimensional.", "Confundir al público.", "No tener un final feliz."], correct: "Crear un arco de personaje completo y tridimensional." },
-                { question: "Un 'personaje redondo' es aquel que:", options: ["Tiene una personalidad simple.", "Es complejo, con múltiples facetas y contradicciones.", "Es predecible.", "No cambia."], correct: "Es complejo, con múltiples facetas y contradicciones." },
-                { question: "¿Qué es un 'personaje plano'?", options: ["Un personaje que experimenta un gran cambio.", "Un personaje con una o dos características principales, sin mucha profundidad.", "El personaje principal.", "Un personaje que muere en la historia."], correct: "Un personaje con una o dos características principales, sin mucha profundidad." },
-                { question: "Para hacer que un personaje sea 'memorable', Linda Seger aconseja:", options: ["Darle un superpoder.", "Que sus acciones y decisiones tengan un impacto emocional en el público.", "Que sea muy gracioso.", "Que use ropa extraña."], correct: "Que sus acciones y decisiones tengan un impacto emocional en el público." },
-                { question: "El 'viaje interno' de un personaje se refiere a:", options: ["El cambio psicológico y emocional que experimenta.", "El viaje físico de un lugar a otro.", "Su búsqueda de un tesoro.", "El viaje en el tiempo."], correct: "El cambio psicológico y emocional que experimenta." },
-                { question: "Según Seger, el 'antagonista' es a menudo el:", options: ["Personaje más aburrido.", "Personaje menos importante.", "Héroe de su propia historia.", "Personaje que siempre hace lo correcto."], correct: "Héroe de su propia historia." },
-                { question: "¿Qué consejo da Linda Seger sobre la 'historia de fondo'?", options: ["Debe contarse toda de una vez en un flashback.", "Debe ser compleja e inexplicable.", "Debe ser útil y estar integrada en la trama.", "Es opcional."], correct: "Debe ser útil y estar integrada en la trama." },
-                { question: "Para hacer que un personaje sea 'interesante', Seger sugiere:", options: ["Darle un trabajo aburrido.", "Hacerlo predecible.", "Crear un contraste entre lo que dice y lo que hace.", "Hacerlo mudo."], correct: "Crear un contraste entre lo que dice y lo que hace." },
-                { question: "¿Cuál es una de las funciones principales de los 'personajes secundarios' en la historia?", options: ["No tienen una función.", "Aumentar el realismo y el conflicto para el protagonista.", "Ser personajes de plantilla.", "Estar al servicio del antagonista."], correct: "Aumentar el realismo y el conflicto para el protagonista." },
-                { question: "El 'viaje del personaje' de un antagonista puede ser:", options: ["Solo hacia el mal.", "Un camino hacia la redención.", "Un viaje estático.", "Un viaje al pasado."], correct: "Un camino hacia la redención." },
-                { question: "¿Qué se considera una 'caracterización superficial'?", options: ["Un personaje con un pasado complejo.", "Un personaje definido solo por su profesión o apariencia.", "Un personaje con motivaciones profundas.", "Un personaje con un arco de transformación."], correct: "Un personaje definido solo por su profesión o apariencia." },
-                { question: "El 'desarrollo de un personaje' no se limita a su crecimiento, también puede ser:", options: ["Su decadencia moral.", "El número de escenas en las que aparece.", "Su capacidad para resolver problemas.", "Su edad."], correct: "Su decadencia moral." },
-                { question: "Un 'personaje multidimensional' es aquel que tiene:", options: ["Solo una meta.", "Varias capas de personalidad, motivaciones y contradicciones.", "Pocos diálogos.", "Solo aparece en el primer acto."], correct: "Varias capas de personalidad, motivaciones y contradicciones." },
-                { question: "¿Qué es la 'lucha interna' de un personaje?", options: ["Una pelea con otro personaje.", "Un conflicto con el antagonista.", "Una lucha entre sus deseos y su moral.", "Una lucha por sobrevivir."], correct: "Una lucha entre sus deseos y su moral." }
+                { question: "Según Linda Seger, un personaje bien desarrollado es aquel que:", options: ["Tiene una motivación simple y directa.", "Tiene una motivación compleja y a menudo contradictoria.", "No tiene motivaciones claras para ser misterioso.", "Sigue un camino predecible."], correct: "Tiene una motivación compleja y a menudo contradictoria." },
+                { question: "La 'relación del personaje con el tema' se refiere a:", options: ["Si el personaje trabaja en un cine.", "Cómo las acciones y el viaje del personaje ilustran el tema principal de la historia.", "El personaje hablando directamente sobre el tema.", "El personaje siendo el autor del tema."], correct: "Cómo las acciones y el viaje del personaje ilustran el tema principal de la historia." },
+                { question: "La 'función de un personaje' es su rol en la narrativa. Un personaje puede tener una función, como ser:", options: ["Un adorno visual.", "Un obstáculo para el protagonista.", "Un personaje estático.", "Solo un personaje secundario."], correct: "Un obstáculo para el protagonista." },
+                { question: "Para Seger, la 'coherencia del personaje' no es que sea predecible, sino que:", options: ["Actúa de forma consistente con su personalidad y motivaciones.", "Actúa de forma impredecible en todo momento.", "Cambia su personalidad constantemente.", "No tiene una personalidad definida."], correct: "Actúa de forma consistente con su personalidad y motivaciones." },
+                { question: "Un 'personaje de plantilla' se diferencia de un arquetipo en que:", options: ["Es más complejo.", "El arquetipo es una base, mientras que la plantilla es una copia sin alma.", "El personaje de plantilla es más original.", "No hay diferencia."], correct: "El arquetipo es una base, mientras que la plantilla es una copia sin alma." },
+                { question: "La 'dimensión sociológica' de un personaje abarca su:", options: ["Altura y peso.", "Creencias personales.", "Cultura, clase social y trabajo.", "Miedos y ansiedades."], correct: "Cultura, clase social y trabajo." },
+                { question: "Según Linda Seger, la 'acción dramática' es aquella que:", options: ["Es solo un diálogo.", "Hace avanzar la historia y revela algo del personaje.", "Es un evento sin importancia para el trama.", "Es un monólogo del personaje."], correct: "Hace avanzar la historia y revela algo del personaje." },
+                { question: "El 'viaje del héroe' es un ejemplo de:", options: ["Un personaje estático.", "Un arco de transformación.", "Un viaje al pasado.", "Una serie de diálogos sin acción."], correct: "Un arco de transformación." },
+                { question: "¿Cuál es el propósito del 'personaje antagonista' en una historia?", options: ["Ayudar al protagonista a alcanzar su meta.", "Crear obstáculos y oposición al protagonista.", "Ser el mejor amigo del protagonista.", "No tener relación con el protagonista."], correct: "Crear obstáculos y oposición al protagonista." },
+                { question: "Linda Seger define el 'arco de transformación' como:", options: ["El cambio físico del personaje.", "El crecimiento o la decadencia moral y psicológica del personaje.", "La progresión de la trama sin cambios en el personaje.", "El viaje del personaje a un lugar lejano."], correct: "El crecimiento o la decadencia moral y psicológica del personaje." },
+                { question: "La 'voz del personaje' no es solo lo que dice, sino también:", options: ["Su tono y ritmo de hablar, y lo que no dice (subtexto).", "Las acotaciones en el guion.", "La descripción de su apariencia.", "El nombre del personaje."], correct: "Su tono y ritmo de hablar, y lo que no dice (subtexto)." },
+                { question: "Un 'personaje espejo' tiene la función de:", options: ["Ser el protagonista.", "Reflejar un aspecto del protagonista, bueno o malo.", "Ser el antagonista.", "Ayudar al protagonista a resolver el conflicto externo."], correct: "Reflejar un aspecto del protagonista, bueno o malo." },
+                { question: "Según Linda Seger, el 'conflicto interno' de un personaje es:", options: ["Su lucha con la naturaleza.", "Su lucha con otro personaje.", "El conflicto entre sus deseos y sus miedos o debilidades.", "Una pelea con un objeto."], correct: "El conflicto entre sus deseos y sus miedos o debilidades." },
+                { question: "¿Qué se entiende por 'empatía' en la creación de personajes?", options: ["El público siente lástima por el personaje.", "El público se identifica con los sentimientos y motivaciones del personaje.", "El personaje se identifica con el público.", "El personaje es un psicólogo."], correct: "El público se identifica con los sentimientos y motivaciones del personaje." },
+                { question: "La 'historia de fondo' de un personaje debe ser utilizada para:", options: ["Explicar su pasado sin relevancia para la trama.", "Justificar sus acciones, motivaciones y miedos en el presente.", "Hacer el guion más largo.", "Confundir al público con detalles innecesarios."], correct: "Justificar sus acciones, motivaciones y miedos en el presente." },
+                { question: "Para Linda Seger, un personaje 'redondo' es:", options: ["Simple y fácil de entender.", "Complejo, con múltiples facetas y capas de personalidad.", "Un personaje secundario.", "Un personaje que solo aparece en una escena."], correct: "Complejo, con múltiples facetas y capas de personalidad." },
+                { question: "El 'deseo' de un personaje es la fuerza que lo impulsa a:", options: ["Ser rico.", "Alcanzar su objetivo, sea consciente o subconsciente.", "Estar quieto.", "Ser un personaje estático."], correct: "Alcanzar su objetivo, sea consciente o subconsciente." },
+                { question: "La 'lucha externa' de un personaje se refiere a:", options: ["Su lucha con un obstáculo físico o externo en la trama.", "Su lucha con sus propios demonios internos.", "Su lucha con su conciencia.", "Su lucha con su pasado."], correct: "Su lucha con un obstáculo físico o externo en la trama." },
+                { question: "Según Seger, la 'verdad del personaje' se revela a través de:", options: ["Lo que dice.", "Lo que hace.", "Lo que piensa.", "Lo que siente."], correct: "Lo que hace." },
+                { question: "El 'subtexto' es una herramienta clave para mostrar la verdadera naturaleza de un personaje. Se refiere a:", options: ["Lo que el personaje dice explícitamente.", "Los diálogos que no tienen importancia.", "Lo que el personaje piensa o siente pero no dice.", "Las acciones del personaje."], correct: "Lo que el personaje piensa o siente pero no dice." },
+                { question: "Un 'personaje de apoyo' es crucial porque:", options: ["No hace nada en la historia.", "Ayuda al protagonista a cambiar y avanzar en su viaje.", "Es el antagonista.", "Siempre muere en el primer acto."], correct: "Ayuda al protagonista a cambiar y avanzar en su viaje." },
+                { question: "¿Cuál es la función del 'personaje mentor'?", options: ["Ser un villano.", "Servir como una guía, un consejero o un maestro para el protagonista.", "Ser el rival del protagonista.", "Ser un personaje estático."], correct: "Servir como una guía, un consejero o un maestro para el protagonista." },
+                { question: "La 'ambición' de un personaje es su deseo de alcanzar un objetivo. ¿Cuál de estos es un ejemplo de ambición?", options: ["Quiere dormir.", "Quiere ser el mejor en su deporte.", "Quiere estar solo.", "Quiere ser un personaje estático."], correct: "Quiere ser el mejor en su deporte." },
+                { question: "El 'viaje del personaje' de un antagonista puede ser tan importante como el del protagonista. Esto se debe a que:", options: ["A menudo es el héroe de su propia historia.", "No tiene un viaje dramático.", "Solo quiere hacer el mal.", "Es un personaje plano."], correct: "A menudo es el héroe de su propia historia." },
+                { question: "Según Linda Seger, un personaje 'plano' es aquel que:", options: ["Es complejo y multidimensional.", "Tiene una o dos características principales y no cambia.", "Es un personaje dinámico.", "Es el protagonista."], correct: "Tiene una o dos características principales y no cambia." },
+                { question: "El 'secreto del personaje' es una herramienta que puede:", options: ["Hacer el guion más confuso.", "Añadir profundidad y subtexto, justificando sus acciones.", "No tiene ninguna utilidad.", "Evitar que el personaje tenga una historia de fondo."], correct: "Añadir profundidad y subtexto, justificando sus acciones." },
+                { question: "Para que un personaje sea 'inolvidable', Seger sugiere que debe tener:", options: ["Un superpoder.", "Una motivación única y un conflicto profundo.", "Muchos diálogos.", "Una apariencia atractiva."], correct: "Una motivación única y un conflicto profundo." },
+                { question: "La 'lógica del personaje' se refiere a que:", options: ["El personaje siempre toma decisiones lógicas.", "Sus acciones, aunque irracionales para nosotros, tienen sentido para él.", "El personaje es un genio.", "El personaje es un psicópata."], correct: "Sus acciones, aunque irracionales para nosotros, tienen sentido para él." },
+                { question: "Linda Seger argumenta que un personaje 'multidimensional' es aquel que:", options: ["Tiene una sola faceta de personalidad.", "Tiene una personalidad compleja con virtudes y defectos.", "Es un personaje plano.", "Siempre es un héroe sin defectos."], correct: "Tiene una personalidad compleja con virtudes y defectos." },
+                { question: "El 'punto de inflexión' en el viaje de un personaje es:", options: ["El principio de la historia.", "El momento de la historia en que su vida cambia irrevocablemente.", "El final de la historia.", "Cuando el personaje se presenta a sí mismo."], correct: "El momento de la historia en que su vida cambia irrevocablemente." },
+                { question: "El 'problema interno' de un personaje, a menudo, es el motor de su:", options: ["Diálogo.", "Conflicto externo.", "Apariencia.", "Relación con el antagonista."], correct: "Conflicto externo." },
+                { question: "Según Seger, la 'vulnerabilidad' de un personaje es importante porque:", options: ["Lo hace parecer débil.", "Permite que el público se identifique y sienta empatía por él.", "Lo hace parecer tonto.", "Lo convierte en un villano."], correct: "Permite que el público se identifique y sienta empatía por él." },
+                { question: "¿Cuál es el riesgo de un personaje 'sin un objetivo claro'?", options: ["No tiene un arco de transformación.", "Es aburrido para el público.", "El público se confunde y no sabe qué quiere el personaje.", "Todas las anteriores."], correct: "Todas las anteriores." },
+                { question: "La 'moralidad' de un personaje, según Linda Seger, no se define por lo que dice, sino por:", options: ["Sus creencias religiosas.", "Su apariencia.", "Las decisiones y acciones que toma, especialmente bajo presión.", "Su profesión."], correct: "Las decisiones y acciones que toma, especialmente bajo presión." },
+                { question: "Un 'personaje de apoyo' puede ser usado como una 'sombra' del protagonista. Esto significa que:", options: ["Es un personaje oscuro.", "Es una versión del protagonista con defectos o virtudes exageradas.", "Es un personaje que solo aparece de noche.", "Es un personaje que sigue al protagonista a todas partes."], correct: "Es una versión del protagonista con defectos o virtudes exageradas." },
+                { question: "El 'conflicto' es esencial para el desarrollo de un personaje. ¿Qué tipo de conflicto puede tener un personaje?", options: ["Solo conflicto con la naturaleza.", "Solo conflicto con otro personaje.", "Conflicto con la sociedad, la naturaleza o consigo mismo.", "Solo conflicto externo."], correct: "Conflicto con la sociedad, la naturaleza o consigo mismo." },
+                { question: "Para crear un personaje 'convincente', se debe considerar su 'dimensión biológica', que incluye:", options: ["Su historia de vida.", "Su altura, peso y salud.", "Su profesión y clase social.", "Sus miedos."], correct: "Su altura, peso y salud." },
+                { question: "El 'viaje externo' de un personaje es:", options: ["El cambio psicológico que experimenta.", "La travesía física o la búsqueda de un objetivo tangible.", "El viaje en el tiempo.", "El viaje a su propia mente."], correct: "La travesía física o la búsqueda de un objetivo tangible." },
+                { question: "Un 'personaje dinámico' se distingue de un personaje 'plano' porque:", options: ["Es más simple.", "No cambia ni crece.", "Experimenta un cambio significativo en la historia.", "Es el antagonista."], correct: "Experimenta un cambio significativo en la historia." },
+                { question: "Linda Seger enfatiza que el 'subtexto' es clave para:", options: ["Hacer el guion más largo.", "Crear diálogos más complejos.", "Mostrar lo que el personaje realmente es, sin decirlo explícitamente.", "Hacer que el personaje sea estático."], correct: "Mostrar lo que el personaje realmente es, sin decirlo explícitamente." },
+                { question: "La 'relación entre personajes' es vital. Seger sugiere que esta relación debe:", options: ["No ser importante para la trama.", "Afectar las decisiones y el viaje del protagonista.", "Ser solo de amistad.", "Ser solo de enemistad."], correct: "Afectar las decisiones y el viaje del protagonista." },
+                { question: "El 'punto de vista del personaje' es importante para que el público:", options: ["Sepa lo que el personaje está viendo.", "Entienda cómo el personaje percibe el mundo y los eventos de la historia.", "Sepa dónde está el personaje.", "Sepa lo que el director quiere."], correct: "Entienda cómo el personaje percibe el mundo y los eventos de la historia." },
+                { question: "Un 'personaje con defectos' es más interesante para el público porque:", options: ["Es más fácil de odiar.", "Es más realista y humano.", "Es más fácil de olvidar.", "Es un personaje plano."], correct: "Es más realista y humano." },
+                { question: "La 'dimensión espiritual' de un personaje, según Linda Seger, se refiere a:", options: ["Si el personaje es un sacerdote.", "Sus creencias, valores y su sentido de moralidad.", "Si el personaje ve fantasmas.", "La altura del personaje."], correct: "Sus creencias, valores y su sentido de moralidad." },
+                { question: "La 'historia de fondo' de un personaje no debe ser una lista de eventos, sino:", options: ["Una narrativa que justifica su comportamiento actual.", "Una historia sin sentido.", "Un resumen de su vida.", "Un monólogo sin importancia."], correct: "Una narrativa que justifica su comportamiento actual." },
+                { question: "La 'motivación externa' de un personaje es:", options: ["Lo que el personaje desea interiormente.", "El objetivo tangible que el personaje intenta alcanzar en la historia.", "Su miedo al fracaso.", "Su pasado."], correct: "El objetivo tangible que el personaje intenta alcanzar en la historia." },
+                { question: "El 'conflicto interno' de un personaje a menudo se convierte en el 'conflicto externo' cuando:", options: ["El personaje se rinde.", "El personaje toma una decisión que lo lleva a la acción.", "El personaje muere.", "El personaje no hace nada."], correct: "El personaje toma una decisión que lo lleva a la acción." },
+                { question: "Según Linda Seger, un personaje 'redondo' debe tener:", options: ["Un solo rasgo de personalidad.", "Múltiples rasgos que pueden parecer contradictorios.", "Un arco estático.", "Ninguna de las anteriores."], correct: "Múltiples rasgos que pueden parecer contradictorios." },
+                { question: "La 'evolución del personaje' puede ser positiva (crecimiento) o negativa (decadencia). Esto es parte de su:", options: ["Historia de fondo.", "Arco de transformación.", "Función en la historia.", "Relación con el antagonista."], correct: "Arco de transformación." },
+                { question: "El 'arco de transformación' de un personaje es:", options: ["Un evento aislado en la trama.", "El viaje de cambio del personaje desde el principio hasta el final de la historia.", "El final feliz del personaje.", "El viaje físico del personaje."], correct: "El viaje de cambio del personaje desde el principio hasta el final de la historia." },
+                { question: "Un 'personaje' se vuelve interesante cuando:", options: ["Tiene muchos amigos.", "Se enfrenta a un dilema moral que lo obliga a tomar una decisión difícil.", "Es perfecto y sin defectos.", "No tiene un objetivo claro."], correct: "Se enfrenta a un dilema moral que lo obliga a tomar una decisión difícil." },
+                { question: "El 'problema central' de un personaje es:", options: ["Su falta de dinero.", "La pregunta fundamental que la historia busca responder sobre su vida.", "Su relación con la sociedad.", "Su edad."], correct: "La pregunta fundamental que la historia busca responder sobre su vida." },
+                { question: "La 'oposición' puede venir de varias fuentes, como:", options: ["Solo el protagonista.", "El protagonista consigo mismo, otro personaje o la naturaleza.", "Solo el antagonista.", "La familia del protagonista."], correct: "El protagonista consigo mismo, otro personaje o la naturaleza." },
+                { question: "Un 'personaje de apoyo' que se opone al protagonista es a menudo el:", options: ["Mentor.", "Villano.", "Antagonista.", "Amigo fiel."], correct: "Antagonista." },
+                { question: "El 'viaje del personaje' de un héroe es a menudo una búsqueda de:", options: ["Un tesoro.", "La autoconciencia y la superación personal.", "Un lugar lejano.", "Dinero."], correct: "La autoconciencia y la superación personal." },
+                { question: "La 'dimensión psicológica' de un personaje incluye:", options: ["Su altura y peso.", "Sus miedos, deseos y traumas del pasado.", "Su profesión y clase social.", "Sus hobbies."], correct: "Sus miedos, deseos y traumas del pasado." },
+                { question: "Según Seger, la 'función' de un personaje puede ser de:", options: ["Sólo de apoyo.", "Mentor, oponente, confidente o reflejo del protagonista.", "Sólo de antagonista.", "No tener ninguna función."], correct: "Mentor, oponente, confidente o reflejo del protagonista." },
+                { question: "El 'viaje del personaje' es un tema central en los libros de Linda Seger. Se refiere a:", options: ["El camino que recorre la historia.", "El cambio y evolución que el personaje experimenta.", "El lugar a donde va el personaje.", "La búsqueda de un objeto."], correct: "El cambio y evolución que el personaje experimenta." },
+                { question: "Un personaje 'con un núcleo de bondad' es aquel que, a pesar de sus errores, tiene:", options: ["Un pasado trágico.", "Una cualidad redentora.", "Una gran cantidad de dinero.", "Una gran cantidad de amigos."], correct: "Una cualidad redentora." },
+                { question: "El 'problema' de un personaje es lo que crea:", options: ["El final de la historia.", "La introducción de la historia.", "El conflicto y la tensión dramática.", "La falta de acción."], correct: "El conflicto y la tensión dramática." },
+                { question: "Para crear un personaje 'memorable', Linda Seger aconseja:", options: ["Que sea perfecto.", "Que sea un arquetipo sin profundidad.", "Que tenga un contraste entre lo que dice y lo que hace.", "Que sea unidimensional."], correct: "Que tenga un contraste entre lo que dice y lo que hace." },
+                { question: "La 'revelación de información' sobre un personaje es una herramienta que se utiliza para:", options: ["Hacer que el público se aburra.", "Añadir suspense y profundidad, dándose gradualmente.", "No revelar nada.", "Revelar todo de una vez."], correct: "Añadir suspense y profundidad, dándose gradualmente." },
+                { question: "Un 'personaje de apoyo' puede servir para:", options: ["Solo para mostrar el pasado del protagonista.", "Probar la fuerza de voluntad del protagonista.", "Ser el mentor del protagonista.", "Todas las anteriores."], correct: "Todas las anteriores." },
+                { question: "¿Cuál es la clave para que el público sienta 'empatía' por un personaje?", options: ["Saber todo sobre él.", "Conocer sus defectos y sus luchas internas.", "Que sea un personaje perfecto.", "Que sea un personaje unidimensional."], correct: "Conocer sus defectos y sus luchas internas." },
+                { question: "La 'moral' de un personaje, a diferencia de su 'ética', se refiere a:", options: ["Sus creencias religiosas.", "El conjunto de principios que guían sus decisiones en el mundo.", "Sus acciones.", "Lo que piensa."], correct: "El conjunto de principios que guían sus decisiones en el mundo." },
+                { question: "Según Linda Seger, un personaje 'redondo' es la base de una buena historia porque:", options: ["Es fácil de escribir.", "El público se conecta mejor con personajes complejos y realistas.", "Es un personaje estático.", "Es un personaje plano."], correct: "El público se conecta mejor con personajes complejos y realistas." },
+                { question: "La 'lucha interna' del personaje es lo que lo hace:", options: ["Menos interesante.", "Más interesante, porque lo humaniza.", "Menos vulnerable.", "Un personaje plano."], correct: "Más interesante, porque lo humaniza." },
+                { question: "El 'problema principal' de un personaje debe ser:", options: ["Un problema externo y simple.", "Un problema interno que lo obliga a actuar.", "Un problema sin solución.", "Un problema que no tiene nada que ver con la historia."], correct: "Un problema interno que lo obliga a actuar." }
             ];
 
-            const MAX_QUESTIONS = 100; // Define el número máximo de preguntas
-
-            // Shuffle the questions array to randomize them
+            const availableQuestions = allQuestions; // Usar todas las preguntas disponibles
+            const shuffledQuestions = shuffleArray(availableQuestions);
+            
             function shuffleArray(array) {
                 for (let i = array.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [array[i], array[j]] = [array[j], array[i]];
                 }
+                return array;
             }
-
-            shuffleArray(questionsData); // Randomize the questions
-
-            // Take only the first MAX_QUESTIONS
-            const selectedQuestions = questionsData.slice(0, MAX_QUESTIONS);
-
-            // Function to render questions
+            
             function renderQuestions() {
-                selectedQuestions.forEach((q, index) => {
-                    const questionDiv = document.createElement('div');
-                    questionDiv.classList.add('bg-white', 'p-6', 'rounded-lg', 'shadow-md', 'border', 'border-gray-200');
-
-                    const questionTitle = document.createElement('h3');
-                    questionTitle.classList.add('text-xl', 'font-semibold', 'text-orange-800', 'mb-4');
-                    questionTitle.textContent = `Pregunta ${index + 1}: ${q.question}`;
-                    questionDiv.appendChild(questionTitle);
-
-                    q.options.forEach(option => {
-                        const optionDiv = document.createElement('div');
-                        optionDiv.classList.add('mb-3', 'flex', 'items-center');
-
-                        const input = document.createElement('input');
-                        input.type = 'radio';
-                        input.name = `question_${index}`;
-                        input.value = option;
-                        input.id = `q${index}_${option.replace(/\s+/g, '_')}`; // Generate unique ID
-                        input.classList.add('mr-3', 'form-radio', 'h-4', 'w-4', 'text-orange-600');
-                        optionDiv.appendChild(input);
-
-                        const label = document.createElement('label');
-                        label.htmlFor = `q${index}_${option.replace(/\s+/g, '_')}`;
-                        label.classList.add('text-gray-700', 'cursor-pointer');
-                        label.textContent = option;
-                        optionDiv.appendChild(label);
-
-                        questionDiv.appendChild(optionDiv);
-                    });
-
-                    questionsContainer.appendChild(questionDiv);
+                questionsContainer.innerHTML = '';
+                shuffledQuestions.forEach((q, index) => {
+                    const questionElement = document.createElement('div');
+                    questionElement.id = `question-${index}`;
+                    questionElement.classList.add('p-6', 'bg-green-50', 'rounded-lg', 'shadow-sm', 'border', 'border-green-200', 'scroll-to-target');
+                    questionElement.innerHTML = `
+                        <p class="text-lg font-semibold text-green-800 mb-4">
+                            <span class="text-green-500 font-bold">Pregunta ${index + 1}:</span> ${q.question}
+                        </p>
+                        <div class="space-y-3">
+                            ${q.options.map((option, optIndex) => `
+                                <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-green-100 transition duration-150 ease-in-out">
+                                    <input type="radio" name="q${index}" value="${option}" class="form-radio text-green-600 focus:ring-green-500">
+                                    <span class="ml-3 text-gray-700">${option}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                    `;
+                    questionsContainer.appendChild(questionElement);
                 });
             }
 
-            // Function to calculate score and display results
-            function showResults() {
-                let correctAnswers = 0;
-                const studentName = document.getElementById('studentName').value;
-                const institutionalEmail = document.getElementById('institutionalEmail').value;
-                const courseSubject = document.getElementById('courseSubject').value;
-
-                // Hide the exam form and show results container
-                examForm.classList.add('hidden');
-                resultsContainer.classList.remove('hidden');
-
-                // Check if all questions were answered
-                let allAnswered = true;
-                selectedQuestions.forEach((q, index) => {
-                    const selectedOption = document.querySelector(`input[name='question_${index}']:checked`);
-                    if (selectedOption) {
-                        if (selectedOption.value === q.correct) {
-                            correctAnswers++;
-                        }
-                    } else {
-                        allAnswered = false;
-                    }
-                });
-
-                const totalQuestions = selectedQuestions.length;
-                const percentage = (correctAnswers / totalQuestions) * 100;
-
-                scoreMessage.textContent = `Tu puntuación: ${correctAnswers} de ${totalQuestions} (${percentage.toFixed(2)}%)`;
-
-                // Simulate sending email and display status
-                if (studentName && institutionalEmail && courseSubject) {
-                    confirmEmail.textContent = institutionalEmail;
-                    confirmationModal.classList.remove('hidden');
-                    emailStatus.textContent = `Se ha enviado una copia de tus resultados a ${institutionalEmail}.`;
-                } else {
-                    emailStatus.textContent = "Por favor, completa tu información para recibir la confirmación por correo.";
-                }
-            }
-
-            // Event listener for form submission
-            submitBtn.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent default form submission
-
-                // Validate student info form first
-                if (!infoForm.checkValidity()) {
-                    infoError.classList.remove('hidden');
-                    // Scroll to the info form to show the error
-                    infoForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    return; // Stop here if info form is invalid
-                } else {
-                    infoError.classList.add('hidden'); // Hide error if valid
-                }
-
-                // Check if all questions are answered before showing results
-                let allQuestionsAnswered = true;
-                for (let i = 0; i < selectedQuestions.length; i++) {
-                    const selectedOption = document.querySelector(`input[name='question_${i}']:checked`);
-                    if (!selectedOption) {
-                        allQuestionsAnswered = false;
-                        break;
-                    }
-                }
-
-                if (allQuestionsAnswered) {
-                    showResults();
-                } else {
-                    alert('Por favor, responde todas las preguntas antes de enviar.');
-                    // Scroll to the questions container to show the prompt
-                    examForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-
-            // Event listener to close the confirmation modal
-            closeModalBtn.addEventListener('click', () => {
-                confirmationModal.classList.add('hidden');
-            });
-
-            // Render questions when the page loads
             renderQuestions();
+
+            function validateForm() {
+                for (let i = 0; i < shuffledQuestions.length; i++) {
+                    const questionName = `q${i}`;
+                    const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                    if (!selectedOption) {
+                        alert(`Por favor, responde la pregunta ${i + 1} antes de continuar.`);
+                        const questionElement = document.getElementById(`question-${i}`);
+                        questionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        questionElement.style.border = '2px solid red';
+                        setTimeout(() => {
+                            questionElement.style.border = '';
+                        }, 3000);
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            examForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (!validateForm()) {
+                    return;
+                }
+
+                let score = 0;
+                shuffledQuestions.forEach((q, index) => {
+                    const questionName = `q${index}`;
+                    const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                    
+                    if (selectedOption && selectedOption.value === q.correct) {
+                        score++;
+                    }
+                });
+
+                const totalQuestions = shuffledQuestions.length;
+                const finalScore = (score / totalQuestions) * 20;
+
+                scoreMessage.textContent = `Tu puntuación es: ${score} de ${totalQuestions} (${finalScore.toFixed(2)}/20)`;
+
+                document.getElementById('examForm').classList.add('hidden');
+                resultsContainer.classList.remove('hidden');
+            });
         });
     </script>
 </body>
