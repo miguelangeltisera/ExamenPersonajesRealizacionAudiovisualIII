@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen sobre los Personajes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex items-center justify-center p-4">
+    <div class="container mx-auto max-w-4xl p-8 bg-white shadow-xl rounded-2xl border border-gray-200">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-blue-900 mb-2">Examen sobre los Personajes</h1>
+            <p class="text-lg text-gray-700">Creado por Miguelangel Tisera</p>
+        </header>
+
+        <form id="infoForm" class="mb-8 p-6 bg-blue-50 rounded-lg shadow-inner">
+            <h2 class="text-2xl font-bold text-blue-800 mb-4">Información del Alumno</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <label for="studentName" class="block text-sm font-medium text-gray-700 mb-1">Nombre Completo del Alumno</label>
+                    <input type="text" id="studentName" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out" placeholder="Escribe tu nombre">
+                </div>
+                <div>
+                    <label for="institutionalEmail" class="block text-sm font-medium text-gray-700 mb-1">Correo Institucional (@unihumboldt.edu.ve)</label>
+                    <input type="email" id="institutionalEmail" required pattern="[a-zA-Z0-9._%+-]+@unihumboldt\.edu\.ve" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out" placeholder="tu.nombre@unihumboldt.edu.ve">
+                </div>
+            </div>
+            <div class="mt-6">
+                <label for="courseSubject" class="block text-sm font-medium text-gray-700 mb-1">Materia que Cursas</label>
+                <input type="text" id="courseSubject" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out" placeholder="Ej. Guionismo, Estructura Narrativa">
+            </div>
+            <p id="infoError" class="mt-4 text-red-600 font-semibold hidden">Por favor, completa todos los campos correctamente antes de continuar.</p>
+        </form>
+
+        <form id="examForm" class="mb-8">
+            <div id="questionsContainer" class="space-y-8">
+                </div>
+            <div class="flex justify-center mt-10">
+                <button type="submit" id="submitBtn" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105">
+                    Enviar y Ver Resultados
+                </button>
+            </div>
+        </form>
+
+        <div id="resultsContainer" class="hidden mt-10 p-8 bg-green-50 rounded-2xl shadow-inner text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-green-800 mb-4">¡Examen Completado!</h2>
+            <p class="text-lg text-gray-700 mb-2">Gracias por completar el examen.</p>
+            <p id="scoreMessage" class="text-2xl font-bold text-green-900 mb-4"></p>
+            <p id="emailStatus" class="text-gray-600 italic"></p>
+        </div>
+
+        <div id="confirmationModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4">
+            <div class="bg-white p-8 rounded-xl shadow-2xl text-center max-w-sm">
+                <h3 class="text-2xl font-bold text-blue-900 mb-4">¡Examen Enviado!</h3>
+                <p class="text-gray-700 mb-6">Tus resultados han sido enviados a <span class="font-semibold" id="confirmEmail"></span> para su revisión. Te deseamos mucho éxito.</p>
+                <button id="closeModalBtn" class="bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition">Entendido</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const infoForm = document.getElementById('infoForm');
+            const examForm = document.getElementById('examForm');
+            const questionsContainer = document.getElementById('questionsContainer');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const infoError = document.getElementById('infoError');
+            const submitBtn = document.getElementById('submitBtn');
+            const confirmationModal = document.getElementById('confirmationModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const confirmEmail = document.getElementById('confirmEmail');
+            const scoreMessage = document.getElementById('scoreMessage');
+            const emailStatus = document.getElementById('emailStatus');
+
+            // Array de preguntas, opciones y respuestas correctas
+            const questions = [
+                // Sección I: Estructura Dramática de Aristóteles (35 Preguntas)
+                {
+                    question: "¿Cuál es el título de la obra de Aristóteles donde se exponen sus teorías sobre la poesía y el drama?",
+                    options: ["La Retórica", "La Política", "Poética", "Ética a Nicómaco"],
+                    correct: "Poética"
+                },
+                {
+                    question: "Según Aristóteles, la imitación de una acción es el fundamento de toda tragedia. ¿Cómo se conoce a este concepto?",
+                    options: ["Catarsis", "Mimesis", "Hamartia", "Peripeteia"],
+                    correct: "Mimesis"
+                },
+                {
+                    question: "¿Qué término usa Aristóteles para referirse al cambio de la fortuna del protagonista de buena a mala?",
+                    options: ["Anagnórisis", "Mimesis", "Peripeteia", "Patetismo"],
+                    correct: "Peripeteia"
+                },
+                {
+                    question: "El clímax de una tragedia, donde el héroe sufre una revelación, es conocido como:",
+                    options: ["Prólogo", "Episodio", "Anagnórisis", "Éxodo"],
+                    correct: "Anagnórisis"
+                },
+                {
+                    question: "¿Qué es la 'fábula' en el contexto aristotélico?",
+                    options: ["El personaje principal de la historia.", "El tema moral de la obra.", "La organización de los incidentes o la trama.", "El diálogo entre los personajes."],
+                    correct: "La organización de los incidentes o la trama."
+                },
+                {
+                    question: "Aristóteles considera a la **catarsis** como una purificación emocional a través de la experiencia de:",
+                    options: ["Alegría y éxtasis.", "Miedo y compasión.", "Sorpresa y decepción.", "Enojo y tristeza."],
+                    correct: "Miedo y compasión."
+                },
+                {
+                    question: "Las tres unidades de la tragedia (acción, tiempo y lugar) fueron originalmente formuladas por:",
+                    options: ["Platón", "Aristóteles", "Homero", "Sócrates"],
+                    correct: "Aristóteles"
+                },
+                {
+                    question: "La 'hamartia' se refiere a:",
+                    options: ["El final feliz de la historia.", "Un giro inesperado en la trama.", "El defecto o error del héroe que provoca su caída.", "La recompensa del héroe."],
+                    correct: "El defecto o error del héroe que provoca su caída."
+                },
+                {
+                    question: "En la estructura aristotélica, ¿qué elemento debe ser creíble y probable, incluso si es ficticio?",
+                    options: ["El personaje", "El diálogo", "La música", "La trama"],
+                    correct: "La trama"
+                },
+                {
+                    question: "¿Cuál es la principal diferencia entre una tragedia y una comedia para Aristóteles?",
+                    options: ["La comedia tiene un final feliz, la tragedia no.", "La comedia imita a personas superiores, la tragedia a personas inferiores.", "La comedia tiene muchos personajes, la tragedia tiene pocos.", "La comedia no tiene catarsis, la tragedia sí."],
+                    correct: "La comedia tiene un final feliz, la tragedia no."
+                },
+                {
+                    question: "Aristóteles describe el principio, el medio y el final de una obra. ¿Cómo se relaciona el 'principio' con el 'medio'?",
+                    options: ["El principio es la continuación del medio.", "El principio no necesita de eventos previos.", "El principio es una consecuencia del medio.", "El principio no está conectado con el medio."],
+                    correct: "El principio no necesita de eventos previos."
+                },
+                {
+                    question: "¿Qué elemento dramático se refiere a la música y el canto en una tragedia?",
+                    options: ["Pensamiento", "Elocución", "Espectáculo", "Melodía"],
+                    correct: "Melodía"
+                },
+                {
+                    question: "La 'anagnórisis' en una tragedia típicamente se asocia con un cambio de la ignorancia a:",
+                    options: ["La felicidad", "El conocimiento", "La tristeza", "La venganza"],
+                    correct: "El conocimiento"
+                },
+                {
+                    question: "¿Cuál de los siguientes NO es un elemento constitutivo de la tragedia?",
+                    options: ["Trama (fábula)", "Personajes", "Diálogo (elocución)", "Narrador"],
+                    correct: "Narrador"
+                },
+                {
+                    question: "La unidad de acción exige que la trama de una obra:",
+                    options: ["Ocurra en un solo día.", "Se desarrolle en un solo lugar.", "Se centre en una sola historia sin sub-tramas irrelevantes.", "Incluya múltiples conflictos secundarios."],
+                    correct: "Se centre en una sola historia sin sub-tramas irrelevantes."
+                },
+                {
+                    question: "¿Qué es la 'peripeteia' en el contexto de una película de misterio?",
+                    options: ["El detective recolectando pistas.", "La revelación de la identidad del asesino.", "El detective siendo engañado por una pista falsa.", "La celebración del detective al resolver el caso."],
+                    correct: "El detective siendo engañado por una pista falsa."
+                },
+                {
+                    question: "El personaje de Edipo en la obra 'Edipo Rey' es un ejemplo clásico de un héroe trágico debido a su:",
+                    options: ["Gran inteligencia.", "Ceguera real.", "Anagnórisis y hamartia.", "Su peripeteia."],
+                    correct: "Anagnórisis y hamartia."
+                },
+                {
+                    question: "¿Cuál de estas películas sigue un esquema aristotélico de anagnórisis y peripeteia?",
+                    options: ["Star Wars: Una nueva esperanza", "La gran estafa", "El sexto sentido", "El Señor de los Anillos: La Comunidad del Anillo"],
+                    correct: "El sexto sentido"
+                },
+                {
+                    question: "¿Qué elemento dramático se refiere a la forma en que los personajes piensan y sienten?",
+                    options: ["Espectáculo", "Elocución", "Carácter", "Pensamiento"],
+                    correct: "Pensamiento"
+                },
+                {
+                    question: "El final de una tragedia es el 'prólogo'. ¿Cuál es el nombre del segmento que sigue al último canto del coro y concluye la tragedia?",
+                    options: ["Episodio", "Estásimo", "Éxodo", "Parodos"],
+                    correct: "Éxodo"
+                },
+                {
+                    question: "La 'peripeteia' de un villano que repentinamente se vuelve bueno es un ejemplo de:",
+                    options: ["Una peripeteia inversa.", "Una peripeteia no trágica.", "Un tipo de anagnórisis.", "Una excepción a la regla."],
+                    correct: "Una peripeteia inversa."
+                },
+                {
+                    question: "El 'coro' en la tragedia griega a menudo representaba:",
+                    options: ["El narrador de la historia.", "La voz de la audiencia o la opinión pública.", "La conciencia del héroe.", "Un grupo de personajes secundarios."],
+                    correct: "La voz de la audiencia o la opinión pública."
+                },
+                {
+                    question: "¿Cuál es la principal fuente de información sobre las ideas de Aristóteles sobre la tragedia?",
+                    options: ["Su correspondencia personal.", "Obras teatrales que escribió.", "Su libro 'Poética'.", "Los escritos de sus alumnos."],
+                    correct: "Su libro 'Poética'."
+                },
+                {
+                    question: "El final de una tragedia aristotélica se caracteriza por la muerte o la desgracia del héroe, lo que provoca:",
+                    options: ["Risa", "Indiferencia", "Piedad y temor", "Venganza"],
+                    correct: "Piedad y temor"
+                },
+                {
+                    question: "En la 'Poética', Aristóteles argumenta que una trama debe tener:",
+                    options: ["Un héroe con virtudes excepcionales.", "Una conexión lógica entre los eventos.", "Un final feliz garantizado.", "Muchos giros inesperados."],
+                    correct: "Una conexión lógica entre los eventos."
+                },
+                {
+                    question: "Un héroe aristotélico es un personaje que está:",
+                    options: ["Completamente bueno y sin defectos.", "Completamente malo y sin virtudes.", "Ni completamente bueno ni completamente malo.", "Un personaje secundario."],
+                    correct: "Ni completamente bueno ni completamente malo."
+                },
+                {
+                    question: "¿Qué es el 'pathos' en el contexto de la tragedia?",
+                    options: ["La purificación emocional.", "La cualidad de despertar compasión.", "El cambio de fortuna.", "La revelación del héroe."],
+                    correct: "La cualidad de despertar compasión."
+                },
+                {
+                    question: "La 'anagnórisis' en una comedia podría ser:",
+                    options: ["El protagonista revelando su verdadera identidad para ganar el amor.", "El protagonista perdiendo su fortuna.", "El protagonista peleando con su familia.", "El protagonista muriendo en el final."],
+                    correct: "El protagonista revelando su verdadera identidad para ganar el amor."
+                },
+                {
+                    question: "¿Cuál de los siguientes es un ejemplo de una 'hamartia' en una historia moderna?",
+                    options: ["Un detective demasiado arrogante que ignora una pista clave.", "Un héroe que es muy fuerte.", "Un personaje que tiene un buen corazón.", "Un científico que descubre una cura."],
+                    correct: "Un detective demasiado arrogante que ignora una pista clave."
+                },
+                {
+                    question: "La unidad de tiempo, según Aristóteles, implica que la acción de la obra se desarrolle en un periodo no mayor a:",
+                    options: ["Un día.", "Una semana.", "Un mes.", "Un año."],
+                    correct: "Un día."
+                },
+                {
+                    question: "Un ejemplo de 'peripeteia' en una película de acción podría ser:",
+                    options: ["El héroe entrenando para la misión.", "El héroe descubriendo que su mentor es en realidad el villano.", "El héroe celebrando su victoria.", "El héroe explicando su plan a su equipo."],
+                    correct: "El héroe descubriendo que su mentor es en realidad el villano."
+                },
+                {
+                    question: "¿Cuál es el propósito principal de la tragedia según la 'Poética'?",
+                    options: ["Enseñar una lección moral.", "Entretener al público.", "Evocar piedad y miedo para lograr la catarsis.", "Describir la vida real de los personajes."],
+                    correct: "Evocar piedad y miedo para lograr la catarsis."
+                },
+                {
+                    question: "¿Qué elemento se refiere al aspecto visual del drama, como el vestuario y la puesta en escena?",
+                    options: ["Elocución", "Melodía", "Espectáculo", "Pensamiento"],
+                    correct: "Espectáculo"
+                },
+                {
+                    question: "En la estructura aristotélica, ¿qué fase de la trama presenta el conflicto principal?",
+                    options: ["Exposición", "Nudo", "Desenlace", "Clímax"],
+                    correct: "Nudo"
+                },
+                {
+                    question: "Un 'carácter' en la teoría de Aristóteles debe ser:",
+                    options: ["Malo", "Bueno", "Consistente", "Predecible"],
+                    correct: "Consistente"
+                },
+                // Sección II: La Estructura de Syd Field (35 Preguntas)
+                {
+                    question: "¿Cómo se llama el modelo de tres actos desarrollado por Syd Field?",
+                    options: ["La Pirámide de Freytag", "El Viaje del Héroe", "El Paradigma", "La Estructura de Campo"],
+                    correct: "El Paradigma"
+                },
+                {
+                    question: "En el Paradigma, ¿cuál es la función del Primer Acto?",
+                    options: ["Resolución", "Confrontación", "Preparación", "Clímax"],
+                    correct: "Preparación"
+                },
+                {
+                    question: "¿Qué porcentaje de la película abarca aproximadamente el Primer Acto en el modelo de Syd Field?",
+                    options: ["10%", "25%", "50%", "75%"],
+                    correct: "25%"
+                },
+                {
+                    question: "¿Qué evento marca el final del Primer Acto y el inicio del Segundo?",
+                    options: ["El clímax", "La recompensa", "El primer Plot Point", "El punto medio"],
+                    correct: "El primer Plot Point"
+                },
+                {
+                    question: "El **Segundo Acto**, la parte más larga de la película, se enfoca en:",
+                    options: ["El inicio de la aventura.", "La confrontación.", "El final feliz.", "La presentación de personajes."],
+                    correct: "La confrontación."
+                },
+                {
+                    question: "¿Cuál es el propósito del Segundo Acto en la teoría de Syd Field?",
+                    options: ["Exponer el mundo y los personajes.", "Desarrollar el conflicto principal y el crecimiento del personaje.", "Resolver todas las tramas.", "Introducir al antagonista."],
+                    correct: "Desarrollar el conflicto principal y el crecimiento del personaje."
+                },
+                {
+                    question: "El segundo Plot Point se encuentra al final del Segundo Acto y:",
+                    options: ["Resuelve la historia.", "Marca un giro en el Tercer Acto.", "Regresa al protagonista a su mundo ordinario.", "Presenta un nuevo personaje."],
+                    correct: "Marca un giro en el Tercer Acto."
+                },
+                {
+                    question: "¿Qué porcentaje de la película abarca el Tercer Acto?",
+                    options: ["10%", "25%", "50%", "75%"],
+                    correct: "25%"
+                },
+                {
+                    question: "¿Qué es el 'incidente incitador' en el modelo de Syd Field?",
+                    options: ["El clímax de la historia.", "Un evento que presenta el conflicto y fuerza al héroe a la acción.", "La presentación de los personajes principales.", "Un flashback de la vida del protagonista."],
+                    correct: "Un evento que presenta el conflicto y fuerza al héroe a la acción."
+                },
+                {
+                    question: "La 'crisis', que ocurre en el Tercer Acto, es el momento en que el héroe:",
+                    options: ["Conoce a su mentor.", "Se encuentra en su punto más bajo antes de la confrontación final.", "Gana su recompensa.", "Regresa a su hogar."],
+                    correct: "Se encuentra en su punto más bajo antes de la confrontación final."
+                },
+                {
+                    question: "¿Dónde se encuentra el 'Midpoint' o 'Punto Medio' en el Paradigma de Syd Field?",
+                    options: ["Al inicio del Primer Acto.", "A la mitad del Segundo Acto.", "Al inicio del Tercer Acto.", "Al final del Tercer Acto."],
+                    correct: "A la mitad del Segundo Acto."
+                },
+                {
+                    question: "El 'Punto Medio' sirve para:",
+                    options: ["Introducir un nuevo personaje.", "Dar un giro dramático y cambiar la dirección de la historia.", "Concluir el conflicto.", "Generar una sensación de calma antes de la tormenta."],
+                    correct: "Dar un giro dramático y cambiar la dirección de la historia."
+                },
+                {
+                    question: "¿Cuál es la principal diferencia entre un Plot Point y un 'Plot Twist'?",
+                    options: ["Un 'Plot Twist' es un giro sorpresa, mientras que un Plot Point es un evento estructural.", "Un Plot Point es un giro sorpresa, mientras que un 'Plot Twist' es un evento estructural.", "No hay diferencia entre los dos.", "Un 'Plot Twist' solo ocurre en el Primer Acto."],
+                    correct: "Un 'Plot Twist' es un giro sorpresa, mientras que un Plot Point es un evento estructural."
+                },
+                {
+                    question: "¿Qué película es un ejemplo clásico de la estructura de Syd Field?",
+                    options: ["El Señor de los Anillos: La Comunidad del Anillo.", "La guerra de las galaxias: El Imperio contraataca.", "La guerra de las galaxias: Una nueva esperanza.", "Blade Runner."],
+                    correct: "La guerra de las galaxias: Una nueva esperanza."
+                },
+                {
+                    question: "El Primer Acto, conocido como la 'Preparación', debe terminar con:",
+                    options: ["La muerte de un personaje importante.", "El protagonista huyendo de su problema.", "Un evento que impulsa al héroe a la acción.", "La historia volviendo al punto de partida."],
+                    correct: "Un evento que impulsa al héroe a la acción."
+                },
+                {
+                    question: "El Segundo Acto, la 'Confrontación', es donde se incrementa la:",
+                    options: ["Felicidad del héroe.", "La tranquilidad.", "La complicación y la tensión.", "La simplicidad."],
+                    correct: "La complicación y la tensión."
+                },
+                {
+                    question: "¿Qué término usa Syd Field para describir el camino que sigue el guionista?",
+                    options: ["El Viaje del Héroe", "La Línea Dramática", "El Paradigma", "El Camino de la Escritura"],
+                    correct: "El Paradigma"
+                },
+                {
+                    question: "El Tercer Acto, la 'Resolución', debe incluir:",
+                    options: ["Un nuevo conflicto principal.", "La batalla final.", "Una nueva subtrama.", "La presentación del protagonista."],
+                    correct: "La batalla final."
+                },
+                {
+                    question: "¿Qué debe suceder en el Primer Acto para que la audiencia se involucre en la historia?",
+                    options: ["La muerte de un personaje.", "El protagonista debe enfrentar una crisis existencial.", "La presentación de un problema que el héroe debe resolver.", "El héroe debe tener una aventura."],
+                    correct: "La presentación de un problema que el héroe debe resolver."
+                },
+                {
+                    question: "El modelo de Syd Field se considera una versión moderna de la estructura de:",
+                    options: ["Aristóteles", "Joseph Campbell", "Christopher Vogler", "Platón"],
+                    correct: "Aristóteles"
+                },
+                {
+                    question: "El 'Punto Medio' en el Paradigma sirve como un momento para:",
+                    options: ["Disminuir la tensión.", "Dar una falsa victoria o derrota al héroe.", "El héroe regresando a casa.", "Introducir al antagonista."],
+                    correct: "Dar una falsa victoria o derrota al héroe."
+                },
+                {
+                    question: "¿Cuál de los siguientes es un ejemplo de un 'Plot Point' en el modelo de Syd Field?",
+                    options: ["El protagonista aprendiendo a usar una espada.", "El protagonista decidiendo mudarse de casa.", "El protagonista descubriendo un mapa que lo lleva al tesoro.", "El protagonista conociendo a su interés amoroso."],
+                    correct: "El protagonista descubriendo un mapa que lo lleva al tesoro."
+                },
+                {
+                    question: "En el Segundo Acto, el protagonista se enfrenta a una serie de obstáculos. Syd Field los llama:",
+                    options: ["Muros", "Pruebas", "Confrontaciones", "Complicaciones"],
+                    correct: "Pruebas"
+                },
+                {
+                    question: "El modelo de Syd Field se utiliza principalmente para:",
+                    options: ["Obras de teatro.", "Novelas.", "Guiones de cine y televisión.", "Poesía."],
+                    correct: "Guiones de cine y televisión."
+                },
+                {
+                    question: "¿Cuál de los siguientes es un componente clave del Tercer Acto en el Paradigma de Syd Field?",
+                    options: ["La presentación del mundo de la historia.", "El 'incidente incitador'.", "El clímax y el desenlace.", "El primer 'Plot Point'."],
+                    correct: "El clímax y el desenlace."
+                },
+                {
+                    question: "Según Syd Field, un guion sin una estructura sólida es solo:",
+                    options: ["Un documento sin sentido.", "Una serie de eventos aleatorios.", "Una colección de escenas.", "Un cuento de hadas."],
+                    correct: "Una colección de escenas."
+                },
+                {
+                    question: "La 'resolución' en el Tercer Acto implica:",
+                    options: ["La victoria del héroe.", "La derrota del héroe.", "El héroe enfrentando su mayor miedo.", "Un regreso al pasado."],
+                    correct: "La victoria del héroe."
+                },
+                {
+                    question: "El 'paradigma' de Syd Field es un modelo que enfatiza la importancia de:",
+                    options: ["La improvisación.", "La estructura y el control.", "El caos narrativo.", "La libertad creativa total."],
+                    correct: "La estructura y el control."
+                },
+                {
+                    question: "La 'Confrontación' en el Segundo Acto es donde el guionista debe desarrollar:",
+                    options: ["La introducción del héroe.", "La trama secundaria.", "El conflicto principal.", "La resolución final."],
+                    correct: "El conflicto principal."
+                },
+                {
+                    question: "En el modelo de Syd Field, el 'incidente incitador' es lo que provoca la:",
+                    options: ["Catarsis.", "Peripeteia.", "Llamada a la acción.", "Anagnórisis."],
+                    correct: "Llamada a la acción."
+                },
+                {
+                    question: "El final del Primer Acto debe ser lo suficientemente fuerte para:",
+                    options: ["Concluir la historia.", "Enganchar al público para que continúe viendo la película.", "Introducir a todos los personajes.", "Resolver la historia."],
+                    correct: "Enganchar al público para que continúe viendo la película."
+                },
+                {
+                    question: "¿Cuál de los siguientes elementos es un componente clave de la 'Preparación' en el Primer Acto?",
+                    options: ["La confrontación final.", "La revelación de un secreto.", "La presentación del personaje principal y su objetivo.", "La resolución de todas las subtramas."],
+                    correct: "La presentación del personaje principal y su objetivo."
+                },
+                {
+                    question: "En el modelo de Syd Field, el clímax se encuentra en el Tercer Acto, específicamente:",
+                    options: ["Al principio del acto.", "Al final del acto.", "En la mitad del acto.", "En cualquier punto del acto."],
+                    correct: "En la mitad del acto."
+                },
+                {
+                    question: "El 'Punto Medio' en el Paradigma a menudo se considera un punto de no retorno para el héroe. Esto significa que:",
+                    options: ["El héroe puede regresar a su vida ordinaria.", "El héroe no puede regresar a su vida ordinaria sin haber cambiado.", "El héroe decide abandonar la aventura.", "El héroe muere."],
+                    correct: "El héroe no puede regresar a su vida ordinaria sin haber cambiado."
+                },
+                {
+                    question: "¿Cuál de las siguientes es una crítica común a la teoría de Syd Field?",
+                    options: ["Es demasiado flexible.", "Es demasiado rígida y limita la creatividad.", "No es aplicable a las películas modernas.", "No tiene en cuenta al público."],
+                    correct: "Es demasiado rígida y limita la creatividad."
+                },
+                // Sección III: El Viaje del Héroe (30 Preguntas)
+                {
+                    question: "¿Quién fue el autor del libro 'El héroe de las mil caras', que popularizó el concepto del monomito?",
+                    options: ["Christopher Vogler", "Syd Field", "Carl Jung", "Joseph Campbell"],
+                    correct: "Joseph Campbell"
+                },
+                {
+                    question: "En el Viaje del Héroe, la etapa en la que el protagonista conoce al personaje que lo guiará es:",
+                    options: ["El Primer Umbral", "El Encuentro con el Mentor", "El Llamado a la Aventura", "La Resurrección"],
+                    correct: "El Encuentro con el Mentor"
+                },
+                {
+                    question: "¿Qué etapa se caracteriza por la vida normal del héroe antes de que comience su aventura?",
+                    options: ["El Mundo Ordinario", "El Mundo Especial", "La Llamada a la Aventura", "El Rechazo de la Llamada"],
+                    correct: "El Mundo Ordinario"
+                },
+                {
+                    question: "El 'Llamado a la Aventura' es:",
+                    options: ["El momento en que el héroe regresa a su mundo.", "El momento en que el héroe recibe un desafío o una misión.", "El momento en que el héroe se enfrenta a su mayor miedo.", "El momento en que el héroe conoce a su mentor."],
+                    correct: "El momento en que el héroe recibe un desafío o una misión."
+                },
+                {
+                    question: "Cuando el héroe duda o se niega a aceptar el llamado, se trata de la etapa de:",
+                    options: ["El Cruce del Primer Umbral", "La Prueba, Aliados y Enemigos", "El Rechazo de la Llamada", "La Recompensa"],
+                    correct: "El Rechazo de la Llamada"
+                },
+                {
+                    question: "¿Qué representa el 'Primer Umbral' en el Viaje del Héroe?",
+                    options: ["El punto final de la aventura.", "La entrada al mundo desconocido o especial.", "El regreso al mundo ordinario.", "La confrontación final."],
+                    correct: "La entrada al mundo desconocido o especial."
+                },
+                {
+                    question: "Durante la etapa de 'Prueba, Aliados y Enemigos', el héroe:",
+                    options: ["Regresa a casa.", "Afronta desafíos, encuentra aliados y identifica enemigos.", "Recibe su recompensa.", "Se enfrenta a su mentor."],
+                    correct: "Afronta desafíos, encuentra aliados y identifica enemigos."
+                },
+                {
+                    question: "¿Cuál es el propósito de la 'Aproximación a la Caverna Profunda'?",
+                    options: ["Celebrar una victoria.", "Prepararse para la prueba más difícil.", "Regresar al mundo ordinario.", "Despedirse de los aliados."],
+                    correct: "Prepararse para la prueba más difícil."
+                },
+                {
+                    question: "La 'Prueba Suprema' (Ordeal) es:",
+                    options: ["Un momento de calma antes de la tormenta.", "El momento en que el héroe enfrenta su mayor miedo o un peligro mortal.", "La etapa de la recompensa.", "El momento de la muerte y renacimiento simbólico."],
+                    correct: "El momento en que el héroe enfrenta su mayor miedo o un peligro mortal."
+                },
+                {
+                    question: "Tras la Prueba Suprema, el héroe a menudo obtiene una 'Recompensa' (Reward). ¿Qué puede ser esta recompensa?",
+                    options: ["Solo un objeto físico.", "Un poder, un conocimiento, un tesoro o una reconciliación.", "El regreso inmediato a casa.", "El final de la aventura."],
+                    correct: "Un poder, un conocimiento, un tesoro o una reconciliación."
+                },
+                {
+                    question: "El 'Camino de Regreso' (The Road Back) es la etapa en la que el héroe:",
+                    options: ["Comienza su aventura.", "Decide quedarse en el mundo especial.", "Se compromete a regresar al mundo ordinario, a menudo enfrentando nuevas amenazas.", "Recibe su recompensa."],
+                    correct: "Se compromete a regresar al mundo ordinario, a menudo enfrentando nuevas amenazas."
+                },
+                {
+                    question: "¿Qué sucede en la 'Resurrección'?",
+                    options: ["El héroe muere definitivamente.", "El héroe se enfrenta a una última prueba crucial que lo transforma.", "El héroe celebra su victoria.", "El héroe rechaza la llamada."],
+                    correct: "El héroe se enfrenta a una última prueba crucial que lo transforma."
+                },
+                {
+                    question: "La 'Reintegración a la Sociedad' (Return with the Elixir) es la etapa final donde el héroe:",
+                    options: ["Se queda para siempre en el mundo especial.", "Regresa a su mundo ordinario, pero transformado, y comparte su experiencia.", "Abandona la aventura.", "Se enfrenta a su mentor."],
+                    correct: "Regresa a su mundo ordinario, pero transformado, y comparte su experiencia."
+                },
+                {
+                    question: "¿Qué personaje literario es un arquetipo común del 'Mentor'?",
+                    options: ["El villano.", "El antagonista.", "Gandalf de El Señor de los Anillos.", "La damisela en apuros."],
+                    correct: "Gandalf de El Señor de los Anillos."
+                },
+                {
+                    question: "El arquetipo del 'Loki' o 'Trickster' se caracteriza por:",
+                    options: ["Ser un guía sabio.", "Ser travieso, desobediente y a menudo rompe las reglas.", "Ser el principal antagonista.", "Ser el interés amoroso."],
+                    correct: "Ser travieso, desobediente y a menudo rompe las reglas."
+                },
+                {
+                    question: "¿Qué papel cumple el 'Guardían del Umbral'?",
+                    options: ["Ayudar al héroe a cruzar el umbral.", "Impedir que el héroe cruce el umbral.", "Darle la recompensa al héroe.", "Ser el mentor del héroe."],
+                    correct: "Impedir que el héroe cruce el umbral."
+                },
+                {
+                    question: "En 'Star Wars', Luke Skywalker recibe el 'Llamado a la Aventura' cuando:",
+                    options: ["Se une a la Academia Jedi.", "Ve el mensaje de la Princesa Leia en R2-D2.", "Entrena con Yoda.", "Viaja a Tatooine."],
+                    correct: "Ve el mensaje de la Princesa Leia en R2-D2."
+                },
+                {
+                    question: "¿Quién actúa como 'Mentor' de Luke Skywalker en 'Star Wars'?",
+                    options: ["Han Solo", "Obi-Wan Kenobi y Yoda.", "La Princesa Leia.", "Darth Vader."],
+                    correct: "Obi-Wan Kenobi y Yoda."
+                },
+                {
+                    question: "¿Cuál es la 'Prueba Suprema' de Luke Skywalker en 'Una Nueva Esperanza'?",
+                    options: ["Destruir la Estrella de la Muerte.", "Capturar a Darth Vader.", "Escapar de la Estrella de la Muerte.", "Enfrentarse a su padre."],
+                    correct: "Destruir la Estrella de la Muerte."
+                },
+                {
+                    question: "La 'Recompensa' de Luke Skywalker en 'Una Nueva Esperanza' es:",
+                    options: ["Un nuevo sable de luz.", "La destrucción de la Estrella de la Muerte y el reconocimiento de la Alianza Rebelde.", "La fuga de la Estrella de la Muerte.", "El amor de la Princesa Leia."],
+                    correct: "La destrucción de la Estrella de la Muerte y el reconocimiento de la Alianza Rebelde."
+                },
+                {
+                    question: "¿Qué película adapta el Viaje del Héroe para un contexto moderno y femenino?",
+                    options: ["El Padrino", "Matrix", "Thelma y Louise", "Pulp Fiction"],
+                    correct: "Thelma y Louise"
+                },
+                {
+                    question: "El concepto de 'Elixir' al final del Viaje del Héroe representa:",
+                    options: ["Un brebaje mágico.", "La solución a un problema universal o personal, o el conocimiento adquirido.", "Una nueva llamada a la aventura.", "El final de la historia."],
+                    correct: "La solución a un problema universal o personal, o el conocimiento adquirido."
+                },
+                {
+                    question: "El arquetipo del 'Sombra' (Shadow) representa:",
+                    options: ["El lado oscuro o reprimido del héroe.", "El mentor.", "El aliado fiel.", "El mundo ordinario."],
+                    correct: "El lado oscuro o reprimido del héroe."
+                },
+                {
+                    question: "En el Viaje del Héroe, la 'Transición del Mundo Ordinario al Mundo Especial' es catalizada por:",
+                    options: ["El clímax.", "La resolución.", "El Llamado a la Aventura y el Cruce del Primer Umbral.", "La recompensa."],
+                    correct: "El Llamado a la Aventura y el Cruce del Primer Umbral."
+                },
+                {
+                    question: "Un ejemplo de 'Aliado' en el Viaje del Héroe es:",
+                    options: ["El villano principal.", "Un personaje que ayuda y apoya al héroe.", "El mentor.", "El guardián del umbral."],
+                    correct: "Un personaje que ayuda y apoya al héroe."
+                },
+                {
+                    question: "El 'Rechazo de la Llamada' puede deberse a:",
+                    options: ["Valentía extrema.", "Miedo, inseguridad o deberes preexistentes.", "Una recompensa segura.", "La ausencia de un mentor."],
+                    correct: "Miedo, inseguridad o deberes preexistentes."
+                },
+                {
+                    question: "¿Qué papel juega el 'Heraldo' en el Viaje del Héroe?",
+                    options: ["Ser el principal antagonista.", "Anunciar el desafío o la llamada a la aventura.", "Dar la recompensa al héroe.", "Guiar al héroe a través del mundo especial."],
+                    correct: "Anunciar el desafío o la llamada a la aventura."
+                },
+                {
+                    question: "La 'Alegoría de la Caverna' de Platón comparte similitudes con el Viaje del Héroe en la idea de:",
+                    options: ["La importancia del diálogo.", "La transición de la ignorancia a la iluminación.", "El conflicto entre personajes.", "La celebración de la victoria."],
+                    correct: "La transición de la ignorancia a la iluminación."
+                },
+                {
+                    question: "El 'Encuentro con el Mentor' ayuda al héroe a:",
+                    options: ["Evitar la aventura.", "Superar sus miedos y prepararse para lo desconocido.", "Obtener la recompensa.", "Regresar al mundo ordinario."],
+                    correct: "Superar sus miedos y prepararse para lo desconocido."
+                },
+                {
+                    question: "¿Qué representa el 'Mundo Especial' en el Viaje del Héroe?",
+                    options: ["El hogar del héroe.", "Un lugar o estado desconocido y peligroso, o donde se encuentran las reglas diferentes.", "El lugar donde se recibe la recompensa.", "El punto de partida de la aventura."],
+                    correct: "Un lugar o estado desconocido y peligroso, o donde se encuentran las reglas diferentes."
+                },
+                {
+                    question: "La etapa de 'La Recompensa (Tomando la Espada)' simboliza:",
+                    options: ["El final de la aventura.", "La obtención del objeto, conocimiento o poder buscado.", "El regreso a casa.", "La muerte del héroe."],
+                    correct: "La obtención del objeto, conocimiento o poder buscado."
+                },
+                {
+                    question: "En la narrativa, el 'viaje del héroe' es un patrón que se repite a través de muchas culturas y épocas, conocido como:",
+                    options: ["Estructura lineal.", "Monstruo.", "Monomito.", "Clímax único."],
+                    correct: "Monomito."
+                },
+                {
+                    question: "¿Quién fue el principal teórico que analizó el monomito en mitos de todo el mundo?",
+                    options: ["Syd Field", "Christopher Vogler", "Joseph Campbell", "Aristóteles"],
+                    correct: "Joseph Campbell"
+                },
+                {
+                    question: "El 'Retorno del Héroe' es fundamental porque:",
+                    options: ["El héroe se queda en el mundo especial para siempre.", "El héroe trae consigo algo valioso (el elixir) para su comunidad.", "El héroe olvida su experiencia.", "La aventura termina sin consecuencias."],
+                    correct: "El héroe trae consigo algo valioso (el elixir) para su comunidad."
+                },
+                {
+                    question: "En 'Harry Potter y la Piedra Filosofal', el 'Llamado a la Aventura' de Harry se manifiesta cuando:",
+                    options: ["Se entera de que es un mago y recibe su carta de Hogwarts.", "Conoce a Ron y Hermione.", "Entra a Hogwarts.", "Lucha contra el troll."],
+                    correct: "Se entera de que es un mago y recibe su carta de Hogwarts."
+                },
+                {
+                    question: "El 'Mentor' de Harry Potter es:",
+                    options: ["Draco Malfoy", "Severus Snape (con matices)", "Albus Dumbledore.", "Ron Weasley."],
+                    correct: "Albus Dumbledore."
+                },
+                {
+                    question: "La 'Prueba Suprema' para Harry en 'La Piedra Filosofal' es:",
+                    options: ["Superar los exámenes.", "Enfrentarse a Quirrell/Voldemort por la Piedra Filosofal.", "Aprender a volar en escoba.", "Ganar el partido de Quidditch."],
+                    correct: "Enfrentarse a Quirrell/Voldemort por la Piedra Filosofal."
+                },
+                {
+                    question: "La 'Recompensa' de Harry en la primera película es:",
+                    options: ["La Copa de Quidditch.", "La salvación de la Piedra Filosofal y un sentido de pertenencia.", "La amistad de Hagrid.", "Un nuevo conocimiento sobre su pasado."],
+                    correct: "La salvación de la Piedra Filosofal y un sentido de pertenencia."
+                },
+                {
+                    question: "¿Cuál es la 'Resurrección' simbólica de Harry en la primera película?",
+                    options: ["Su llegada a Hogwarts.", "Su encuentro con la familia Dursley.", "Su confrontación final con Voldemort.", "Su decisión de no rendirse ante el miedo."],
+                    correct: "Su confrontación final con Voldemort."
+                },
+                {
+                    question: "El 'Elixir' que Harry trae de vuelta al mundo ordinario al final de la primera película es:",
+                    options: ["La Piedra Filosofal.", "Un hechizo aprendido.", "El conocimiento de que el bien puede triunfar sobre el mal y un hogar en Hogwarts.", "La derrota definitiva de Voldemort."],
+                    correct: "El conocimiento de que el bien puede triunfar sobre el mal y un hogar en Hogwarts."
+                },
+                {
+                    question: "¿Qué arquetipo representa el 'Antagonista'?",
+                    options: ["El héroe.", "La fuerza principal que se opone al héroe.", "El mentor.", "El aliado."],
+                    correct: "La fuerza principal que se opone al héroe."
+                },
+                {
+                    question: "La diferencia entre el 'Viaje del Héroe' y el 'Paradigma' de Syd Field es que:",
+                    options: ["El Viaje del Héroe es más centrado en el arquetipo y el desarrollo psicológico, mientras que el Paradigma es más enfocado en la estructura de tres actos.", "Son exactamente lo mismo.", "El Paradigma ignora el desarrollo de personajes.", "El Viaje del Héroe solo se aplica a mitos antiguos."],
+                    correct: "El Viaje del Héroe es más centrado en el arquetipo y el desarrollo psicológico, mientras que el Paradigma es más enfocado en la estructura de tres actos."
+                },
+                {
+                    question: "¿Qué personaje es un ejemplo de 'Hermafrodita' (Shapeshifter) en el Viaje del Héroe?",
+                    options: ["Un personaje que cambia de apariencia o lealtad.", "El mentor del héroe.", "El principal antagonista.", "El aliado principal."],
+                    correct: "Un personaje que cambia de apariencia o lealtad."
+                },
+                {
+                    question: "El 'Viaje del Héroe' a menudo culmina en:",
+                    options: ["La perpetuación del status quo.", "Un retorno al estado inicial sin cambios.", "La transformación del héroe y la restauración del orden.", "El abandono del mundo ordinario."],
+                    correct: "La transformación del héroe y la restauración del orden."
+                }
+            ];
+
+            // Función para renderizar las preguntas
+            function renderQuestions() {
+                let questionHTML = '';
+                questions.forEach((q, index) => {
+                    questionHTML += `
+                        <div class="p-6 border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition duration-200">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">${index + 1}. ${q.question}</h3>
+                            <div class="space-y-3">
+                    `;
+                    q.options.forEach(option => {
+                        questionHTML += `
+                            <div class="flex items-center">
+                                <input type="radio" name="q${index}" id="q${index}_${option}" value="${option}" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mr-3">
+                                <label for="q${index}_${option}" class="text-gray-700 cursor-pointer">${option}</label>
+                            </div>
+                        `;
+                    });
+                    questionHTML += `
+                            </div>
+                        </div>
+                    `;
+                });
+                questionsContainer.innerHTML = questionHTML;
+            }
+
+            // Función para calcular la puntuación y mostrar resultados
+            function calculateScore() {
+                let score = 0;
+                const studentName = document.getElementById('studentName').value;
+                const institutionalEmail = document.getElementById('institutionalEmail').value;
+                const courseSubject = document.getElementById('courseSubject').value;
+
+                // Validar campos de información del alumno
+                if (!studentName || !institutionalEmail || !courseSubject) {
+                    infoError.classList.remove('hidden');
+                    return false; // Indicar que la validación falló
+                }
+                infoError.classList.add('hidden');
+
+                // Mostrar correo en la confirmación
+                confirmEmail.textContent = institutionalEmail;
+
+                questions.forEach((q, index) => {
+                    const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+                    if (selectedOption && selectedOption.value === q.correct) {
+                        score++;
+                    }
+                });
+
+                const totalQuestions = questions.length;
+                const percentage = (score / totalQuestions) * 100;
+
+                scoreMessage.textContent = `Tu puntuación: ${score} de ${totalQuestions} (${percentage.toFixed(1)}%).`;
+                emailStatus.textContent = `Los resultados han sido registrados para ${studentName}.`;
+
+                resultsContainer.classList.remove('hidden');
+                examForm.classList.add('hidden');
+                submitBtn.disabled = true; // Deshabilitar el botón después de enviar
+                confirmationModal.classList.remove('hidden'); // Mostrar la modal
+
+                return true; // Indicar que la validación y el cálculo fueron exitosos
+            }
+
+            // Event listener para el envío del formulario
+            examForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                calculateScore();
+            });
+
+            // Event listener para cerrar la modal de confirmación
+            closeModalBtn.addEventListener('click', () => {
+                confirmationModal.classList.add('hidden');
+            });
+
+            // Renderizar las preguntas al cargar la página
+            renderQuestions();
+        });
+    </script>
+</body>
+</html>
