@@ -1,737 +1,1120 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Examen sobre los Personajes</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen sobre los personajes</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
 </head>
-<body class="bg-slate-50 min-h-screen flex items-center justify-center p-4">
-    <div class="container mx-auto max-w-4xl p-8 bg-white shadow-xl rounded-2xl border border-gray-200">
-        <header class="text-center mb-10">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-blue-900 mb-2">Examen sobre los Personajes</h1>
-            <p class="text-lg text-gray-700">Creado por Miguelangel Tisera</p>
-        </header>
+<body class="bg-orange-100 min-h-screen flex items-center justify-center p-4">
+    <div class="container mx-auto max-w-4xl p-8 bg-white shadow-xl rounded-2xl border border-gray-200">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-orange-900 mb-2">Examen sobre los personajes</h1>
+            <p class="text-lg text-gray-700">Creado por Miguelangel Tisera</p>
+        </header>
 
-        <form id="infoForm" class="mb-8 p-6 bg-blue-50 rounded-lg shadow-inner">
-            <h2 class="text-2xl font-bold text-blue-800 mb-4">Información del Alumno</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div>
-                    <label for="studentName" class="block text-sm font-medium text-gray-700 mb-1">Nombre Completo del Alumno</label>
-                    <input type="text" id="studentName" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out" placeholder="Escribe tu nombre">
-                </div>
-                <div>
-                    <label for="institutionalEmail" class="block text-sm font-medium text-gray-700 mb-1">Correo Institucional (@unihumboldt.edu.ve)</label>
-                    <input type="email" id="institutionalEmail" required pattern="[a-zA-Z0-9._%+-]+@unihumboldt\.edu\.ve" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out" placeholder="tu.nombre@unihumboldt.edu.ve">
-                </div>
-            </div>
-            <div class="mt-6">
-                <label for="courseSubject" class="block text-sm font-medium text-gray-700 mb-1">Materia que Cursas</label>
-                <input type="text" id="courseSubject" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out" placeholder="Ej. Guionismo, Estructura Narrativa">
-            </div>
-            <p id="infoError" class="mt-4 text-red-600 font-semibold hidden">Por favor, completa todos los campos correctamente antes de continuar.</p>
-        </form>
+                <form id="infoForm" class="mb-8 p-6 bg-orange-50 rounded-lg shadow-inner">
+            <h2 class="text-2xl font-bold text-orange-800 mb-4">Información del Alumno</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <label for="studentName" class="block text-sm font-medium text-gray-700 mb-1">Nombre Completo del Alumno</label>
+                    <input type="text" id="studentName" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 transition duration-150 ease-in-out" placeholder="Escribe tu nombre">
+                </div>
+                <div>
+                    <label for="institutionalEmail" class="block text-sm font-medium text-gray-700 mb-1">Correo Institucional (@unihumboldt.edu.ve)</label>
+                    <input type="email" id="institutionalEmail" required pattern="[a-zA-Z0-9._%+-]+@unihumboldt\.edu\.ve" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 transition duration-150 ease-in-out" placeholder="tu.nombre@unihumboldt.edu.ve">
+                </div>
+            </div>
+            <div class="mt-6">
+                <label for="courseSubject" class="block text-sm font-medium text-gray-700 mb-1">Materia que Cursas</label>
+                <input type="text" id="courseSubject" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 transition duration-150 ease-in-out" placeholder="Ej. Guionismo, Estructura Narrativa">
+            </div>
+            <p id="infoError" class="mt-4 text-red-600 font-semibold hidden">Por favor, completa todos los campos correctamente antes de continuar.</p>
+        </form>
 
-        <form id="examForm" class="mb-8">
-            <div id="questionsContainer" class="space-y-8">
-                </div>
-            <div class="flex justify-center mt-10">
-                <button type="submit" id="submitBtn" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105">
-                    Enviar y Ver Resultados
-                </button>
-            </div>
-        </form>
+                <form id="examForm" class="mb-8">
+            <div id="questionsContainer" class="space-y-8">
+                            </div>
+            <div class="flex justify-center mt-10">
+                <button type="submit" id="submitBtn" class="bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-orange-700 transition duration-300 ease-in-out transform hover:scale-105">
+                    Enviar y Ver Resultados
+                </button>
+            </div>
+        </form>
 
-        <div id="resultsContainer" class="hidden mt-10 p-8 bg-green-50 rounded-2xl shadow-inner text-center">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-green-800 mb-4">¡Examen Completado!</h2>
-            <p class="text-lg text-gray-700 mb-2">Gracias por completar el examen.</p>
-            <p id="scoreMessage" class="text-2xl font-bold text-green-900 mb-4"></p>
-            <p id="emailStatus" class="text-gray-600 italic"></p>
-        </div>
+                <div id="resultsContainer" class="hidden mt-10 p-8 bg-green-50 rounded-2xl shadow-inner text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-green-800 mb-4">¡Examen Completado!</h2>
+            <p class="text-lg text-gray-700 mb-2">Gracias por completar el examen.</p>
+            <p id="scoreMessage" class="text-2xl font-bold text-green-900 mb-4"></p>
+            <p id="emailStatus" class="text-gray-600 italic"></p>
+        </div>
 
-        <div id="confirmationModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4">
-            <div class="bg-white p-8 rounded-xl shadow-2xl text-center max-w-sm">
-                <h3 class="text-2xl font-bold text-blue-900 mb-4">¡Examen Enviado!</h3>
-                <p class="text-gray-700 mb-6">Tus resultados han sido enviados a <span class="font-semibold" id="confirmEmail"></span> para su revisión. Te deseamos mucho éxito.</p>
-                <button id="closeModalBtn" class="bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition">Entendido</button>
-            </div>
-        </div>
+                <div id="confirmationModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4">
+            <div class="bg-white p-8 rounded-xl shadow-2xl text-center max-w-sm">
+                <h3 class="text-2xl font-bold text-orange-900 mb-4">¡Examen Enviado!</h3>
+                <p class="text-gray-700 mb-6">Tus resultados han sido enviados a <span class="font-semibold" id="confirmEmail"></span> para su revisión. Te deseamos mucho éxito.</p>
+                <button id="closeModalBtn" class="bg-orange-600 text-white font-bold py-2 px-6 rounded-full hover:bg-orange-700 transition">Entendido</button>
+            </div>
+        </div>
+    </div>
 
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const infoForm = document.getElementById('infoForm');
+            const examForm = document.getElementById('examForm');
+            const questionsContainer = document.getElementById('questionsContainer');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const infoError = document.getElementById('infoError');
+            const submitBtn = document.getElementById('submitBtn');
+            const confirmationModal = document.getElementById('confirmationModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const confirmEmail = document.getElementById('confirmEmail');
+            const scoreMessage = document.getElementById('scoreMessage');
+            const emailStatus = document.getElementById('emailStatus');
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const infoForm = document.getElementById('infoForm');
-            const examForm = document.getElementById('examForm');
-            const questionsContainer = document.getElementById('questionsContainer');
-            const resultsContainer = document.getElementById('resultsContainer');
-            const infoError = document.getElementById('infoError');
-            const submitBtn = document.getElementById('submitBtn');
-            const confirmationModal = document.getElementById('confirmationModal');
-            const closeModalBtn = document.getElementById('closeModalBtn');
-            const confirmEmail = document.getElementById('confirmEmail');
-            const scoreMessage = document.getElementById('scoreMessage');
-            const emailStatus = document.getElementById('emailStatus');
+            // Array de preguntas, opciones y respuestas correctas de los libros de Linda Seger
+            const questions = [
+                // Sección I: De "Creating Unforgettable Characters"
+                {
+                    question: "Según Seger, ¿cuál es el primer paso para crear un personaje inolvidable?",
+                    options: ["Definir su apariencia física.", "Conocer su motivación interna y externa.", "Asignarle un trabajo específico.", "Escribir su diálogo."],
+                    correct: "Conocer su motivación interna y externa."
+                },
+                {
+                    question: "Linda Seger define la 'motivación interna' de un personaje como:",
+                    options: ["Su objetivo visible en la trama.", "Sus deseos y necesidades subconscientes.", "El conflicto con el antagonista.", "Su lugar de nacimiento."],
+                    correct: "Sus deseos y necesidades subconscientes."
+                },
+                {
+                    question: "¿Qué aspecto de la vida de un personaje se incluye en su 'dimensión sociológica'?",
+                    options: ["Su estatura y color de cabello.", "Sus miedos y deseos secretos.", "Su profesión, clase social y religión.", "Sus pensamientos más profundos."],
+                    correct: "Su profesión, clase social y religión."
+                },
+                {
+                    question: "La 'dimensión psicológica' de un personaje se refiere a:",
+                    options: ["Cómo se ve físicamente.", "Su historia de vida y traumas pasados.", "Su posición en la sociedad.", "Las relaciones que tiene con otros personajes."],
+                    correct: "Su historia de vida y traumas pasados."
+                },
+                {
+                    question: "Un 'personaje dinámico' es aquel que:",
+                    options: ["Tiene muchos diálogos.", "Experimenta un cambio o crecimiento significativo.", "Siempre se comporta de la misma manera.", "Tiene un final trágico."],
+                    correct: "Experimenta un cambio o crecimiento significativo."
+                },
+                {
+                    question: "¿Qué es un 'personaje estático'?",
+                    options: ["Un personaje que no tiene un arco de transformación.", "Un personaje que solo aparece en una escena.", "Un personaje que muere en la trama.", "Un personaje secundario."],
+                    correct: "Un personaje que no tiene un arco de transformación."
+                },
+                {
+                    question: "Seger argumenta que el conflicto de un personaje debe provenir de:",
+                    options: ["Sus interacciones con el entorno.", "Su motivación interna y su relación con el objetivo externo.", "Una fuerza sobrenatural.", "Las decisiones del director."],
+                    correct: "Su motivación interna y su relación con el objetivo externo."
+                },
+                {
+                    question: "¿Cuál es el propósito del 'subtexto' en los personajes?",
+                    options: ["Decir exactamente lo que piensan.", "Revelar su verdadera naturaleza y sentimientos a través de lo que no dicen.", "Crear ambigüedad intencionalmente.", "Hacer el diálogo más largo."],
+                    correct: "Revelar su verdadera naturaleza y sentimientos a través de lo que no dicen."
+                },
+                {
+                    question: "Según Seger, un personaje bien desarrollado a menudo tiene:",
+                    options: ["Un pasado oscuro sin explicación.", "Una historia de fondo que se revela gradualmente.", "No necesita de un pasado para ser convincente.", "Un único rasgo de personalidad."],
+                    correct: "Una historia de fondo que se revela gradualmente."
+                },
+                {
+                    question: "En 'Creating Unforgettable Characters', el concepto de 'oposición' se refiere a:",
+                    options: ["La lucha del protagonista contra su propio pasado.", "El conflicto entre el protagonista y el antagonista.", "El protagonista luchando contra la naturaleza.", "El protagonista y sus amigos peleando."],
+                    correct: "El conflicto entre el protagonista y el antagonista."
+                },
+                {
+                    question: "Para Seger, la 'moral' de un personaje se demuestra a través de:",
+                    options: ["Sus creencias religiosas.", "Su apariencia física.", "Las elecciones que toma cuando está bajo presión.", "Su profesión."],
+                    correct: "Las elecciones que toma cuando está bajo presión."
+                },
+                {
+                    question: "¿Cuál es la función del 'personaje secundario' en una historia?",
+                    options: ["No tienen ninguna función importante.", "Servir como espejo o contraste para el protagonista.", "Son solo relleno para las escenas.", "Siempre tienen que morir."],
+                    correct: "Servir como espejo o contraste para el protagonista."
+                },
+                {
+                    question: "Un 'personaje de apoyo' es diferente a un personaje secundario en que:",
+                    options: ["Es menos importante.", "Tiene un rol más directo en el desarrollo del protagonista.", "Siempre es un antagonista.", "No tiene un arco dramático."],
+                    correct: "Tiene un rol más directo en el desarrollo del protagonista."
+                },
+                {
+                    question: "Para Seger, un personaje convincente debe tener 'contradicciones'. ¿Qué significa esto?",
+                    options: ["Es un personaje que cambia de opinión a menudo.", "Tiene un objetivo interno que choca con un objetivo externo.", "Posee un rasgo de carácter que parece oponerse a otro.", "Siempre miente."],
+                    correct: "Posee un rasgo de carácter que parece oponerse a otro."
+                },
+                {
+                    question: "La 'voz del personaje' se refiere a:",
+                    options: ["El tono de su voz al hablar.", "Su patrón de diálogo único y distintivo.", "El monólogo interno del personaje.", "El dialecto que utiliza."],
+                    correct: "Su patrón de diálogo único y distintivo."
+                },
+                {
+                    question: "Según Linda Seger, una 'acción dramática' es:",
+                    options: ["Una pelea o explosión en la pantalla.", "Una acción que cambia el curso de la historia.", "Una acción que el personaje solo imagina.", "Cualquier cosa que el personaje haga."],
+                    correct: "Una acción que cambia el curso de la historia."
+                },
+                {
+                    question: "El 'viaje del personaje' de un héroe que comienza como cobarde y se vuelve valiente es un ejemplo de:",
+                    options: ["Un personaje estático.", "Un arco de transformación.", "Una motivación externa.", "Un personaje secundario."],
+                    correct: "Un arco de transformación."
+                },
+                {
+                    question: "¿Qué debe hacer el guionista para que el público sienta empatía por un personaje?",
+                    options: ["Hacerlo perfecto y sin defectos.", "Mostrar sus vulnerabilidades y humanidad.", "Hacerlo extremadamente rico.", "No revelar sus motivaciones."],
+                    correct: "Mostrar sus vulnerabilidades y humanidad."
+                },
+                {
+                    question: "Seger menciona la importancia de la 'función del personaje'. ¿Cuál es la función principal de un antagonista?",
+                    options: ["Ser el amigo del protagonista.", "Crear conflicto y obstaculizar el objetivo del protagonista.", "Resolver el problema principal de la historia.", "Introducir al protagonista a su mundo."],
+                    correct: "Crear conflicto y obstaculizar el objetivo del protagonista."
+                },
+                {
+                    question: "Para un personaje sea convincente, sus acciones deben ser una extensión de su:",
+                    options: ["Profesión.", "Diálogo.", "Personalidad y motivación.", "Apariencia física."],
+                    correct: "Personalidad y motivación."
+                },
+                {
+                    question: "¿Cómo puede un escritor revelar la 'moral' de un personaje?",
+                    options: ["Haciéndolo un predicador.", "Haciendo que hable sobre sus creencias.", "Mostrando cómo trata a los demás y las decisiones que toma.", "Describiendo su ropa."],
+                    correct: "Mostrando cómo trata a los demás y las decisiones que toma."
+                },
+                {
+                    question: "Según Linda Seger, un personaje inolvidable se distingue por:",
+                    options: ["Su falta de emociones.", "Su complejidad y profundidad.", "Su sencillez y simplicidad.", "Ser predecible."],
+                    correct: "Su complejidad y profundidad."
+                },
+                {
+                    question: "La 'historia de fondo' de un personaje debe servir para:",
+                    options: ["Llenar el guion con información innecesaria.", "Explicar su comportamiento actual y motivaciones.", "Hacerlo parecer misterioso.", "Confundir al público."],
+                    correct: "Explicar su comportamiento actual y motivaciones."
+                },
+                {
+                    question: "¿Cuál de los siguientes es un ejemplo de un 'personaje espejo'?",
+                    options: ["Un villano.", "Un personaje secundario que refleja una cualidad del protagonista.", "El protagonista mismo.", "El mentor."],
+                    correct: "Un personaje secundario que refleja una cualidad del protagonista."
+                },
+                {
+                    question: "En el contexto de la creación de personajes, ¿qué significa 'hacer que el personaje trabaje para el tema'?",
+                    options: ["El personaje debe ser un empleado de alguien.", "Las acciones y el arco del personaje deben ilustrar el tema de la historia.", "El personaje debe hablar sobre el tema de la historia.", "El personaje debe resolver un problema en el trabajo."],
+                    correct: "Las acciones y el arco del personaje deben ilustrar el tema de la historia."
+                },
+                {
+                    question: "La 'dimensión física' de un personaje incluye:",
+                    options: ["Sus miedos secretos.", "Su profesión.", "Su edad y apariencia.", "Sus creencias morales."],
+                    correct: "Su edad y apariencia."
+                },
+                {
+                    question: "¿Cuál de los siguientes es un ejemplo de 'motivación externa' para un personaje?",
+                    options: ["Quiere superar su miedo a las alturas.", "Quiere encontrar el amor verdadero.", "Quiere encontrar un tesoro escondido.", "Quiere ser más valiente."],
+                    correct: "Quiere encontrar un tesoro escondido."
+                },
+                {
+                    question: "Seger sugiere que un personaje debe tener 'una columna vertebral'. ¿A qué se refiere?",
+                    options: ["Una postura erguida.", "Una estructura de decisiones y principios que lo guían.", "Un rasgo físico distintivo.", "Un esqueleto metafórico."],
+                    correct: "Una estructura de decisiones y principios que lo guían."
+                },
+                {
+                    question: "Para crear un antagonista efectivo, Seger recomienda que:",
+                    options: ["Sea una persona puramente malvada.", "Tenga una motivación comprensible, incluso si es malvada.", "No tenga diálogo.", "Sea igual al protagonista."],
+                    correct: "Tenga una motivación comprensible, incluso si es malvada."
+                },
+                {
+                    question: "¿Cuál es la función del 'personaje mentor' en la historia?",
+                    options: ["Ser el villano principal.", "Ayudar al protagonista a alcanzar sus objetivos.", "Representar el fracaso.", "Ser un personaje estático."],
+                    correct: "Ayudar al protagonista a alcanzar sus objetivos."
+                },
+                {
+                    question: "La 'doble vida' de un personaje se refiere a:",
+                    options: ["Su vida secreta y su vida pública.", "Su vida física y su vida psicológica.", "Su vida antes y después de la historia.", "Su vida en el trabajo y su vida en casa."],
+                    correct: "Su vida secreta y su vida pública."
+                },
+                {
+                    question: "Para Seger, la 'revelación de información' sobre un personaje debe ocurrir:",
+                    options: ["Toda de una vez, al principio.", "Gradualmente a lo largo de la historia.", "Solo a través de flashbacks.", "Nunca."],
+                    correct: "Gradualmente a lo largo de la historia."
+                },
+                {
+                    question: "¿Qué significa 'darle al personaje un secreto'?",
+                    options: ["Hacer que el personaje sea un espía.", "Crear una capa de misterio y subtexto.", "El secreto debe ser el motor de la historia.", "El personaje debe esconder algo a los demás."],
+                    correct: "Crear una capa de misterio y subtexto."
+                },
+                {
+                    question: "Un personaje 'con un núcleo de bondad' es aquel que:",
+                    options: ["Siempre hace lo correcto.", "A pesar de sus defectos, tiene una cualidad redentora.", "Es un personaje secundario.", "Nunca comete errores."],
+                    correct: "A pesar de sus defectos, tiene una cualidad redentora."
+                },
+                {
+                    question: "¿Cuál es la diferencia entre un 'personaje protagónico' y un 'personaje principal'?",
+                    options: ["No hay diferencia.", "El protagonista es el centro de la acción, el principal puede no serlo.", "El principal es el que habla más.", "El protagónico siempre es un héroe."],
+                    correct: "El protagonista es el centro de la acción, el principal puede no serlo."
+                },
+                {
+                    question: "En el contexto de 'Creating Unforgettable Characters', el concepto de 'oposición' puede ser:",
+                    options: ["Solo un villano.", "Un villano, un grupo, la sociedad o la naturaleza.", "Solo un personaje secundario.", "El protagonista consigo mismo."],
+                    correct: "Un villano, un grupo, la sociedad o la naturaleza."
+                },
+                {
+                    question: "El 'deseo' de un personaje se relaciona con:",
+                    options: ["Su necesidad de ser feliz.", "Su objetivo interno y externo.", "Su apariencia física.", "Su nombre."],
+                    correct: "Su objetivo interno y externo."
+                },
+                {
+                    question: "¿Cuál es la clave para hacer que el 'arco del personaje' sea creíble?",
+                    options: ["Que el cambio sea repentino.", "Que el cambio sea lógico y justificado por los eventos.", "Que el personaje nunca cambie.", "Que el cambio solo sea físico."],
+                    correct: "Que el cambio sea lógico y justificado por los eventos."
+                },
+                {
+                    question: "Para Linda Seger, el 'antagonista' no tiene por qué ser malvado, puede ser:",
+                    options: ["Simplemente una persona con un objetivo opuesto al del héroe.", "Siempre un ser demoníaco.", "Un personaje que solo quiere ayudar.", "Un personaje estático."],
+                    correct: "Simplemente una persona con un objetivo opuesto al del héroe."
+                },
+                {
+                    question: "Un 'personaje de plantilla' es uno que:",
+                    options: ["Está muy bien desarrollado.", "Se basa en un arquetipo sin profundidad.", "Es único e impredecible.", "Siempre es un villano."],
+                    correct: "Se basa en un arquetipo sin profundidad."
+                },
+                {
+                    question: "Según Seger, ¿por qué es importante la 'coherencia' en un personaje?",
+                    options: ["Para que el público confíe en él.", "Para que no tenga contradicciones.", "Para que sea completamente predecible.", "Para que parezca estático."],
+                    correct: "Para que el público confíe en él."
+                },
+                {
+                    question: "La 'psicología de masas' en los personajes se refiere a:",
+                    options: ["Cómo un personaje se comporta en una multitud.", "La reacción del público hacia el personaje.", "Cómo el personaje puede ser un líder de masas.", "Las influencias sociales en su personalidad."],
+                    correct: "Las influencias sociales en su personalidad."
+                },
+                {
+                    question: "¿Qué es el 'efecto espejo' en el desarrollo de personajes?",
+                    options: ["Un personaje que refleja los defectos o virtudes del protagonista.", "Un personaje que siempre se ve en un espejo.", "Una técnica de edición.", "Un personaje que imita a otro."],
+                    correct: "Un personaje que refleja los defectos o virtudes del protagonista."
+                },
+                {
+                    question: "El 'problema interno' de un personaje se diferencia del externo en que:",
+                    options: ["El interno es un obstáculo mental o emocional, el externo es físico.", "El interno siempre se resuelve primero.", "El externo es siempre más importante.", "El interno no tiene que ser resuelto."],
+                    correct: "El interno es un obstáculo mental o emocional, el externo es físico."
+                },
+                {
+                    question: "La 'empatía' con un personaje se crea cuando el público:",
+                    options: ["Sabe todos sus secretos.", "Se identifica con sus luchas y emociones.", "Lo odia y quiere que fracase.", "No entiende sus motivaciones."],
+                    correct: "Se identifica con sus luchas y emociones."
+                },
+                {
+                    question: "¿Cuál es el riesgo de crear un 'personaje perfecto'?",
+                    options: ["Que el público se identifique con él.", "Que no tenga un conflicto interesante.", "Que sea demasiado complejo.", "Que el público lo considere un mentor."],
+                    correct: "Que no tenga un conflicto interesante."
+                },
+                {
+                    question: "Para Linda Seger, la 'acción y reacción' en un personaje significa que:",
+                    options: ["Debe ser impulsivo.", "Las acciones de un personaje deben provocar reacciones en los demás.", "El personaje debe reaccionar de forma predecible.", "El personaje no tiene control sobre su vida."],
+                    correct: "Las acciones de un personaje deben provocar reacciones en los demás."
+                },
+                {
+                    question: "El 'personaje espejo' se utiliza para:",
+                    options: ["Duplicar al protagonista.", "Resaltar el cambio o la falta de cambio del protagonista.", "Ser el antagonista.", "Ayudar al protagonista a resolver el conflicto externo."],
+                    correct: "Resaltar el cambio o la falta de cambio del protagonista."
+                },
+                {
+                    question: "Un 'personaje arquetípico' es una plantilla reconocida universalmente. ¿Cuál de los siguientes es un ejemplo de arquetipo?",
+                    options: ["Un hombre de negocios.", "La doncella en apuros.", "Un personaje secundario.", "Un detective."],
+                    correct: "La doncella en apuros."
+                },
+                {
+                    question: "¿Cuál es la diferencia entre la 'historia de fondo' y el 'arco' de un personaje?",
+                    options: ["La historia de fondo es el pasado, el arco es el cambio en la historia presente.", "La historia de fondo es la motivación externa, el arco es la interna.", "No hay diferencia.", "La historia de fondo es la que el personaje no conoce."],
+                    correct: "La historia de fondo es el pasado, el arco es el cambio en la historia presente."
+                },
+                {
+                    question: "Para Seger, la 'verdad del personaje' se revela a través de:",
+                    options: ["Lo que dice explícitamente.", "Sus acciones, no solo sus palabras.", "Las descripciones en las acotaciones.", "La música de la película."],
+                    correct: "Sus acciones, no solo sus palabras."
+                },
+                {
+                    question: "¿Qué es la 'lógica del personaje' según Linda Seger?",
+                    options: ["El personaje siempre actúa de forma lógica.", "Las acciones del personaje deben ser coherentes con su personalidad y motivación.", "El personaje debe resolver acertijos.", "El personaje tiene un IQ alto."],
+                    correct: "Las acciones del personaje deben ser coherentes con su personalidad y motivación."
+                },
+                {
+                    question: "Un 'personaje sin un objetivo claro' es propenso a:",
+                    options: ["Ser muy interesante.", "Ser difícil de entender y seguir.", "Ser un gran protagonista.", "Ser el antagonista."],
+                    correct: "Ser difícil de entender y seguir."
+                },
+                {
+                    question: "Linda Seger sugiere que los personajes deben tener 'problemas internos y externos' para:",
+                    options: ["Hacer la historia más compleja.", "Crear un arco de personaje completo y tridimensional.", "Confundir al público.", "No tener un final feliz."],
+                    correct: "Crear un arco de personaje completo y tridimensional."
+                },
+                {
+                    question: "Un personaje 'redondo' es aquel que:",
+                    options: ["Tiene una personalidad simple.", "Es complejo, con múltiples facetas y contradicciones.", "Es predecible.", "No cambia."],
+                    correct: "Es complejo, con múltiples facetas y contradicciones."
+                },
+                {
+                    question: "¿Qué es un 'personaje plano'?",
+                    options: ["Un personaje que experimenta un gran cambio.", "Un personaje con una o dos características principales, sin mucha profundidad.", "El personaje principal.", "Un personaje que muere en la historia."],
+                    correct: "Un personaje con una o dos características principales, sin mucha profundidad."
+                },
+                {
+                    question: "Para crear un personaje 'memorable', Linda Seger aconseja:",
+                    options: ["Darle un superpoder.", "Que sus acciones y decisiones tengan un impacto emocional en el público.", "Que sea muy gracioso.", "Que use ropa extraña."],
+                    correct: "Que sus acciones y decisiones tengan un impacto emocional en el público."
+                },
+                {
+                    question: "El 'viaje interno' de un personaje se refiere a:",
+                    options: ["El cambio psicológico y emocional que experimenta.", "El viaje físico de un lugar a otro.", "Su búsqueda de un tesoro.", "El viaje en el tiempo."],
+                    correct: "El cambio psicológico y emocional que experimenta."
+                },
+                {
+                    question: "Según Seger, el 'antagonista' es a menudo el:",
+                    options: ["Personaje más aburrido.", "Personaje menos importante.", "Héroe de su propia historia.", "Personaje que siempre hace lo correcto."],
+                    correct: "Héroe de su propia historia."
+                },
+                {
+                    question: "¿Qué consejo da Linda Seger sobre la 'historia de fondo'?",
+                    options: ["Debe contarse toda de una vez en un flashback.", "Debe ser compleja e inexplicable.", "Debe ser útil y estar integrada en la trama.", "Es opcional."],
+                    correct: "Debe ser útil y estar integrada en la trama."
+                },
+                {
+                    question: "Para hacer que un personaje sea 'interesante', Seger sugiere:",
+                    options: ["Darle un trabajo aburrido.", "Hacerlo predecible.", "Crear un contraste entre lo que dice y lo que hace.", "Hacerlo mudo."],
+                    correct: "Crear un contraste entre lo que dice y lo que hace."
+                },
+                {
+                    question: "¿Cuál es una de las funciones principales de los 'personajes secundarios' en la historia?",
+                    options: ["No tienen una función.", "Aumentar el realismo y el conflicto para el protagonista.", "Ser personajes de plantilla.", "Estar al servicio del antagonista."],
+                    correct: "Aumentar el realismo y el conflicto para el protagonista."
+                },
+                {
+                    question: "El 'viaje del personaje' de un antagonista puede ser:",
+                    options: ["Solo hacia el mal.", "Un camino hacia la redención.", "Un viaje estático.", "Un viaje al pasado."],
+                    correct: "Un camino hacia la redención."
+                },
+                {
+                    question: "¿Qué se considera una 'caracterización superficial'?",
+                    options: ["Un personaje con un pasado complejo.", "Un personaje definido solo por su profesión o apariencia.", "Un personaje con motivaciones profundas.", "Un personaje con un arco de transformación."],
+                    correct: "Un personaje definido solo por su profesión o apariencia."
+                },
+                {
+                    question: "El 'desarrollo de un personaje' no se limita a su crecimiento, también puede ser:",
+                    options: ["Su decadencia moral.", "El número de escenas en las que aparece.", "Su capacidad para resolver problemas.", "Su edad."],
+                    correct: "Su decadencia moral."
+                },
+                {
+                    question: "Un 'personaje multidimensional' es aquel que tiene:",
+                    options: ["Solo una meta.", "Varias capas de personalidad, motivaciones y contradicciones.", "Pocos diálogos.", "Solo aparece en el primer acto."],
+                    correct: "Varias capas de personalidad, motivaciones y contradicciones."
+                },
+                {
+                    question: "¿Qué es la 'lucha interna' de un personaje?",
+                    options: ["Una pelea con otro personaje.", "Un conflicto con el antagonista.", "Una lucha entre sus deseos y su moral.", "Una lucha por sobrevivir."],
+                    correct: "Una lucha entre sus deseos y su moral."
+                },
+                {
+                    question: "Para Seger, la 'vulnerabilidad' de un personaje es importante porque:",
+                    options: ["Lo hace parecer débil.", "Lo hace más relatable y humano.", "Lo hace parecer un villano.", "No es un rasgo importante."],
+                    correct: "Lo hace más relatable y humano."
+                },
 
-            // Array de preguntas, opciones y respuestas correctas
-            const questions = [
-                // Sección I: Estructura Dramática de Aristóteles (35 Preguntas)
-                {
-                    question: "¿Cuál es el título de la obra de Aristóteles donde se exponen sus teorías sobre la poesía y el drama?",
-                    options: ["La Retórica", "La Política", "Poética", "Ética a Nicómaco"],
-                    correct: "Poética"
-                },
-                {
-                    question: "Según Aristóteles, la imitación de una acción es el fundamento de toda tragedia. ¿Cómo se conoce a este concepto?",
-                    options: ["Catarsis", "Mimesis", "Hamartia", "Peripeteia"],
-                    correct: "Mimesis"
-                },
-                {
-                    question: "¿Qué término usa Aristóteles para referirse al cambio de la fortuna del protagonista de buena a mala?",
-                    options: ["Anagnórisis", "Mimesis", "Peripeteia", "Patetismo"],
-                    correct: "Peripeteia"
-                },
-                {
-                    question: "El clímax de una tragedia, donde el héroe sufre una revelación, es conocido como:",
-                    options: ["Prólogo", "Episodio", "Anagnórisis", "Éxodo"],
-                    correct: "Anagnórisis"
-                },
-                {
-                    question: "¿Qué es la 'fábula' en el contexto aristotélico?",
-                    options: ["El personaje principal de la historia.", "El tema moral de la obra.", "La organización de los incidentes o la trama.", "El diálogo entre los personajes."],
-                    correct: "La organización de los incidentes o la trama."
-                },
-                {
-                    question: "Aristóteles considera a la **catarsis** como una purificación emocional a través de la experiencia de:",
-                    options: ["Alegría y éxtasis.", "Miedo y compasión.", "Sorpresa y decepción.", "Enojo y tristeza."],
-                    correct: "Miedo y compasión."
-                },
-                {
-                    question: "Las tres unidades de la tragedia (acción, tiempo y lugar) fueron originalmente formuladas por:",
-                    options: ["Platón", "Aristóteles", "Homero", "Sócrates"],
-                    correct: "Aristóteles"
-                },
-                {
-                    question: "La 'hamartia' se refiere a:",
-                    options: ["El final feliz de la historia.", "Un giro inesperado en la trama.", "El defecto o error del héroe que provoca su caída.", "La recompensa del héroe."],
-                    correct: "El defecto o error del héroe que provoca su caída."
-                },
-                {
-                    question: "En la estructura aristotélica, ¿qué elemento debe ser creíble y probable, incluso si es ficticio?",
-                    options: ["El personaje", "El diálogo", "La música", "La trama"],
-                    correct: "La trama"
-                },
-                {
-                    question: "¿Cuál es la principal diferencia entre una tragedia y una comedia para Aristóteles?",
-                    options: ["La comedia tiene un final feliz, la tragedia no.", "La comedia imita a personas superiores, la tragedia a personas inferiores.", "La comedia tiene muchos personajes, la tragedia tiene pocos.", "La comedia no tiene catarsis, la tragedia sí."],
-                    correct: "La comedia tiene un final feliz, la tragedia no."
-                },
-                {
-                    question: "Aristóteles describe el principio, el medio y el final de una obra. ¿Cómo se relaciona el 'principio' con el 'medio'?",
-                    options: ["El principio es la continuación del medio.", "El principio no necesita de eventos previos.", "El principio es una consecuencia del medio.", "El principio no está conectado con el medio."],
-                    correct: "El principio no necesita de eventos previos."
-                },
-                {
-                    question: "¿Qué elemento dramático se refiere a la música y el canto en una tragedia?",
-                    options: ["Pensamiento", "Elocución", "Espectáculo", "Melodía"],
-                    correct: "Melodía"
-                },
-                {
-                    question: "La 'anagnórisis' en una tragedia típicamente se asocia con un cambio de la ignorancia a:",
-                    options: ["La felicidad", "El conocimiento", "La tristeza", "La venganza"],
-                    correct: "El conocimiento"
-                },
-                {
-                    question: "¿Cuál de los siguientes NO es un elemento constitutivo de la tragedia?",
-                    options: ["Trama (fábula)", "Personajes", "Diálogo (elocución)", "Narrador"],
-                    correct: "Narrador"
-                },
-                {
-                    question: "La unidad de acción exige que la trama de una obra:",
-                    options: ["Ocurra en un solo día.", "Se desarrolle en un solo lugar.", "Se centre en una sola historia sin sub-tramas irrelevantes.", "Incluya múltiples conflictos secundarios."],
-                    correct: "Se centre en una sola historia sin sub-tramas irrelevantes."
-                },
-                {
-                    question: "¿Qué es la 'peripeteia' en el contexto de una película de misterio?",
-                    options: ["El detective recolectando pistas.", "La revelación de la identidad del asesino.", "El detective siendo engañado por una pista falsa.", "La celebración del detective al resolver el caso."],
-                    correct: "El detective siendo engañado por una pista falsa."
-                },
-                {
-                    question: "El personaje de Edipo en la obra 'Edipo Rey' es un ejemplo clásico de un héroe trágico debido a su:",
-                    options: ["Gran inteligencia.", "Ceguera real.", "Anagnórisis y hamartia.", "Su peripeteia."],
-                    correct: "Anagnórisis y hamartia."
-                },
-                {
-                    question: "¿Cuál de estas películas sigue un esquema aristotélico de anagnórisis y peripeteia?",
-                    options: ["Star Wars: Una nueva esperanza", "La gran estafa", "El sexto sentido", "El Señor de los Anillos: La Comunidad del Anillo"],
-                    correct: "El sexto sentido"
-                },
-                {
-                    question: "¿Qué elemento dramático se refiere a la forma en que los personajes piensan y sienten?",
-                    options: ["Espectáculo", "Elocución", "Carácter", "Pensamiento"],
-                    correct: "Pensamiento"
-                },
-                {
-                    question: "El final de una tragedia es el 'prólogo'. ¿Cuál es el nombre del segmento que sigue al último canto del coro y concluye la tragedia?",
-                    options: ["Episodio", "Estásimo", "Éxodo", "Parodos"],
-                    correct: "Éxodo"
-                },
-                {
-                    question: "La 'peripeteia' de un villano que repentinamente se vuelve bueno es un ejemplo de:",
-                    options: ["Una peripeteia inversa.", "Una peripeteia no trágica.", "Un tipo de anagnórisis.", "Una excepción a la regla."],
-                    correct: "Una peripeteia inversa."
-                },
-                {
-                    question: "El 'coro' en la tragedia griega a menudo representaba:",
-                    options: ["El narrador de la historia.", "La voz de la audiencia o la opinión pública.", "La conciencia del héroe.", "Un grupo de personajes secundarios."],
-                    correct: "La voz de la audiencia o la opinión pública."
-                },
-                {
-                    question: "¿Cuál es la principal fuente de información sobre las ideas de Aristóteles sobre la tragedia?",
-                    options: ["Su correspondencia personal.", "Obras teatrales que escribió.", "Su libro 'Poética'.", "Los escritos de sus alumnos."],
-                    correct: "Su libro 'Poética'."
-                },
-                {
-                    question: "El final de una tragedia aristotélica se caracteriza por la muerte o la desgracia del héroe, lo que provoca:",
-                    options: ["Risa", "Indiferencia", "Piedad y temor", "Venganza"],
-                    correct: "Piedad y temor"
-                },
-                {
-                    question: "En la 'Poética', Aristóteles argumenta que una trama debe tener:",
-                    options: ["Un héroe con virtudes excepcionales.", "Una conexión lógica entre los eventos.", "Un final feliz garantizado.", "Muchos giros inesperados."],
-                    correct: "Una conexión lógica entre los eventos."
-                },
-                {
-                    question: "Un héroe aristotélico es un personaje que está:",
-                    options: ["Completamente bueno y sin defectos.", "Completamente malo y sin virtudes.", "Ni completamente bueno ni completamente malo.", "Un personaje secundario."],
-                    correct: "Ni completamente bueno ni completamente malo."
-                },
-                {
-                    question: "¿Qué es el 'pathos' en el contexto de la tragedia?",
-                    options: ["La purificación emocional.", "La cualidad de despertar compasión.", "El cambio de fortuna.", "La revelación del héroe."],
-                    correct: "La cualidad de despertar compasión."
-                },
-                {
-                    question: "La 'anagnórisis' en una comedia podría ser:",
-                    options: ["El protagonista revelando su verdadera identidad para ganar el amor.", "El protagonista perdiendo su fortuna.", "El protagonista peleando con su familia.", "El protagonista muriendo en el final."],
-                    correct: "El protagonista revelando su verdadera identidad para ganar el amor."
-                },
-                {
-                    question: "¿Cuál de los siguientes es un ejemplo de una 'hamartia' en una historia moderna?",
-                    options: ["Un detective demasiado arrogante que ignora una pista clave.", "Un héroe que es muy fuerte.", "Un personaje que tiene un buen corazón.", "Un científico que descubre una cura."],
-                    correct: "Un detective demasiado arrogante que ignora una pista clave."
-                },
-                {
-                    question: "La unidad de tiempo, según Aristóteles, implica que la acción de la obra se desarrolle en un periodo no mayor a:",
-                    options: ["Un día.", "Una semana.", "Un mes.", "Un año."],
-                    correct: "Un día."
-                },
-                {
-                    question: "Un ejemplo de 'peripeteia' en una película de acción podría ser:",
-                    options: ["El héroe entrenando para la misión.", "El héroe descubriendo que su mentor es en realidad el villano.", "El héroe celebrando su victoria.", "El héroe explicando su plan a su equipo."],
-                    correct: "El héroe descubriendo que su mentor es en realidad el villano."
-                },
-                {
-                    question: "¿Cuál es el propósito principal de la tragedia según la 'Poética'?",
-                    options: ["Enseñar una lección moral.", "Entretener al público.", "Evocar piedad y miedo para lograr la catarsis.", "Describir la vida real de los personajes."],
-                    correct: "Evocar piedad y miedo para lograr la catarsis."
-                },
-                {
-                    question: "¿Qué elemento se refiere al aspecto visual del drama, como el vestuario y la puesta en escena?",
-                    options: ["Elocución", "Melodía", "Espectáculo", "Pensamiento"],
-                    correct: "Espectáculo"
-                },
-                {
-                    question: "En la estructura aristotélica, ¿qué fase de la trama presenta el conflicto principal?",
-                    options: ["Exposición", "Nudo", "Desenlace", "Clímax"],
-                    correct: "Nudo"
-                },
-                {
-                    question: "Un 'carácter' en la teoría de Aristóteles debe ser:",
-                    options: ["Malo", "Bueno", "Consistente", "Predecible"],
-                    correct: "Consistente"
-                },
-                // Sección II: La Estructura de Syd Field (35 Preguntas)
-                {
-                    question: "¿Cómo se llama el modelo de tres actos desarrollado por Syd Field?",
-                    options: ["La Pirámide de Freytag", "El Viaje del Héroe", "El Paradigma", "La Estructura de Campo"],
-                    correct: "El Paradigma"
-                },
-                {
-                    question: "En el Paradigma, ¿cuál es la función del Primer Acto?",
-                    options: ["Resolución", "Confrontación", "Preparación", "Clímax"],
-                    correct: "Preparación"
-                },
-                {
-                    question: "¿Qué porcentaje de la película abarca aproximadamente el Primer Acto en el modelo de Syd Field?",
-                    options: ["10%", "25%", "50%", "75%"],
-                    correct: "25%"
-                },
-                {
-                    question: "¿Qué evento marca el final del Primer Acto y el inicio del Segundo?",
-                    options: ["El clímax", "La recompensa", "El primer Plot Point", "El punto medio"],
-                    correct: "El primer Plot Point"
-                },
-                {
-                    question: "El **Segundo Acto**, la parte más larga de la película, se enfoca en:",
-                    options: ["El inicio de la aventura.", "La confrontación.", "El final feliz.", "La presentación de personajes."],
-                    correct: "La confrontación."
-                },
-                {
-                    question: "¿Cuál es el propósito del Segundo Acto en la teoría de Syd Field?",
-                    options: ["Exponer el mundo y los personajes.", "Desarrollar el conflicto principal y el crecimiento del personaje.", "Resolver todas las tramas.", "Introducir al antagonista."],
-                    correct: "Desarrollar el conflicto principal y el crecimiento del personaje."
-                },
-                {
-                    question: "El segundo Plot Point se encuentra al final del Segundo Acto y:",
-                    options: ["Resuelve la historia.", "Marca un giro en el Tercer Acto.", "Regresa al protagonista a su mundo ordinario.", "Presenta un nuevo personaje."],
-                    correct: "Marca un giro en el Tercer Acto."
-                },
-                {
-                    question: "¿Qué porcentaje de la película abarca el Tercer Acto?",
-                    options: ["10%", "25%", "50%", "75%"],
-                    correct: "25%"
-                },
-                {
-                    question: "¿Qué es el 'incidente incitador' en el modelo de Syd Field?",
-                    options: ["El clímax de la historia.", "Un evento que presenta el conflicto y fuerza al héroe a la acción.", "La presentación de los personajes principales.", "Un flashback de la vida del protagonista."],
-                    correct: "Un evento que presenta el conflicto y fuerza al héroe a la acción."
-                },
-                {
-                    question: "La 'crisis', que ocurre en el Tercer Acto, es el momento en que el héroe:",
-                    options: ["Conoce a su mentor.", "Se encuentra en su punto más bajo antes de la confrontación final.", "Gana su recompensa.", "Regresa a su hogar."],
-                    correct: "Se encuentra en su punto más bajo antes de la confrontación final."
-                },
-                {
-                    question: "¿Dónde se encuentra el 'Midpoint' o 'Punto Medio' en el Paradigma de Syd Field?",
-                    options: ["Al inicio del Primer Acto.", "A la mitad del Segundo Acto.", "Al inicio del Tercer Acto.", "Al final del Tercer Acto."],
-                    correct: "A la mitad del Segundo Acto."
-                },
-                {
-                    question: "El 'Punto Medio' sirve para:",
-                    options: ["Introducir un nuevo personaje.", "Dar un giro dramático y cambiar la dirección de la historia.", "Concluir el conflicto.", "Generar una sensación de calma antes de la tormenta."],
-                    correct: "Dar un giro dramático y cambiar la dirección de la historia."
-                },
-                {
-                    question: "¿Cuál es la principal diferencia entre un Plot Point y un 'Plot Twist'?",
-                    options: ["Un 'Plot Twist' es un giro sorpresa, mientras que un Plot Point es un evento estructural.", "Un Plot Point es un giro sorpresa, mientras que un 'Plot Twist' es un evento estructural.", "No hay diferencia entre los dos.", "Un 'Plot Twist' solo ocurre en el Primer Acto."],
-                    correct: "Un 'Plot Twist' es un giro sorpresa, mientras que un Plot Point es un evento estructural."
-                },
-                {
-                    question: "¿Qué película es un ejemplo clásico de la estructura de Syd Field?",
-                    options: ["El Señor de los Anillos: La Comunidad del Anillo.", "La guerra de las galaxias: El Imperio contraataca.", "La guerra de las galaxias: Una nueva esperanza.", "Blade Runner."],
-                    correct: "La guerra de las galaxias: Una nueva esperanza."
-                },
-                {
-                    question: "El Primer Acto, conocido como la 'Preparación', debe terminar con:",
-                    options: ["La muerte de un personaje importante.", "El protagonista huyendo de su problema.", "Un evento que impulsa al héroe a la acción.", "La historia volviendo al punto de partida."],
-                    correct: "Un evento que impulsa al héroe a la acción."
-                },
-                {
-                    question: "El Segundo Acto, la 'Confrontación', es donde se incrementa la:",
-                    options: ["Felicidad del héroe.", "La tranquilidad.", "La complicación y la tensión.", "La simplicidad."],
-                    correct: "La complicación y la tensión."
-                },
-                {
-                    question: "¿Qué término usa Syd Field para describir el camino que sigue el guionista?",
-                    options: ["El Viaje del Héroe", "La Línea Dramática", "El Paradigma", "El Camino de la Escritura"],
-                    correct: "El Paradigma"
-                },
-                {
-                    question: "El Tercer Acto, la 'Resolución', debe incluir:",
-                    options: ["Un nuevo conflicto principal.", "La batalla final.", "Una nueva subtrama.", "La presentación del protagonista."],
-                    correct: "La batalla final."
-                },
-                {
-                    question: "¿Qué debe suceder en el Primer Acto para que la audiencia se involucre en la historia?",
-                    options: ["La muerte de un personaje.", "El protagonista debe enfrentar una crisis existencial.", "La presentación de un problema que el héroe debe resolver.", "El héroe debe tener una aventura."],
-                    correct: "La presentación de un problema que el héroe debe resolver."
-                },
-                {
-                    question: "El modelo de Syd Field se considera una versión moderna de la estructura de:",
-                    options: ["Aristóteles", "Joseph Campbell", "Christopher Vogler", "Platón"],
-                    correct: "Aristóteles"
-                },
-                {
-                    question: "El 'Punto Medio' en el Paradigma sirve como un momento para:",
-                    options: ["Disminuir la tensión.", "Dar una falsa victoria o derrota al héroe.", "El héroe regresando a casa.", "Introducir al antagonista."],
-                    correct: "Dar una falsa victoria o derrota al héroe."
-                },
-                {
-                    question: "¿Cuál de los siguientes es un ejemplo de un 'Plot Point' en el modelo de Syd Field?",
-                    options: ["El protagonista aprendiendo a usar una espada.", "El protagonista decidiendo mudarse de casa.", "El protagonista descubriendo un mapa que lo lleva al tesoro.", "El protagonista conociendo a su interés amoroso."],
-                    correct: "El protagonista descubriendo un mapa que lo lleva al tesoro."
-                },
-                {
-                    question: "En el Segundo Acto, el protagonista se enfrenta a una serie de obstáculos. Syd Field los llama:",
-                    options: ["Muros", "Pruebas", "Confrontaciones", "Complicaciones"],
-                    correct: "Pruebas"
-                },
-                {
-                    question: "El modelo de Syd Field se utiliza principalmente para:",
-                    options: ["Obras de teatro.", "Novelas.", "Guiones de cine y televisión.", "Poesía."],
-                    correct: "Guiones de cine y televisión."
-                },
-                {
-                    question: "¿Cuál de los siguientes es un componente clave del Tercer Acto en el Paradigma de Syd Field?",
-                    options: ["La presentación del mundo de la historia.", "El 'incidente incitador'.", "El clímax y el desenlace.", "El primer 'Plot Point'."],
-                    correct: "El clímax y el desenlace."
-                },
-                {
-                    question: "Según Syd Field, un guion sin una estructura sólida es solo:",
-                    options: ["Un documento sin sentido.", "Una serie de eventos aleatorios.", "Una colección de escenas.", "Un cuento de hadas."],
-                    correct: "Una colección de escenas."
-                },
-                {
-                    question: "La 'resolución' en el Tercer Acto implica:",
-                    options: ["La victoria del héroe.", "La derrota del héroe.", "El héroe enfrentando su mayor miedo.", "Un regreso al pasado."],
-                    correct: "La victoria del héroe."
-                },
-                {
-                    question: "El 'paradigma' de Syd Field es un modelo que enfatiza la importancia de:",
-                    options: ["La improvisación.", "La estructura y el control.", "El caos narrativo.", "La libertad creativa total."],
-                    correct: "La estructura y el control."
-                },
-                {
-                    question: "La 'Confrontación' en el Segundo Acto es donde el guionista debe desarrollar:",
-                    options: ["La introducción del héroe.", "La trama secundaria.", "El conflicto principal.", "La resolución final."],
-                    correct: "El conflicto principal."
-                },
-                {
-                    question: "En el modelo de Syd Field, el 'incidente incitador' es lo que provoca la:",
-                    options: ["Catarsis.", "Peripeteia.", "Llamada a la acción.", "Anagnórisis."],
-                    correct: "Llamada a la acción."
-                },
-                {
-                    question: "El final del Primer Acto debe ser lo suficientemente fuerte para:",
-                    options: ["Concluir la historia.", "Enganchar al público para que continúe viendo la película.", "Introducir a todos los personajes.", "Resolver la historia."],
-                    correct: "Enganchar al público para que continúe viendo la película."
-                },
-                {
-                    question: "¿Cuál de los siguientes elementos es un componente clave de la 'Preparación' en el Primer Acto?",
-                    options: ["La confrontación final.", "La revelación de un secreto.", "La presentación del personaje principal y su objetivo.", "La resolución de todas las subtramas."],
-                    correct: "La presentación del personaje principal y su objetivo."
-                },
-                {
-                    question: "En el modelo de Syd Field, el clímax se encuentra en el Tercer Acto, específicamente:",
-                    options: ["Al principio del acto.", "Al final del acto.", "En la mitad del acto.", "En cualquier punto del acto."],
-                    correct: "En la mitad del acto."
-                },
-                {
-                    question: "El 'Punto Medio' en el Paradigma a menudo se considera un punto de no retorno para el héroe. Esto significa que:",
-                    options: ["El héroe puede regresar a su vida ordinaria.", "El héroe no puede regresar a su vida ordinaria sin haber cambiado.", "El héroe decide abandonar la aventura.", "El héroe muere."],
-                    correct: "El héroe no puede regresar a su vida ordinaria sin haber cambiado."
-                },
-                {
-                    question: "¿Cuál de las siguientes es una crítica común a la teoría de Syd Field?",
-                    options: ["Es demasiado flexible.", "Es demasiado rígida y limita la creatividad.", "No es aplicable a las películas modernas.", "No tiene en cuenta al público."],
-                    correct: "Es demasiado rígida y limita la creatividad."
-                },
-                // Sección III: El Viaje del Héroe (30 Preguntas)
-                {
-                    question: "¿Quién fue el autor del libro 'El héroe de las mil caras', que popularizó el concepto del monomito?",
-                    options: ["Christopher Vogler", "Syd Field", "Carl Jung", "Joseph Campbell"],
-                    correct: "Joseph Campbell"
-                },
-                {
-                    question: "En el Viaje del Héroe, la etapa en la que el protagonista conoce al personaje que lo guiará es:",
-                    options: ["El Primer Umbral", "El Encuentro con el Mentor", "El Llamado a la Aventura", "La Resurrección"],
-                    correct: "El Encuentro con el Mentor"
-                },
-                {
-                    question: "¿Qué etapa se caracteriza por la vida normal del héroe antes de que comience su aventura?",
-                    options: ["El Mundo Ordinario", "El Mundo Especial", "La Llamada a la Aventura", "El Rechazo de la Llamada"],
-                    correct: "El Mundo Ordinario"
-                },
-                {
-                    question: "El 'Llamado a la Aventura' es:",
-                    options: ["El momento en que el héroe regresa a su mundo.", "El momento en que el héroe recibe un desafío o una misión.", "El momento en que el héroe se enfrenta a su mayor miedo.", "El momento en que el héroe conoce a su mentor."],
-                    correct: "El momento en que el héroe recibe un desafío o una misión."
-                },
-                {
-                    question: "Cuando el héroe duda o se niega a aceptar el llamado, se trata de la etapa de:",
-                    options: ["El Cruce del Primer Umbral", "La Prueba, Aliados y Enemigos", "El Rechazo de la Llamada", "La Recompensa"],
-                    correct: "El Rechazo de la Llamada"
-                },
-                {
-                    question: "¿Qué representa el 'Primer Umbral' en el Viaje del Héroe?",
-                    options: ["El punto final de la aventura.", "La entrada al mundo desconocido o especial.", "El regreso al mundo ordinario.", "La confrontación final."],
-                    correct: "La entrada al mundo desconocido o especial."
-                },
-                {
-                    question: "Durante la etapa de 'Prueba, Aliados y Enemigos', el héroe:",
-                    options: ["Regresa a casa.", "Afronta desafíos, encuentra aliados y identifica enemigos.", "Recibe su recompensa.", "Se enfrenta a su mentor."],
-                    correct: "Afronta desafíos, encuentra aliados y identifica enemigos."
-                },
-                {
-                    question: "¿Cuál es el propósito de la 'Aproximación a la Caverna Profunda'?",
-                    options: ["Celebrar una victoria.", "Prepararse para la prueba más difícil.", "Regresar al mundo ordinario.", "Despedirse de los aliados."],
-                    correct: "Prepararse para la prueba más difícil."
-                },
-                {
-                    question: "La 'Prueba Suprema' (Ordeal) es:",
-                    options: ["Un momento de calma antes de la tormenta.", "El momento en que el héroe enfrenta su mayor miedo o un peligro mortal.", "La etapa de la recompensa.", "El momento de la muerte y renacimiento simbólico."],
-                    correct: "El momento en que el héroe enfrenta su mayor miedo o un peligro mortal."
-                },
-                {
-                    question: "Tras la Prueba Suprema, el héroe a menudo obtiene una 'Recompensa' (Reward). ¿Qué puede ser esta recompensa?",
-                    options: ["Solo un objeto físico.", "Un poder, un conocimiento, un tesoro o una reconciliación.", "El regreso inmediato a casa.", "El final de la aventura."],
-                    correct: "Un poder, un conocimiento, un tesoro o una reconciliación."
-                },
-                {
-                    question: "El 'Camino de Regreso' (The Road Back) es la etapa en la que el héroe:",
-                    options: ["Comienza su aventura.", "Decide quedarse en el mundo especial.", "Se compromete a regresar al mundo ordinario, a menudo enfrentando nuevas amenazas.", "Recibe su recompensa."],
-                    correct: "Se compromete a regresar al mundo ordinario, a menudo enfrentando nuevas amenazas."
-                },
-                {
-                    question: "¿Qué sucede en la 'Resurrección'?",
-                    options: ["El héroe muere definitivamente.", "El héroe se enfrenta a una última prueba crucial que lo transforma.", "El héroe celebra su victoria.", "El héroe rechaza la llamada."],
-                    correct: "El héroe se enfrenta a una última prueba crucial que lo transforma."
-                },
-                {
-                    question: "La 'Reintegración a la Sociedad' (Return with the Elixir) es la etapa final donde el héroe:",
-                    options: ["Se queda para siempre en el mundo especial.", "Regresa a su mundo ordinario, pero transformado, y comparte su experiencia.", "Abandona la aventura.", "Se enfrenta a su mentor."],
-                    correct: "Regresa a su mundo ordinario, pero transformado, y comparte su experiencia."
-                },
-                {
-                    question: "¿Qué personaje literario es un arquetipo común del 'Mentor'?",
-                    options: ["El villano.", "El antagonista.", "Gandalf de El Señor de los Anillos.", "La damisela en apuros."],
-                    correct: "Gandalf de El Señor de los Anillos."
-                },
-                {
-                    question: "El arquetipo del 'Loki' o 'Trickster' se caracteriza por:",
-                    options: ["Ser un guía sabio.", "Ser travieso, desobediente y a menudo rompe las reglas.", "Ser el principal antagonista.", "Ser el interés amoroso."],
-                    correct: "Ser travieso, desobediente y a menudo rompe las reglas."
-                },
-                {
-                    question: "¿Qué papel cumple el 'Guardían del Umbral'?",
-                    options: ["Ayudar al héroe a cruzar el umbral.", "Impedir que el héroe cruce el umbral.", "Darle la recompensa al héroe.", "Ser el mentor del héroe."],
-                    correct: "Impedir que el héroe cruce el umbral."
-                },
-                {
-                    question: "En 'Star Wars', Luke Skywalker recibe el 'Llamado a la Aventura' cuando:",
-                    options: ["Se une a la Academia Jedi.", "Ve el mensaje de la Princesa Leia en R2-D2.", "Entrena con Yoda.", "Viaja a Tatooine."],
-                    correct: "Ve el mensaje de la Princesa Leia en R2-D2."
-                },
-                {
-                    question: "¿Quién actúa como 'Mentor' de Luke Skywalker en 'Star Wars'?",
-                    options: ["Han Solo", "Obi-Wan Kenobi y Yoda.", "La Princesa Leia.", "Darth Vader."],
-                    correct: "Obi-Wan Kenobi y Yoda."
-                },
-                {
-                    question: "¿Cuál es la 'Prueba Suprema' de Luke Skywalker en 'Una Nueva Esperanza'?",
-                    options: ["Destruir la Estrella de la Muerte.", "Capturar a Darth Vader.", "Escapar de la Estrella de la Muerte.", "Enfrentarse a su padre."],
-                    correct: "Destruir la Estrella de la Muerte."
-                },
-                {
-                    question: "La 'Recompensa' de Luke Skywalker en 'Una Nueva Esperanza' es:",
-                    options: ["Un nuevo sable de luz.", "La destrucción de la Estrella de la Muerte y el reconocimiento de la Alianza Rebelde.", "La fuga de la Estrella de la Muerte.", "El amor de la Princesa Leia."],
-                    correct: "La destrucción de la Estrella de la Muerte y el reconocimiento de la Alianza Rebelde."
-                },
-                {
-                    question: "¿Qué película adapta el Viaje del Héroe para un contexto moderno y femenino?",
-                    options: ["El Padrino", "Matrix", "Thelma y Louise", "Pulp Fiction"],
-                    correct: "Thelma y Louise"
-                },
-                {
-                    question: "El concepto de 'Elixir' al final del Viaje del Héroe representa:",
-                    options: ["Un brebaje mágico.", "La solución a un problema universal o personal, o el conocimiento adquirido.", "Una nueva llamada a la aventura.", "El final de la historia."],
-                    correct: "La solución a un problema universal o personal, o el conocimiento adquirido."
-                },
-                {
-                    question: "El arquetipo del 'Sombra' (Shadow) representa:",
-                    options: ["El lado oscuro o reprimido del héroe.", "El mentor.", "El aliado fiel.", "El mundo ordinario."],
-                    correct: "El lado oscuro o reprimido del héroe."
-                },
-                {
-                    question: "En el Viaje del Héroe, la 'Transición del Mundo Ordinario al Mundo Especial' es catalizada por:",
-                    options: ["El clímax.", "La resolución.", "El Llamado a la Aventura y el Cruce del Primer Umbral.", "La recompensa."],
-                    correct: "El Llamado a la Aventura y el Cruce del Primer Umbral."
-                },
-                {
-                    question: "Un ejemplo de 'Aliado' en el Viaje del Héroe es:",
-                    options: ["El villano principal.", "Un personaje que ayuda y apoya al héroe.", "El mentor.", "El guardián del umbral."],
-                    correct: "Un personaje que ayuda y apoya al héroe."
-                },
-                {
-                    question: "El 'Rechazo de la Llamada' puede deberse a:",
-                    options: ["Valentía extrema.", "Miedo, inseguridad o deberes preexistentes.", "Una recompensa segura.", "La ausencia de un mentor."],
-                    correct: "Miedo, inseguridad o deberes preexistentes."
-                },
-                {
-                    question: "¿Qué papel juega el 'Heraldo' en el Viaje del Héroe?",
-                    options: ["Ser el principal antagonista.", "Anunciar el desafío o la llamada a la aventura.", "Dar la recompensa al héroe.", "Guiar al héroe a través del mundo especial."],
-                    correct: "Anunciar el desafío o la llamada a la aventura."
-                },
-                {
-                    question: "La 'Alegoría de la Caverna' de Platón comparte similitudes con el Viaje del Héroe en la idea de:",
-                    options: ["La importancia del diálogo.", "La transición de la ignorancia a la iluminación.", "El conflicto entre personajes.", "La celebración de la victoria."],
-                    correct: "La transición de la ignorancia a la iluminación."
-                },
-                {
-                    question: "El 'Encuentro con el Mentor' ayuda al héroe a:",
-                    options: ["Evitar la aventura.", "Superar sus miedos y prepararse para lo desconocido.", "Obtener la recompensa.", "Regresar al mundo ordinario."],
-                    correct: "Superar sus miedos y prepararse para lo desconocido."
-                },
-                {
-                    question: "¿Qué representa el 'Mundo Especial' en el Viaje del Héroe?",
-                    options: ["El hogar del héroe.", "Un lugar o estado desconocido y peligroso, o donde se encuentran las reglas diferentes.", "El lugar donde se recibe la recompensa.", "El punto de partida de la aventura."],
-                    correct: "Un lugar o estado desconocido y peligroso, o donde se encuentran las reglas diferentes."
-                },
-                {
-                    question: "La etapa de 'La Recompensa (Tomando la Espada)' simboliza:",
-                    options: ["El final de la aventura.", "La obtención del objeto, conocimiento o poder buscado.", "El regreso a casa.", "La muerte del héroe."],
-                    correct: "La obtención del objeto, conocimiento o poder buscado."
-                },
-                {
-                    question: "En la narrativa, el 'viaje del héroe' es un patrón que se repite a través de muchas culturas y épocas, conocido como:",
-                    options: ["Estructura lineal.", "Monstruo.", "Monomito.", "Clímax único."],
-                    correct: "Monomito."
-                },
-                {
-                    question: "¿Quién fue el principal teórico que analizó el monomito en mitos de todo el mundo?",
-                    options: ["Syd Field", "Christopher Vogler", "Joseph Campbell", "Aristóteles"],
-                    correct: "Joseph Campbell"
-                },
-                {
-                    question: "El 'Retorno del Héroe' es fundamental porque:",
-                    options: ["El héroe se queda en el mundo especial para siempre.", "El héroe trae consigo algo valioso (el elixir) para su comunidad.", "El héroe olvida su experiencia.", "La aventura termina sin consecuencias."],
-                    correct: "El héroe trae consigo algo valioso (el elixir) para su comunidad."
-                },
-                {
-                    question: "En 'Harry Potter y la Piedra Filosofal', el 'Llamado a la Aventura' de Harry se manifiesta cuando:",
-                    options: ["Se entera de que es un mago y recibe su carta de Hogwarts.", "Conoce a Ron y Hermione.", "Entra a Hogwarts.", "Lucha contra el troll."],
-                    correct: "Se entera de que es un mago y recibe su carta de Hogwarts."
-                },
-                {
-                    question: "El 'Mentor' de Harry Potter es:",
-                    options: ["Draco Malfoy", "Severus Snape (con matices)", "Albus Dumbledore.", "Ron Weasley."],
-                    correct: "Albus Dumbledore."
-                },
-                {
-                    question: "La 'Prueba Suprema' para Harry en 'La Piedra Filosofal' es:",
-                    options: ["Superar los exámenes.", "Enfrentarse a Quirrell/Voldemort por la Piedra Filosofal.", "Aprender a volar en escoba.", "Ganar el partido de Quidditch."],
-                    correct: "Enfrentarse a Quirrell/Voldemort por la Piedra Filosofal."
-                },
-                {
-                    question: "La 'Recompensa' de Harry en la primera película es:",
-                    options: ["La Copa de Quidditch.", "La salvación de la Piedra Filosofal y un sentido de pertenencia.", "La amistad de Hagrid.", "Un nuevo conocimiento sobre su pasado."],
-                    correct: "La salvación de la Piedra Filosofal y un sentido de pertenencia."
-                },
-                {
-                    question: "¿Cuál es la 'Resurrección' simbólica de Harry en la primera película?",
-                    options: ["Su llegada a Hogwarts.", "Su encuentro con la familia Dursley.", "Su confrontación final con Voldemort.", "Su decisión de no rendirse ante el miedo."],
-                    correct: "Su confrontación final con Voldemort."
-                },
-                {
-                    question: "El 'Elixir' que Harry trae de vuelta al mundo ordinario al final de la primera película es:",
-                    options: ["La Piedra Filosofal.", "Un hechizo aprendido.", "El conocimiento de que el bien puede triunfar sobre el mal y un hogar en Hogwarts.", "La derrota definitiva de Voldemort."],
-                    correct: "El conocimiento de que el bien puede triunfar sobre el mal y un hogar en Hogwarts."
-                },
-                {
-                    question: "¿Qué arquetipo representa el 'Antagonista'?",
-                    options: ["El héroe.", "La fuerza principal que se opone al héroe.", "El mentor.", "El aliado."],
-                    correct: "La fuerza principal que se opone al héroe."
-                },
-                {
-                    question: "La diferencia entre el 'Viaje del Héroe' y el 'Paradigma' de Syd Field es que:",
-                    options: ["El Viaje del Héroe es más centrado en el arquetipo y el desarrollo psicológico, mientras que el Paradigma es más enfocado en la estructura de tres actos.", "Son exactamente lo mismo.", "El Paradigma ignora el desarrollo de personajes.", "El Viaje del Héroe solo se aplica a mitos antiguos."],
-                    correct: "El Viaje del Héroe es más centrado en el arquetipo y el desarrollo psicológico, mientras que el Paradigma es más enfocado en la estructura de tres actos."
-                },
-                {
-                    question: "¿Qué personaje es un ejemplo de 'Hermafrodita' (Shapeshifter) en el Viaje del Héroe?",
-                    options: ["Un personaje que cambia de apariencia o lealtad.", "El mentor del héroe.", "El principal antagonista.", "El aliado principal."],
-                    correct: "Un personaje que cambia de apariencia o lealtad."
-                },
-                {
-                    question: "El 'Viaje del Héroe' a menudo culmina en:",
-                    options: ["La perpetuación del status quo.", "Un retorno al estado inicial sin cambios.", "La transformación del héroe y la restauración del orden.", "El abandono del mundo ordinario."],
-                    correct: "La transformación del héroe y la restauración del orden."
-                }
-            ];
+                // Sección II: De "Making a Good Script Great"
+                {
+                    question: "Según Seger, el 'punto de giro' (plot point) es un evento que:",
+                    options: ["Detiene la acción.", "Mantiene la historia en su lugar.", "Impulsa la historia hacia una nueva dirección.", "Solo ocurre al final."],
+                    correct: "Impulsa la historia hacia una nueva dirección."
+                },
+                {
+                    question: "En el libro 'Making a Good Script Great', Linda Seger se enfoca principalmente en el proceso de:",
+                    options: ["Escribir el primer borrador.", "Reescribir y refinar un guion.", "Promocionar un guion.", "Escribir un libro."],
+                    correct: "Reescribir y refinar un guion."
+                },
+                {
+                    question: "¿Cuál es el propósito del 'tema' en una película, según Seger?",
+                    options: ["Ser un mensaje moral explícito.", "Unificar todos los elementos del guion.", "Ser el clímax de la historia.", "No es importante."],
+                    correct: "Unificar todos los elementos del guion."
+                },
+                {
+                    question: "La 'estructura en tres actos' consiste en:",
+                    options: ["Inicio, nudo y desenlace.", "Exposición, confrontación y resolución.", "A y B son correctas.", "Solo A es correcta."],
+                    correct: "A y B son correctas."
+                },
+                {
+                    question: "¿Qué se busca en la reescritura de las 'escenas' individuales?",
+                    options: ["Hacerlas más largas.", "Asegurar que cada escena tenga un propósito dramático.", "Eliminar el conflicto.", "Añadir más personajes."],
+                    correct: "Asegurar que cada escena tenga un propósito dramático."
+                },
+                {
+                    question: "Seger argumenta que la 'trama secundaria' (sub-plot) debe:",
+                    options: ["No estar relacionada con la trama principal.", "Solo servir de relleno.", "Estar vinculada y apoyar la trama principal.", "Ser más compleja que la trama principal."],
+                    correct: "Estar vinculada y apoyar la trama principal."
+                },
+                {
+                    question: "Para mejorar el 'ritmo' de un guion, Seger sugiere:",
+                    options: ["Añadir más escenas de acción.", "Variar la duración de las escenas y el tipo de acción.", "Eliminar todo el diálogo.", "Hacer todo el guion más rápido."],
+                    correct: "Variar la duración de las escenas y el tipo de acción."
+                },
+                {
+                    question: "La 'voz narrativa' del guion se refiere a:",
+                    options: ["La narración del director.", "El estilo único de la historia y el guionista.", "La voz del protagonista.", "Las acotaciones en el guion."],
+                    correct: "El estilo único de la historia y el guionista."
+                },
+                {
+                    question: "¿Cuál es la función del 'clímax' en una historia?",
+                    options: ["Introducir un nuevo conflicto.", "Ser el momento de máxima tensión donde se resuelve el conflicto principal.", "Hacer que el público se confunda.", "Regresar al protagonista a su vida normal."],
+                    correct: "Ser el momento de máxima tensión donde se resuelve el conflicto principal."
+                },
+                {
+                    question: "Para que un 'diálogo' sea efectivo, Seger sugiere que debe:",
+                    options: ["Ser muy largo.", "Sonar como una conversación real, pero ser más conciso.", "No contener subtexto.", "Solo servir para avanzar la trama."],
+                    correct: "Sonar como una conversación real, pero ser más conciso."
+                },
+                {
+                    question: "La 'exposición' de una historia es la información necesaria para que el público:",
+                    options: ["Sepa el final.", "Entienda la historia y los personajes.", "Se aburra.", "Entienda el subtexto."],
+                    correct: "Entienda la historia y los personajes."
+                },
+                {
+                    question: "¿Qué se logra con un buen 'primer borrador'?",
+                    options: ["El guion perfecto.", "Una historia completa, aunque imperfecta, para reescribir.", "Un guion que no necesita cambios.", "Solo el inicio y el final."],
+                    correct: "Una historia completa, aunque imperfecta, para reescribir."
+                },
+                {
+                    question: "La 'premisas' de una historia es:",
+                    options: ["La sinopsis completa.", "El conflicto principal.", "Una oración que resume el conflicto central y el protagonista.", "El título de la película."],
+                    correct: "Una oración que resume el conflicto central y el protagonista."
+                },
+                {
+                    question: "¿Por qué es crucial el 'punto de giro' para la estructura de un guion?",
+                    options: ["Porque es el momento más lento.", "Porque es el momento en el que el héroe se rinde.", "Porque fuerza al protagonista a tomar una decisión irrevocable.", "Porque introduce un nuevo personaje."],
+                    correct: "Porque fuerza al protagonista a tomar una decisión irrevocable."
+                },
+                {
+                    question: "En la reescritura, ¿cómo se aborda la 'exposición'?",
+                    options: ["Se debe añadir más exposición.", "Se debe ocultar y revelar de forma sutil y dramática.", "Se debe poner toda la información al principio.", "Se debe eliminar por completo."],
+                    correct: "Se debe ocultar y revelar de forma sutil y dramática."
+                },
+                {
+                    question: "Según Seger, el 'ritmo' de un guion está relacionado con:",
+                    options: ["La rapidez con la que se filma.", "El flujo de la historia, la alternancia de escenas rápidas y lentas.", "La cantidad de diálogos.", "El número de personajes."],
+                    correct: "El flujo de la historia, la alternancia de escenas rápidas y lentas."
+                },
+                {
+                    question: "¿Qué significa 'reescribir con el tema en mente'?",
+                    options: ["Asegurarse de que cada escena sirva para reforzar el tema central.", "Escribir el tema en todas las páginas.", "Eliminar el tema por completo.", "No es una técnica de reescritura."],
+                    correct: "Asegurarse de que cada escena sirva para reforzar el tema central."
+                },
+                {
+                    question: "Para mejorar un 'diálogo débil', Seger aconseja:",
+                    options: ["Hacerlo más largo.", "Eliminarlo y reemplazarlo con acción.", "Añadir más palabras.", "Hacer que cada línea tenga un propósito."],
+                    correct: "Hacer que cada línea tenga un propósito."
+                },
+                {
+                    question: "El 'subtexto' es una herramienta clave para:",
+                    options: ["Confundir al público.", "Crear una historia simple.", "Añadir profundidad a los personajes y a las escenas.", "Hacer el guion más corto."],
+                    correct: "Añadir profundidad a los personajes y a las escenas."
+                },
+                {
+                    question: "Seger habla de la importancia del 'factor sorpresa'. ¿A qué se refiere?",
+                    options: ["El final inesperado.", "Eventos que el público no ve venir.", "Un género de película.", "Un personaje secundario."],
+                    correct: "Eventos que el público no ve venir."
+                },
+                {
+                    question: "¿Cuál es el propósito de un 'arco de personaje' en una historia?",
+                    options: ["Mantener al personaje estático.", "Mostrar el cambio o la evolución del protagonista.", "Hacer que el personaje sea predecible.", "Eliminar el conflicto."],
+                    correct: "Mostrar el cambio o la evolución del protagonista."
+                },
+                {
+                    question: "El 'punto de no retorno' se refiere a un evento donde el protagonista:",
+                    options: ["Muere.", "No puede volver a su vida anterior, la aventura ha comenzado.", "Decide no continuar con la aventura.", "Llega a su destino."],
+                    correct: "No puede volver a su vida anterior, la aventura ha comenzado."
+                },
+                {
+                    question: "Según Linda Seger, una 'escena funcional' es aquella que:",
+                    options: ["Tiene mucho diálogo.", "No es importante para la historia.", "Contribuye al avance de la trama o al desarrollo de un personaje.", "Es solo para el director."],
+                    correct: "Contribuye al avance de la trama o al desarrollo de un personaje."
+                },
+                {
+                    question: "¿Qué significa 'subir las apuestas' en el guion?",
+                    options: ["Aumentar el riesgo y la tensión para el protagonista.", "Hacer que el guion sea más caro de producir.", "Añadir más personajes.", "Incluir más diálogo."],
+                    correct: "Aumentar el riesgo y la tensión para el protagonista."
+                },
+                {
+                    question: "La 'voz del guionista' se manifiesta a través de:",
+                    options: ["Su biografía.", "El estilo de la historia y el tono general del guion.", "La música de la película.", "Las notas del director."],
+                    correct: "El estilo de la historia y el tono general del guion."
+                },
+                {
+                    question: "Para Seger, la 'estructura' de un guion es como:",
+                    options: ["Una cadena que se rompe fácilmente.", "El esqueleto de la historia.", "Un mapa que no se puede cambiar.", "Un laberinto sin salida."],
+                    correct: "El esqueleto de la historia."
+                },
+                {
+                    question: "¿Por qué se usa el 'midpoint' o 'punto medio' en la estructura?",
+                    options: ["Para detener la acción.", "Para reorientar la historia y aumentar la tensión.", "Para resolver el conflicto.", "Para introducir a los personajes."],
+                    correct: "Para reorientar la historia y aumentar la tensión."
+                },
+                {
+                    question: "El 'subtexto' en el diálogo se refiere a:",
+                    options: ["Lo que se dice directamente.", "Lo que se quiere decir, pero no se expresa abiertamente.", "Un diálogo aburrido.", "Un monólogo interno."],
+                    correct: "Lo que se quiere decir, pero no se expresa abiertamente."
+                },
+                {
+                    question: "La 'revelación dramática' es un evento que:",
+                    options: ["Sorprende al público y cambia la dirección de la historia.", "Solo ocurre al principio.", "Es esperado por todos.", "No tiene importancia."],
+                    correct: "Sorprende al público y cambia la dirección de la historia."
+                },
+                {
+                    question: "¿Qué se busca lograr al 'reescribir una escena'?",
+                    options: ["Que sea más corta.", "Que tenga un único propósito claro.", "Que se elimine.", "Que sea más larga."],
+                    correct: "Que tenga un único propósito claro."
+                },
+                {
+                    question: "Seger aconseja que el guionista 'escuche' a sus personajes. ¿Qué significa esto?",
+                    options: ["Que el personaje hable mucho.", "Permitir que el personaje guíe sus propias acciones.", "El personaje debe ser un buen oyente.", "El guionista debe escuchar la opinión de los actores."],
+                    correct: "Permitir que el personaje guíe sus propias acciones."
+                },
+                {
+                    question: "La 'estructura' es importante porque:",
+                    options: ["Hace que la historia sea predecible.", "Mantiene la historia en movimiento y ayuda a resolver el conflicto.", "Limita la creatividad del guionista.", "No es tan importante como el diálogo."],
+                    correct: "Mantiene la historia en movimiento y ayuda a resolver el conflicto."
+                },
+                {
+                    question: "Para Linda Seger, el 'clímax' no es solo una acción, sino también:",
+                    options: ["Un punto de crecimiento para el protagonista.", "El final feliz de la historia.", "El inicio del conflicto.", "La introducción de un nuevo personaje."],
+                    correct: "Un punto de crecimiento para el protagonista."
+                },
+                {
+                    question: "El 'subtexto emocional' se revela a través de:",
+                    options: ["Las acciones del personaje, no solo sus palabras.", "Las descripciones de las emociones en el guion.", "La música de la película.", "La narración del director."],
+                    correct: "Las acciones del personaje, no solo sus palabras."
+                },
+                {
+                    question: "Linda Seger compara el proceso de reescritura con:",
+                    options: ["Correr un maratón.", "Esculpir una estatua de mármol.", "Hacer un pastel.", "Pintar una pared."],
+                    correct: "Esculpir una estatua de mármol."
+                },
+                {
+                    question: "¿Cuál es el propósito de un 'arco de personaje negativo'?",
+                    options: ["Mostrar que el protagonista no cambia.", "Mostrar la caída moral del protagonista.", "Hacer que el público se sienta feliz.", "Resolver el conflicto de forma simple."],
+                    correct: "Mostrar la caída moral del protagonista."
+                },
+                {
+                    question: "La 'estructura temática' de una historia es:",
+                    options: ["El orden cronológico de los eventos.", "La forma en que el tema se desarrolla a lo largo de la trama.", "El número de personajes en la historia.", "La cantidad de escenas de acción."],
+                    correct: "La forma en que el tema se desarrolla a lo largo de la trama."
+                },
+                {
+                    question: "¿Por qué se usa el 'conflicto externo' en el guion?",
+                    options: ["Para distraer al público.", "Para impulsar la acción y el arco del personaje.", "Para confundir al protagonista.", "Para hacer el guion más largo."],
+                    correct: "Para impulsar la acción y el arco del personaje."
+                },
+                {
+                    question: "Para Seger, la 'motivación interna' es clave para:",
+                    options: ["Crear un personaje plano.", "Justificar las decisiones del personaje y su arco.", "Hacer que el personaje sea un villano.", "No es importante para el guion."],
+                    correct: "Justificar las decisiones del personaje y su arco."
+                },
+                {
+                    question: "¿Qué es un 'flashback' efectivo?",
+                    options: ["Un flashback que no tiene relación con la historia.", "Un flashback que revela información crucial para la trama o el personaje.", "Un flashback que solo sirve para rellenar.", "Un flashback que se repite varias veces."],
+                    correct: "Un flashback que revela información crucial para la trama o el personaje."
+                },
+                {
+                    question: "Para mejorar el 'diálogo', Linda Seger aconseja:",
+                    options: ["Escribir un diálogo que suene como monólogos.", "Añadir más palabras de relleno.", "Eliminar todo lo que no sea necesario para la historia o el personaje.", "Hacerlo más informal."],
+                    correct: "Eliminar todo lo que no sea necesario para la historia o el personaje."
+                },
+                {
+                    question: "El 'ritmo' de un guion se puede manipular con:",
+                    options: ["Solo escenas cortas.", "Solo escenas largas.", "La alternancia de escenas largas y cortas.", "El número de personajes en la escena."],
+                    correct: "La alternancia de escenas largas y cortas."
+                },
+                {
+                    question: "Según Seger, la 'sub-trama' es una herramienta para:",
+                    options: ["Distraer al público del tema principal.", "Desarrollar un personaje y añadir complejidad a la historia.", "Hacer el guion más confuso.", "No tiene un propósito claro."],
+                    correct: "Desarrollar un personaje y añadir complejidad a la historia."
+                },
+                {
+                    question: "¿Cuál es el 'acto I' en la estructura de tres actos?",
+                    options: ["El clímax.", "La exposición y el inicio del conflicto.", "La resolución de la historia.", "El final del arco del personaje."],
+                    correct: "La exposición y el inicio del conflicto."
+                },
+                {
+                    question: "El 'conflicto' en una historia es importante porque:",
+                    options: ["Añade tensión y permite el crecimiento del personaje.", "Hace que la historia sea más fácil de escribir.", "Solo se necesita un tipo de conflicto.", "No es tan importante como el diálogo."],
+                    correct: "Añade tensión y permite el crecimiento del personaje."
+                },
+                {
+                    question: "¿Qué se busca lograr al 'reescribir un diálogo'?",
+                    options: ["Que sea más largo y detallado.", "Que suene auténtico y revele el personaje.", "Que sea confuso para el público.", "Que sea genérico para cualquier personaje."],
+                    correct: "Que suene auténtico y revele el personaje."
+                },
+                {
+                    question: "Linda Seger compara el proceso de 'reescribir' con:",
+                    options: ["Construir una casa desde cero.", "Mejorar una casa ya construida.", "Abandonar la casa.", "Comprar una casa nueva."],
+                    correct: "Mejorar una casa ya construida."
+                },
+                {
+                    question: "El 'ritmo' en una historia se puede lograr con la 'alternancia' de:",
+                    options: ["Diálogos y acción.", "Escenas largas y cortas.", "Ambas son correctas.", "Ambas son incorrectas."],
+                    correct: "Ambas son correctas."
+                },
+                {
+                    question: "¿Qué es el 'acto II' en la estructura de tres actos?",
+                    options: ["La presentación de los personajes.", "La confrontación del protagonista con obstáculos.", "El final feliz.", "El inicio del conflicto."],
+                    correct: "La confrontación del protagonista con obstáculos."
+                },
+                {
+                    question: "El 'diálogo expositivo' se utiliza para:",
+                    options: ["Revelar la personalidad del personaje.", "Dar información importante de manera natural.", "Solo llenar espacio en el guion.", "Hacer un monólogo."],
+                    correct: "Dar información importante de manera natural."
+                },
+                {
+                    question: "Según Seger, un 'buen final' de guion debe ser:",
+                    options: ["Predecible.", "Sorprendente y satisfactorio.", "Abierto e inexplicable.", "Trágico."],
+                    correct: "Sorprendente y satisfactorio."
+                },
+                {
+                    question: "Para mejorar un 'guion sin estructura', Linda Seger aconseja:",
+                    options: ["Escribir un nuevo guion.", "Identificar los puntos de giro y reconstruir los actos.", "Ignorar la estructura por completo.", "Eliminar todos los personajes."],
+                    correct: "Identificar los puntos de giro y reconstruir los actos."
+                },
+                {
+                    question: "La 'voz del personaje' en el diálogo se logra a través de:",
+                    options: ["La gramática y el vocabulario que utiliza.", "La longitud de sus diálogos.", "Su apariencia física.", "La cantidad de escenas que tiene."],
+                    correct: "La gramática y el vocabulario que utiliza."
+                },
+                {
+                    question: "¿Qué se puede hacer para evitar que un 'guion se vuelva aburrido' en el segundo acto?",
+                    options: ["Añadir más personajes.", "Incluir subtramas y subir las apuestas.", "Reducir el conflicto.", "Hacer el acto más corto."],
+                    correct: "Incluir subtramas y subir las apuestas."
+                },
+                {
+                    question: "Según Linda Seger, el 'ritmo de la historia' está en la relación entre:",
+                    options: ["Diálogo y acción.", "Personajes y subtramas.", "Inicio y final.", "Trama y subtrama."],
+                    correct: "Diálogo y acción."
+                },
+                {
+                    question: "El 'incidente incitador' en el guion tiene la función de:",
+                    options: ["Resolver el conflicto.", "Poner la historia en movimiento.", "Presentar al villano.", "Introducir al protagonista."],
+                    correct: "Poner la historia en movimiento."
+                },
+                {
+                    question: "¿Cuál es el 'acto III' en la estructura de tres actos?",
+                    options: ["El desarrollo del conflicto.", "El clímax y la resolución de la historia.", "La introducción de los personajes.", "La presentación de los temas."],
+                    correct: "El clímax y la resolución de la historia."
+                },
+                {
+                    question: "Un 'buen guion' debe ser, según Seger:",
+                    options: ["Solo un primer borrador.", "Una historia bien estructurada con personajes convincentes y un tema claro.", "Una historia sin estructura.", "Un guion que es fácil de filmar."],
+                    correct: "Una historia bien estructurada con personajes convincentes y un tema claro."
+                },
+                {
+                    question: "La 'motivación del antagonista' debe ser:",
+                    options: ["Irrelevante para la historia.", "Opuesta a la del protagonista para generar conflicto.", "Igual a la del protagonista.", "Siempre inexplicable."],
+                    correct: "Opuesta a la del protagonista para generar conflicto."
+                },
+                {
+                    question: "En 'Making a Good Script Great', el concepto de 'ritmo' se aplica a:",
+                    options: ["La velocidad de la historia.", "El tono del guion.", "La música de la película.", "La velocidad del diálogo."],
+                    correct: "La velocidad de la historia."
+                },
+                {
+                    question: "Un 'guion sin pulir' es:",
+                    options: ["Un guion con una idea original.", "Un guion que no ha pasado por el proceso de reescritura.", "Un guion escrito por un novato.", "Un guion que es demasiado largo."],
+                    correct: "Un guion que no ha pasado por el proceso de reescritura."
+                },
+                {
+                    question: "¿Qué se logra al 'reescribir un personaje'?",
+                    options: ["Hacer que el personaje sea estático.", "Añadir capas de complejidad y profundidad.", "Eliminar la motivación del personaje.", "Cambiar su apariencia física."],
+                    correct: "Añadir capas de complejidad y profundidad."
+                },
+                {
+                    question: "La 'estructura' de una historia es un marco que permite:",
+                    options: ["La improvisación.", "Un caos controlado.", "La fluidez y coherencia de la narrativa.", "El desorden narrativo."],
+                    correct: "La fluidez y coherencia de la narrativa."
+                },
+                {
+                    question: "¿Qué es la 'lógica de la historia' según Linda Seger?",
+                    options: ["Las acciones de los personajes deben tener sentido dentro del mundo de la historia.", "La historia debe ser realista.", "El protagonista debe ser un detective.", "La historia debe ser predecible."],
+                    correct: "Las acciones de los personajes deben tener sentido dentro del mundo de la historia."
+                },
+                {
+                    question: "El 'primer punto de giro' en el guion se conoce como:",
+                    options: ["El Incidente Incitador.", "El Clímax.", "El final del Acto I.", "El punto medio."],
+                    correct: "El final del Acto I."
+                },
+                {
+                    question: "¿Cuál es el propósito del 'ritmo' en el guion?",
+                    options: ["No es importante.", "Crear una experiencia de lectura predecible.", "Mantener el interés del lector y controlar el flujo de la historia.", "Solo para películas de acción."],
+                    correct: "Mantener el interés del lector y controlar el flujo de la historia."
+                },
+                {
+                    question: "La 'estructura' es esencial para un guion porque:",
+                    options: ["Es una fórmula para el éxito.", "Proporciona una base sólida sobre la cual construir la historia.", "Hace que el guion sea más corto.", "No es tan importante como los personajes."],
+                    correct: "Proporciona una base sólida sobre la cual construir la historia."
+                },
+                {
+                    question: "El 'tercer acto' de un guion es el lugar para:",
+                    options: ["Añadir nuevas subtramas.", "Resolver todos los conflictos de la historia.", "Introducir nuevos personajes.", "Hacer el guion más largo."],
+                    correct: "Resolver todos los conflictos de la historia."
+                },
+                {
+                    question: "¿Cuál es la diferencia entre 'trama' y 'tema'?",
+                    options: ["La trama es la historia, el tema es el significado.", "La trama es el significado, el tema es la historia.", "Son lo mismo.", "La trama es un personaje, el tema es el conflicto."],
+                    correct: "La trama es la historia, el tema es el significado."
+                },
+                {
+                    question: "Para crear un 'guion más pulido', Linda Seger recomienda:",
+                    options: ["Dejarlo como está.", "Hacer varias rondas de reescritura, enfocándose en diferentes aspectos.", "Añadir más páginas.", "Añadir más diálogos."],
+                    correct: "Hacer varias rondas de reescritura, enfocándose en diferentes aspectos."
+                },
+                {
+                    question: "Un 'buen diálogo' debe servir para:",
+                    options: ["Explicar toda la historia.", "Revelar información sobre el personaje y avanzar la trama.", "Hacer la película más larga.", "Decir exactamente lo que el personaje piensa."],
+                    correct: "Revelar información sobre el personaje y avanzar la trama."
+                },
+                {
+                    question: "La 'voz narrativa' es lo que hace que un guion sea:",
+                    options: ["Aburrido.", "Fácil de leer.", "Único y reconocible.", "Corto."],
+                    correct: "Único y reconocible."
+                },
+                {
+                    question: "En el contexto de 'Making a Good Script Great', ¿qué es una 'sub-trama'?",
+                    options: ["Una historia completamente separada.", "Una historia secundaria que apoya la trama principal.", "Un error de escritura.", "Una historia que no tiene conflicto."],
+                    correct: "Una historia secundaria que apoya la trama principal."
+                },
+                {
+                    question: "El 'clímax' de la historia es el momento en que el protagonista:",
+                    options: ["Comienza la aventura.", "Se enfrenta a su mayor miedo y logra su objetivo (o fracasa).", "Conoce al antagonista.", "Regresa a casa."],
+                    correct: "Se enfrenta a su mayor miedo y logra su objetivo (o fracasa)."
+                },
+                {
+                    question: "¿Cuál es el 'acto I' en la estructura de Linda Seger?",
+                    options: ["La Exposición.", "La Resolución.", "El Clímax.", "El Nudo."],
+                    correct: "La Exposición."
+                },
+                {
+                    question: "Para Seger, la 'reescritura' es:",
+                    options: ["Un castigo.", "El proceso que hace que un guion sea genial.", "Un paso opcional.", "Más fácil que la primera escritura."],
+                    correct: "El proceso que hace que un guion sea genial."
+                },
+                {
+                    question: "¿Qué se busca en el 'acto II'?",
+                    options: ["La presentación de los personajes.", "La complicación y el desarrollo del conflicto.", "La resolución de la historia.", "La introducción del tema."],
+                    correct: "La complicación y el desarrollo del conflicto."
+                },
+                {
+                    question: "El 'desenlace' de la historia es el momento en que:",
+                    options: ["Se introduce al protagonista.", "Se introduce al antagonista.", "Se atan los cabos sueltos y se muestra el nuevo estado del mundo.", "Se revela el tema."],
+                    correct: "Se atan los cabos sueltos y se muestra el nuevo estado del mundo."
+                },
+                {
+                    question: "¿Por qué un guion debe tener un 'ritmo' variado?",
+                    options: ["Para no aburrir al lector.", "Para hacer el guion más largo.", "Para confundir al lector.", "Para que el guionista pueda descansar."],
+                    correct: "Para no aburrir al lector."
+                },
+                {
+                    question: "Para Linda Seger, el 'subtexto' es:",
+                    options: ["El diálogo explícito.", "La acción del personaje.", "La información que se transmite sin ser dicha directamente.", "Un mensaje secreto para el director."],
+                    correct: "La información que se transmite sin ser dicha directamente."
+                },
+                {
+                    question: "¿Qué se busca lograr al 'reescribir la trama'?",
+                    options: ["Hacer la trama más confusa.", "Asegurar que cada escena sirva para avanzar la historia.", "Eliminar la trama por completo.", "Añadir más subtramas."],
+                    correct: "Asegurar que cada escena sirva para avanzar la historia."
+                },
+                {
+                    question: "El 'viaje del personaje' es un concepto que se relaciona con:",
+                    options: ["El viaje físico que el personaje realiza.", "La evolución del personaje a lo largo de la historia.", "El viaje en el tiempo.", "El viaje del guionista."],
+                    correct: "La evolución del personaje a lo largo de la historia."
+                },
+                {
+                    question: "¿Cuál es el propósito del 'conflicto externo' en el guion?",
+                    options: ["Hacer la historia más fácil de entender.", "Mantener al protagonista ocupado.", "Hacer la historia más interesante y desafiante.", "Eliminar al protagonista."],
+                    correct: "Hacer la historia más interesante y desafiante."
+                },
+                {
+                    question: "Según Seger, el 'ritmo' es importante para:",
+                    options: ["El guionista.", "El lector.", "Ambos son correctos.", "Ninguno es correcto."],
+                    correct: "Ambos son correctos."
+                },
+                {
+                    question: "Para mejorar un 'guion sin dirección', Linda Seger aconseja:",
+                    options: ["Añadir más escenas.", "Definir los puntos de giro y el objetivo del protagonista.", "Eliminar todos los personajes.", "Hacerlo más corto."],
+                    correct: "Definir los puntos de giro y el objetivo del protagonista."
+                },
+                {
+                    question: "¿Cuál es la 'regla de oro' de Linda Seger para la reescritura?",
+                    options: ["No hacer cambios importantes.", "Escribir un primer borrador perfecto.", "Eliminar la mitad del guion.", "Reescribir desde el principio, no solo corregir."],
+                    correct: "Reescribir desde el principio, no solo corregir."
+                },
+                {
+                    question: "El 'tercer acto' se caracteriza por:",
+                    options: ["La presentación de los personajes.", "La resolución final del conflicto.", "La introducción de nuevas subtramas.", "El inicio de la historia."],
+                    correct: "La resolución final del conflicto."
+                },
+                {
+                    question: "¿Qué significa 'subir las apuestas' para el protagonista?",
+                    options: ["Aumentar la cantidad de dinero en juego.", "Aumentar el riesgo emocional y físico en el conflicto.", "Añadir más personajes secundarios.", "Reducir la tensión."],
+                    correct: "Aumentar el riesgo emocional y físico en el conflicto."
+                },
+                {
+                    question: "Para Linda Seger, un 'guion grande' es uno que:",
+                    options: ["Tiene una gran cantidad de páginas.", "Tiene una estructura sólida, personajes complejos y un tema claro.", "Es un guion de superhéroes.", "Es el primer borrador."],
+                    correct: "Tiene una estructura sólida, personajes complejos y un tema claro."
+                },
+                {
+                    question: "El 'diálogo' es una herramienta para:",
+                    options: ["Solo para mostrar lo que el personaje piensa.", "Mostrar la personalidad, la historia y la motivación del personaje.", "Hacer que el guion sea más largo.", "No tiene propósito."],
+                    correct: "Mostrar la personalidad, la historia y la motivación del personaje."
+                },
+                {
+                    question: "Según Seger, un 'guion sin tema' es como:",
+                    options: ["Una casa sin cimientos.", "Un libro sin páginas.", "Un coche sin ruedas.", "Una fiesta sin música."],
+                    correct: "Una casa sin cimientos."
+                },
+                {
+                    question: "¿Qué se busca en la reescritura de la 'estructura'?",
+                    options: ["Añadir más escenas.", "Asegurar que los puntos de giro y los actos sean efectivos.", "Hacer que la estructura sea más larga.", "Eliminar los puntos de giro."],
+                    correct: "Asegurar que los puntos de giro y los actos sean efectivos."
+                },
+                {
+                    question: "El 'conflicto' puede ser entre:",
+                    options: ["Un personaje y otro personaje.", "Un personaje y la naturaleza.", "Un personaje y su propia mente.", "Todas las anteriores."],
+                    correct: "Todas las anteriores."
+                },
+                {
+                    question: "La 'voz del guionista' se diferencia del 'tono' en que:",
+                    options: ["La voz es el estilo del escritor, el tono es el sentimiento de la película.", "La voz es el sentimiento, el tono es el estilo.", "Son lo mismo.", "La voz se refiere a los personajes, el tono al guionista."],
+                    correct: "La voz es el estilo del escritor, el tono es el sentimiento de la película."
+                },
+                {
+                    question: "En el 'proceso de reescritura', la 'exposición' debe ser:",
+                    options: ["Eliminada por completo.", "Simplificada y distribuida de manera sutil.", "Más larga y explicativa.", "Solo a través de flashbacks."],
+                    correct: "Simplificada y distribuida de manera sutil."
+                },
+                {
+                    question: "¿Qué se busca en la reescritura del 'ritmo'?",
+                    options: ["Añadir más escenas de acción.", "Asegurar un flujo constante de tensión y relajación.", "Eliminar las escenas lentas.", "Hacer el guion más rápido."],
+                    correct: "Asegurar un flujo constante de tensión y relajación."
+                },
+                {
+                    question: "Linda Seger dice que el 'primer borrador' es el momento para:",
+                    options: ["No cometer errores.", "Escribir la historia sin preocuparse por la perfección.", "Preocuparse por la gramática.", "Escribir el diálogo final."],
+                    correct: "Escribir la historia sin preocuparse por la perfección."
+                },
+                {
+                    question: "¿Qué es la 'secuencia de escenas'?",
+                    options: ["Una sola escena.", "Una serie de escenas que trabajan juntas para un propósito.", "Un error en el guion.", "Una forma de escribir el diálogo."],
+                    correct: "Una serie de escenas que trabajan juntas para un propósito."
+                },
+                {
+                    question: "Para hacer que un 'guion sea más visual', Linda Seger aconseja:",
+                    options: ["Describir cada detalle.", "Eliminar las descripciones.", "Mostrar la historia a través de acciones, no solo diálogo.", "Hacer que el guion sea más largo."],
+                    correct: "Mostrar la historia a través de acciones, no solo diálogo."
+                },
+                {
+                    question: "El 'arco de la historia' se refiere a:",
+                    options: ["La estructura narrativa desde el inicio hasta el final.", "La historia del protagonista.", "La historia del antagonista.", "La historia secundaria."],
+                    correct: "La estructura narrativa desde el inicio hasta el final."
+                },
+                {
+                    question: "¿Cuál es el propósito del 'final' de una historia?",
+                    options: ["Dejar la historia abierta.", "Atar todos los cabos sueltos y dar una conclusión satisfactoria.", "Confundir al público.", "Presentar un nuevo conflicto."],
+                    correct: "Atar todos los cabos sueltos y dar una conclusión satisfactoria."
+                },
+                {
+                    question: "El 'punto medio' en la estructura del guion sirve para:",
+                    options: ["Presentar al protagonista.", "Reorientar la historia y crear una nueva dinámica.", "Resolver el conflicto.", "Introducir un nuevo personaje."],
+                    correct: "Reorientar la historia y crear una nueva dinámica."
+                },
+                {
+                    question: "La 'trama secundaria' puede ser útil para:",
+                    options: ["Distraer al público.", "Añadir más páginas.", "Mostrar una faceta diferente del protagonista.", "Confundir al protagonista."],
+                    correct: "Mostrar una faceta diferente del protagonista."
+                },
+                {
+                    question: "¿Qué se busca en el 'proceso de reescritura'?",
+                    options: ["Añadir más diálogo.", "Eliminar las escenas innecesarias y pulir la historia.", "Hacer el guion más largo.", "Ignorar el guion por completo."],
+                    correct: "Eliminar las escenas innecesarias y pulir la historia."
+                },
+                {
+                    question: "Para Linda Seger, el 'diálogo' debe ser:",
+                    options: ["Un relleno.", "Una herramienta para revelar al personaje y avanzar la trama.", "Un obstáculo para la historia.", "Solo para películas de comedia."],
+                    correct: "Una herramienta para revelar al personaje y avanzar la trama."
+                },
+                {
+                    question: "El 'tema' de una historia es importante porque:",
+                    options: ["Añade complejidad sin un propósito.", "Da una dirección y un significado a la narrativa.", "Es solo para el público.", "Es el final de la historia."],
+                    correct: "Da una dirección y un significado a la narrativa."
+                },
+                {
+                    question: "La 'estructura en tres actos' es:",
+                    options: ["Una fórmula rígida.", "Un modelo flexible que proporciona un marco para la historia.", "Una forma de escribir el diálogo.", "Un tipo de personaje."],
+                    correct: "Un modelo flexible que proporciona un marco para la historia."
+                },
+                {
+                    question: "¿Cuál es la clave para un 'buen final'?",
+                    options: ["Que sea feliz.", "Que resuelva el conflicto de forma satisfactoria para el público.", "Que sea triste.", "Que sea inesperado."],
+                    correct: "Que resuelva el conflicto de forma satisfactoria para el público."
+                },
+                {
+                    question: "Para Seger, la 'reescritura' es el proceso de:",
+                    options: ["Añadir más diálogo.", "Dar forma y pulir la historia para que sea la mejor versión posible.", "Eliminar la mitad de las escenas.", "Hacer la historia más simple."],
+                    correct: "Dar forma y pulir la historia para que sea la mejor versión posible."
+                },
+                {
+                    question: "¿Qué se logra con un 'punto de giro'?",
+                    options: ["Se detiene la acción.", "Se mueve la historia a una nueva dirección y aumenta la tensión.", "Se introduce un nuevo personaje.", "Se resuelve el conflicto."],
+                    correct: "Se mueve la historia a una nueva dirección y aumenta la tensión."
+                },
+                {
+                    question: "El 'conflicto interno' de un personaje se resuelve en el:",
+                    options: ["Acto I.", "Acto II.", "Acto III.", "En la mitad del guion."],
+                    correct: "Acto III."
+                },
+                {
+                    question: "¿Qué es el 'acto I' en la estructura del guion?",
+                    options: ["El final de la historia.", "La introducción de los personajes y el mundo.", "El desarrollo del conflicto.", "El clímax."],
+                    correct: "La introducción de los personajes y el mundo."
+                },
+                {
+                    question: "La 'voz del guionista' es el estilo de:",
+                    options: ["La narrativa, la descripción y el diálogo.", "Solo la descripción.", "Solo el diálogo.", "La dirección."],
+                    correct: "La narrativa, la descripción y el diálogo."
+                },
+                {
+                    question: "Para crear un 'guion grande', Linda Seger se enfoca en:",
+                    options: ["La longitud del guion.", "La calidad de la historia, personajes y temas.", "La cantidad de escenas de acción.", "La cantidad de diálogos."],
+                    correct: "La calidad de la historia, personajes y temas."
+                },
+                {
+                    question: "El 'desenlace' de un guion debe:",
+                    options: ["Introducir un nuevo conflicto.", "Mostrar el resultado del conflicto y el cambio del protagonista.", "Ser ambiguo.", "Ser un final feliz para todos."],
+                    correct: "Mostrar el resultado del conflicto y el cambio del protagonista."
+                },
+                {
+                    question: "Un 'buen diálogo' es una herramienta para:",
+                    options: ["Mostrar la personalidad, la historia y la motivación del personaje.", "Explicar el conflicto al público.", "Llenar el guion.", "Crear escenas aburridas."],
+                    correct: "Mostrar la personalidad, la historia y la motivación del personaje."
+                },
+                {
+                    question: "¿Cuál es el 'acto II' en la estructura del guion?",
+                    options: ["El clímax.", "La confrontación y el desarrollo.", "El inicio de la historia.", "La resolución."],
+                    correct: "La confrontación y el desarrollo."
+                },
+                {
+                    question: "Para Linda Seger, el 'ritmo' de un guion se puede controlar a través de:",
+                    options: ["La longitud de las escenas.", "El tiempo de cada escena.", "Ambas son correctas.", "Ninguna es correcta."],
+                    correct: "Ambas son correctas."
+                },
+                {
+                    question: "La 'estructura' es importante para un guion porque:",
+                    options: ["Es una fórmula rígida.", "Proporciona una base sólida para la historia.", "Solo para guiones de comedia.", "No es tan importante como los personajes."],
+                    correct: "Proporciona una base sólida para la historia."
+                },
+                {
+                    question: "¿Qué se busca en el 'acto III'?",
+                    options: ["La presentación de los personajes.", "La resolución del conflicto.", "El desarrollo del conflicto.", "La introducción de nuevas subtramas."],
+                    correct: "La resolución del conflicto."
+                },
+                {
+                    question: "El 'desenlace' de la historia es el momento en que:",
+                    options: ["Se introduce al protagonista.", "Se resuelve el conflicto principal y las subtramas.", "Se introduce al antagonista.", "Se establece el mundo de la historia."],
+                    correct: "Se resuelve el conflicto principal y las subtramas."
+                },
+                {
+                    question: "La 'trama secundaria' puede ser útil para:",
+                    options: ["Añadir complejidad al personaje principal.", "Distraer al público.", "No tiene un propósito claro.", "Hacer el guion más largo."],
+                    correct: "Añadir complejidad al personaje principal."
+                },
+                {
+                    question: "El 'ritmo' es importante para:",
+                    options: ["Mantener el interés del lector.", "Hacer que el guion sea predecible.", "Añadir más páginas.", "No es importante."],
+                    correct: "Mantener el interés del lector."
+                },
+                {
+                    question: "¿Cuál es el propósito del 'subtexto'?",
+                    options: ["Hacer el diálogo más largo.", "Crear una capa de significado y emoción que no se expresa directamente.", "Explicar el conflicto al público.", "No tiene un propósito."],
+                    correct: "Crear una capa de significado y emoción que no se expresa directamente."
+                },
+                {
+                    question: "La 'voz del guionista' es el estilo de:",
+                    options: ["Los personajes.", "La narrativa y el tono.", "La música de la película.", "La dirección."],
+                    correct: "La narrativa y el tono."
+                },
+            ];
 
-            // Función para renderizar las preguntas
-            function renderQuestions() {
-                let questionHTML = '';
-                questions.forEach((q, index) => {
-                    questionHTML += `
-                        <div class="p-6 border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition duration-200">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4">${index + 1}. ${q.question}</h3>
-                            <div class="space-y-3">
-                    `;
-                    q.options.forEach(option => {
-                        questionHTML += `
-                            <div class="flex items-center">
-                                <input type="radio" name="q${index}" id="q${index}_${option}" value="${option}" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mr-3">
-                                <label for="q${index}_${option}" class="text-gray-700 cursor-pointer">${option}</label>
-                            </div>
-                        `;
-                    });
-                    questionHTML += `
-                            </div>
-                        </div>
-                    `;
-                });
-                questionsContainer.innerHTML = questionHTML;
-            }
+            // Función para mezclar las preguntas
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+            }
+            shuffleArray(questions);
 
-            // Función para calcular la puntuación y mostrar resultados
-            function calculateScore() {
-                let score = 0;
-                const studentName = document.getElementById('studentName').value;
-                const institutionalEmail = document.getElementById('institutionalEmail').value;
-                const courseSubject = document.getElementById('courseSubject').value;
+            // Renderizar las preguntas en la página
+            questions.forEach((q, index) => {
+                const questionEl = document.createElement('div');
+                questionEl.className = 'bg-white p-6 rounded-xl border border-gray-200 shadow-sm';
+                questionEl.innerHTML = `
+                    <p class="text-lg font-semibold text-gray-800 mb-4">${index + 1}. ${q.question}</p>
+                    <div class="space-y-3">
+                        ${q.options.map((option, optIndex) => `
+                            <label class="flex items-center space-x-3 cursor-pointer p-3 rounded-lg border border-gray-200 hover:bg-orange-50 transition duration-150 ease-in-out">
+                                <input type="radio" name="question-${index}" value="${option}" class="text-orange-600 focus:ring-orange-500">
+                                <span class="text-gray-700">${option}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                `;
+                questionsContainer.appendChild(questionEl);
+            });
 
-                // Validar campos de información del alumno
-                if (!studentName || !institutionalEmail || !courseSubject) {
-                    infoError.classList.remove('hidden');
-                    return false; // Indicar que la validación falló
-                }
-                infoError.classList.add('hidden');
+            examForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const studentName = document.getElementById('studentName').value;
+                const institutionalEmail = document.getElementById('institutionalEmail').value;
+                const courseSubject = document.getElementById('courseSubject').value;
 
-                // Mostrar correo en la confirmación
-                confirmEmail.textContent = institutionalEmail;
+                if (!studentName || !institutionalEmail || !courseSubject) {
+                    infoError.classList.remove('hidden');
+                    return;
+                }
+                infoError.classList.add('hidden');
 
-                questions.forEach((q, index) => {
-                    const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
-                    if (selectedOption && selectedOption.value === q.correct) {
-                        score++;
-                    }
-                });
+                let score = 0;
+                questions.forEach((q, index) => {
+                    const selectedOption = document.querySelector(`input[name="question-${index}"]:checked`);
+                    if (selectedOption && selectedOption.value === q.correct) {
+                        score++;
+                    }
+                });
 
-                const totalQuestions = questions.length;
-                const percentage = (score / totalQuestions) * 100;
+                // Actualizar el contenedor de resultados
+                scoreMessage.textContent = `Puntuación: ${score} / ${questions.length}`;
+                confirmEmail.textContent = institutionalEmail;
+                
+                // Mostrar el modal
+                confirmationModal.classList.remove('hidden');
+                
+                // Simulación de envío por correo electrónico
+                emailStatus.textContent = "Resultados enviados a tu correo institucional.";
+                setTimeout(() => {
+                    resultsContainer.classList.remove('hidden');
+                }, 1500);
+            });
 
-                scoreMessage.textContent = `Tu puntuación: ${score} de ${totalQuestions} (${percentage.toFixed(1)}%).`;
-                emailStatus.textContent = `Los resultados han sido registrados para ${studentName}.`;
-
-                resultsContainer.classList.remove('hidden');
-                examForm.classList.add('hidden');
-                submitBtn.disabled = true; // Deshabilitar el botón después de enviar
-                confirmationModal.classList.remove('hidden'); // Mostrar la modal
-
-                return true; // Indicar que la validación y el cálculo fueron exitosos
-            }
-
-            // Event listener para el envío del formulario
-            examForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                calculateScore();
-            });
-
-            // Event listener para cerrar la modal de confirmación
-            closeModalBtn.addEventListener('click', () => {
-                confirmationModal.classList.add('hidden');
-            });
-
-            // Renderizar las preguntas al cargar la página
-            renderQuestions();
-        });
-    </script>
+            closeModalBtn.addEventListener('click', () => {
+                confirmationModal.classList.add('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
